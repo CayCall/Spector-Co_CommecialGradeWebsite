@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* micro formatting */
+h1{
+    font-size: 27px;
+    font-style: italic;
+    font-weight: lighter;
+    color: white;
+    padding: 0px;
+    margin: 5px 0px 5px 70px;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;   
+    background-color: white;
+    height: 100vh;
+}
+/*Nav bar styling */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+    padding: 20px 10%;
+    background-color:#002B5C;    
+    flex-wrap: wrap; 
+}
+.Nav-Bar ul{
+    list-style-type: none;
+}
+.Nav-Bar ul li{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.Nav-Bar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 0 20px; 
+    transition: color 0.2s ease-in, transform 0.2s ease-out; 
+    display: inline-block;
+}
+
+.Nav-Bar ul li a:hover {
+    color: #008080;
+    text-decoration: underline;
+    transform: scale(1.2); 
+}
+
+/*Footer*/
+
+footer {
+    padding: 20px;
+    background-color: #002B5C;
+}
+
+.contact-me-header {
+    color: white;
+    font: bold;
+}
+
+address {
+    color: white;
+    margin-left: 30px;
+}
+
+.footer-socials {
+    text-align: center;
+    color: white;
+}
+svg{
+    margin: 10px;
+    fill: white; /* Change the color of SVG to white */
+}
+
+.fn {
+    color: #b9c7d1;
+}
+
+span {
+    color: #2200ff;
+}
+
+
