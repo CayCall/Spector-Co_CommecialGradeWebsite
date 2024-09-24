@@ -15,8 +15,16 @@
 #Hero h1{
     
 }
+#Hero-Header{
+    font-weight: lighter;
+}
 
-
+#Hero-H3{
+    font-weight: lighter;
+}
+.welcome-text{
+    font-weight: 900;
+}
 .hero-content {
     background: rgba(0, 0, 0, 0.6); /* Optional background for text readability */
     padding: 10px;
