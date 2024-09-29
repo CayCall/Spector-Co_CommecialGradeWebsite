@@ -4,7 +4,20 @@
     padding: 0;
 }
 
-/* micro formatting */
+/*formatting */
+body{
+    font-family: Arial, Helvetica, sans-serif;   
+    line-height: 1.5; 
+    letter-spacing: 0.2px; 
+    background-color: white;
+    height: 100vh;
+
+}
+p {
+    margin: 20px;      
+    font-size: 17px; 
+    border-radius: 5px;                                       
+}
 h1{
     font-size: 27px;
     font-style: italic;
@@ -13,13 +26,23 @@ h1{
     padding: 0px;
     margin: 5px 0px 5px 70px;
 }
-body{
-    font-family: Arial, Helvetica, sans-serif;   
-    background-color: white;
-    height: 100vh;
+h2{
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.8px; 
+    margin:15px;
 }
-/*Nav bar styling */
 
+h3, h4 {
+    font-size: 20px;
+    font-weight: 700;
+}
+.sub-heading{
+    margin: 30px;
+}
+
+/*Nav bar styling */
 header{
     display: flex;
     justify-content: space-between;
@@ -36,14 +59,17 @@ header{
     height: 100%;
     vertical-align: middle;
 }
+
 .Nav-Bar ul li a {
     text-decoration: none;
     color: white;
     font-size: 16px;
     line-height: 40px;
     padding: 0 20px; 
-    transition: color 0.2s ease-in, transform 0.2s ease-out; 
     display: inline-block;
+    animation: animatedNav 3s ease-out forwards; 
+    opacity: 0; 
+    transition: color 0.2s ease-in, transform 0.2s ease-out; 
 }
 
 .Nav-Bar ul li a:hover {
@@ -52,8 +78,16 @@ header{
     transform: scale(1.2); 
 }
 
-/*Footer*/
+@keyframes animatedNav {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
+/*Footer*/
 footer {
     padding: 20px;
     background-color: #002B5C;
@@ -70,15 +104,43 @@ address {
 }
 
 .footer-socials {
-    text-align: center;
-    color: white;
-}
-svg{
-    margin: 10px;
-    fill: white; /* Change the color of SVG to white */
+    display: flex;                
+    flex-direction: column;      
+    align-items: center;         
+    text-align: center;          
+    margin: 20px 0;            
+    padding: 10px;         
+    color: white;     
 }
 
+.footer-socials p {
+    margin: 0;                  
+    padding: 5px 0;            
+}
+
+.social-icons {
+    display: flex;              
+    justify-content: center;    
+    margin-top: 10px;         
+}
+
+.social-icons svg {
+    margin: 0 5px;             
+    width: 24px;              
+    height: 24px;               
+    fill: #008080           
+}
+  
+.social-icons svg:hover {
+    fill: white; 
+}
 .fn {
     color: #b9c7d1;
+  
 }
-
+@media (max-width: 768px) {
+    .Nav-Bar ul li {
+        display: block; /* Stack items vertically */
+        text-align: center; /* Center align for better visibility */
+    }
+}

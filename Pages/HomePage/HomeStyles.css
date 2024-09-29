@@ -1,42 +1,81 @@
 #Hero {
-    position: relative;
-    height:40vh; /* Adjust the height as needed */
-    background: url('../../Images/Equitable_Building.jpg') no-repeat center center/cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    padding: 20px;
+  position: relative;
+  height: 60vh;
+  background: url('../../Images/Equitable_Building.jpg') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 20px;
 }
 
-
-#Hero h1{
-    
+#Hero-Header {
+  font-weight: lighter;
+  color: #E5E5E5
 }
-#Hero-Header{
-    font-weight: lighter;
-}
-
 #Hero-H3{
-    font-weight: lighter;
+  padding: 5px;
+  color: #E5E5E5
 }
-.welcome-text{
-    font-weight: 900;
+
+#rolling-text {
+  font-weight: 900;
+  display: inline-block;
+  animation: rollingTextAnim 1.5s ease-in-out;
+  transform-origin: bottom center;
+}
+
+@keyframes rollingTextAnim {
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 .hero-content {
-    background: rgba(0, 0, 0, 0.6); /* Optional background for text readability */
-    padding: 10px;
-    border-radius: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .hero-content h1 {
-    font-size: 2rem; /* Adjust the text size */
-    margin: 0;
+  font-size: 2rem;
+  margin: 0;
 }
 
 .hero-content p {
-    font-size: 1rem;
-    margin: 0;
+  font-size: 1rem;
+  margin: 0;
+}
+
+
+.content-section-wrapper{
+  text-align: center;
+}
+#content-section-grid {
+  padding: 2rem; 
+
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.5rem;
+}
+
+.content-container-item {
+  background-color: #002B5C; 
+  color: #FFFFFF; 
+  padding: 1.5rem; 
+  border-radius: 5px; 
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1); 
+}
+
+@media (max-width: 768px) {
+  .content-container {
+      grid-template-columns: 1fr; /* Stack columns on small screens */
+  }
 }
