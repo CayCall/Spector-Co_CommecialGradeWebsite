@@ -23,6 +23,15 @@ function CreateMenuItems(){
     });
     nav.appendChild(ul); 
 }
+function loadPage(elementId) {
+    const menuItem = navMenuItems.find(item => item.id === elementId);
+    if (menuItem) {
+        window.location.href = menuItem.href; 
+    } else {
+        console.error('Page not found for ID:', elementId);
+    }
+}
+
 
 //after html loads I will execute the DOM event 
 document.addEventListener('DOMContentLoaded', CreateMenuItems);
