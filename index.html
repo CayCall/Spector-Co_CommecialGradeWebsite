@@ -7,6 +7,8 @@
     <title>Home</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./Pages/HomePage/HomeStyles.css">
+
+
 </head>
 
 <body>
@@ -16,7 +18,9 @@
             Spector & Co
         </h1>
         <nav class="Nav-Bar">
-
+            <button class="hamburger" id="hamburger-btn">
+                &#9776; 
+            </button>
         </nav>
     </header>
 
@@ -42,25 +46,53 @@
                     legal strategy, Spector & Co is here to provide expert counsel and dedicated support every step of
                     the way.
                 </p>
+                <button class="button-variation-1" onclick="">
+                    LEARN MORE
+                </button>
             </section>
-
+            <hr>
             <section id="content-section-grid">
                 <h2 class="sub-heading">Our Services</h2>
                 <div class="content-container">
                     <div class="content-container-item">
-                        <h3>Business Law</h3>
+                        <h3>Business Law</h3> <img class="content-icons" src="./Images/SVG/building-user-svgrepo-com.svg">
                         <p>Our expert legal team provides comprehensive advice on business formation and compliance, ensuring your venture starts off on the right foot. We guide you through the entire process, from drafting the initial documents to ongoing regulatory support.</p>
                     </div>
                     <div class="content-container-item">
                         <h3>Intellectual Property Law</h3>
+                        <img class="content-icons" src="./Images/SVG/computer-svgrepo-com.svg">
                         <p>We specialize in intellectual property law, helping you protect your ideas and innovations. Our services include trademark registration, patent filing, and copyright protection, ensuring your intellectual assets are safeguarded against infringement.</p>
                     </div>
                     <div class="content-container-item">
                         <h3>Family Law</h3>
+                        <img class="content-icons" src="./Images/SVG/family-svgrepo-com.svg">
                         <p>Our family law services are designed to assist you during life's transitions. Whether it's divorce, custody issues, or adoption, our compassionate lawyers provide the support you need to navigate these challenging times.</p>
                     </div>
                 </div>
             </section>
+            <hr>
+            <h2>
+                Your success, is our success
+            </h2>
+            <section id="data-visualistion-1">
+            
+                <!----Taken from  https://youtu.be/sTOHoueLVJE?si=oupiekktqexp_1Vl-->
+                <div id="Bar-graph" class="data-item">
+             
+                </div>
+            </section>
+            <section id="testimonials">
+                <h2>What Our Clients Say</h2>
+                <div class="testimonial-item">
+                    <img id="handshake-img" src="./Images/handshake.jpeg" alt="Handshake representing partnership">
+                    <p class="testimonial-text">
+                        "Working with Spector & Co has been a fantastic experience. They guided me through every step of the process and ensured my needs were met with the utmost professionalism."
+                    </p>
+                    <p class="client-name">— John Doe, Business Owner</p>
+                </div>
+                <button class="button-variation-1" onclick="">See More Testimonials</button>
+            </section>
+
         </div>
     </main>
     <footer>
@@ -101,7 +133,9 @@
 
     </footer>
     <script src="./Scripts/nav.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script> 
     <script src="./Scripts/homepage.js"></script>
+
 </body>
 
 </html>

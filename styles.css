@@ -3,7 +3,9 @@
     margin: 0;
     padding: 0;
 }
-
+html {
+    scroll-behavior: smooth;
+}
 /*formatting */
 body{
     font-family: Arial, Helvetica, sans-serif;   
@@ -11,7 +13,7 @@ body{
     letter-spacing: 0.2px; 
     background-color: white;
     height: 100vh;
-
+    padding-top: 80px; 
 }
 p {
     margin: 20px;      
@@ -41,15 +43,27 @@ h3, h4 {
 .sub-heading{
     margin: 30px;
 }
-
 /*Nav bar styling */
-header{
+header {
+    position: fixed; /* Fix the header to the top */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0; /* Ensure it starts from the left */
+    width: 100%; /* Make it span the full width of the viewport */
     display: flex;
     justify-content: space-between;
-    align-items: center ;
+    align-items: center;
     padding: 20px 10%;
-    background-color:#002B5C;    
-    flex-wrap: wrap; 
+    background-color: #001a38;;
+    flex-wrap: wrap;
+    z-index: 1000; /* Ensure the header is above other elements */
+}
+.hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    display: none; /* Hide it by default */
 }
 .Nav-Bar ul{
     list-style-type: none;
@@ -86,11 +100,40 @@ header{
         opacity: 1;
     }
 }
+/*Button variations*/
+.button-variation-1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    background-color: #002B5C; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px; 
+    cursor: pointer;
+    margin: 10px;
+    display: inline-block;
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1); 
+}
 
+.button-variation-1:hover {
+    transform: scale(1.1); 
+    background-color: #008080; 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+}
+
+
+hr{
+    color: black;
+    padding: 0.5px;
+    margin: 30px 50px;
+    background-color: #002B5C;
+
+}
 /*Footer*/
 footer {
     padding: 20px;
-    background-color: #002B5C;
+    background-color: #001a38;
 }
 
 .contact-me-header {
@@ -140,7 +183,31 @@ address {
 }
 @media (max-width: 768px) {
     .Nav-Bar ul li {
-        display: block; /* Stack items vertically */
-        text-align: center; /* Center align for better visibility */
+        display: block;
+        text-align: center; 
+    }
+    .Nav-Bar ul {
+        display: none; /* Hide nav links by default */
+        flex-direction: column; /* Stack links vertically */
+        position: absolute;
+        top: 70px; /* Adjust based on header height */
+        left: 0;
+        right: 0;
+        background-color: #001a38; /* Same as header background */
+        z-index: 999;
+    }
+
+    .Nav-Bar ul.show {
+        display: flex; /* Show links when the menu is active */
+    }
+
+    .hamburger {
+        display: block; /* Show the hamburger button */
+    }
+
+    .Nav-Bar ul li {
+        text-align: center; /* Center align links */
+        margin: 10px 0; /* Space between links */
     }
 }
+
