@@ -32,19 +32,19 @@
 
 @keyframes rollingTextAnim {
   0% {
-    transform: translateY(100%); /* Start off from the bottom */
+    transform: translateY(100%); 
     opacity: 0;
   }
   25% {
-    transform: translateY(0); /* Slide up into view */
+    transform: translateY(0); 
     opacity: 1;
   }
   75% {
-    transform: translateY(0); /* Stay in place */
+    transform: translateY(0);
     opacity: 1;
   }
   100% {
-    transform: translateY(-100%); /* Slide up and disappear */
+    transform: translateY(-100%); 
     opacity: 0;
   }
 } 
@@ -99,7 +99,7 @@
 .content-icons {
   margin: 15px;
   width: 65px;
-  animation: animateIcons 5s ease-in-out infinite; /* Adjust duration and timing */
+  animation: animateIcons 5s ease-in-out infinite; 
 }
 
 @keyframes animateIcons {
@@ -121,16 +121,16 @@
 }
 
 #Bar-graph {
-  width: 100%; /* Full width */
-  height: auto; /* Auto height */
-  max-width: 768px; /* Maximum width */
+  width: 100%; 
+  height: auto; 
+  max-width: 768px;
 }
 
 .data-item {
   display: flex;
-  justify-content: center; /* Center content */
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Stack items vertically */
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column; 
 }
 #testimonials {
   text-align: center; 
