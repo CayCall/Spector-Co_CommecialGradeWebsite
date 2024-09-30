@@ -8,54 +8,44 @@ const navMenuItems = [
 
 // Method for creating Menu Items 
 function CreateMenuItems() {
+    //selecting my nav tag
     const nav = document.querySelector('nav');
     const ul = document.createElement('ul');
-    ul.id = 'nav-links'; // Give an ID for easier access
+    
+    ul.id = 'nav-links'; 
 
-    // Iterating through the menu items array to create each individual element for the NAV
-    navMenuItems.forEach(element => {
+  
+    //will iterate through my array, and create a list of hyperlinks for my nav
+    navMenuItems.forEach(element => { 
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.textContent = element.name;
-        a.href = element.href; // Link to the page
+        a.href = element.href;
         a.addEventListener('click', (event) => {
-            // Navigate to the selected page
             window.location.href = element.href; 
         });
+
+        //add hyperlinks to my list 
         li.appendChild(a);
         ul.appendChild(li);
     });
+
+    //lastly the list should get added to the nav element
     nav.appendChild(ul);
 }
 
-// Execute the DOM event after HTML loads 
+ 
 document.addEventListener('DOMContentLoaded', () => {
-    CreateMenuItems(); // Ensure the menu is created after DOM is loaded
+    CreateMenuItems(); 
 
-    // Hamburger menu toggle functionality
     const hamburgerButton = document.getElementById('hamburger-btn');
     const navLinks = document.getElementById('nav-links');
 
-    // Check if the elements are found
     console.log('Hamburger Button:', hamburgerButton);
     console.log('Nav Links:', navLinks);
 
     hamburgerButton.addEventListener('click', () => {
-        navLinks.classList.toggle('show'); // Toggle 'show' class to display links
+        navLinks.classList.toggle('show'); 
     });
 });
 
-
-// Scroll Event for Header
-let lastScrollTop = 0;
-const header = document.querySelector('header');
-
-window.addEventListener('scroll', function() {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll < lastScrollTop) {
-        header.classList.add('header-scrolled');
-    } else {
-        header.classList.remove('header-scrolled');
-    }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-});

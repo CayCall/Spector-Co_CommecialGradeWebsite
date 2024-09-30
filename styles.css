@@ -187,27 +187,27 @@ address {
         text-align: center; 
     }
     .Nav-Bar ul {
-        display: none; /* Hide nav links by default */
-        flex-direction: column; /* Stack links vertically */
+        display: none; 
+        flex-direction: column; 
         position: absolute;
-        top: 70px; /* Adjust based on header height */
+        top: 70px; 
         left: 0;
         right: 0;
-        background-color: #001a38; /* Same as header background */
+        background-color: #001a38; 
         z-index: 999;
     }
 
     .Nav-Bar ul.show {
-        display: flex; /* Show links when the menu is active */
+        display: flex; 
     }
 
     .hamburger {
-        display: block; /* Show the hamburger button */
+        display: block; 
     }
 
     .Nav-Bar ul li {
-        text-align: center; /* Center align links */
-        margin: 10px 0; /* Space between links */
+        text-align: center; 
+        margin: 10px 0; 
     }
 }
 
