@@ -20,9 +20,9 @@ function CreateMenuItems() {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.textContent = element.name;
-        a.href = element.href;
-        a.addEventListener('click', (event) => {
-            window.location.href = element.href; 
+        a.href= element.href;
+        a.addEventListener('click', (event)=>{
+            window.location.href= element.href; 
         });
 
         //add hyperlinks to my list 
@@ -34,18 +34,20 @@ function CreateMenuItems() {
     nav.appendChild(ul);
 }
 
- 
-document.addEventListener('DOMContentLoaded', () => {
+//added event listener to document so that after my homepage index.html script loads, i can manipulate any elements
+document.addEventListener('DOMContentLoaded', ()=> {
     CreateMenuItems(); 
 
     const hamburgerButton = document.getElementById('hamburger-btn');
     const navLinks = document.getElementById('nav-links');
 
     console.log('Hamburger Button:', hamburgerButton);
-    console.log('Nav Links:', navLinks);
+    console.log('Nav Links:',  navLinks);
 
+ 
+    //event listener for hamburger menu is used - specifically for the smaller devices( max 768px)
     hamburgerButton.addEventListener('click', () => {
-        navLinks.classList.toggle('show'); 
+            navLinks.classList.toggle('show') ; 
     });
 });
 

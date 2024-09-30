@@ -1,3 +1,4 @@
+// check if elements rect is in viewport 
 function isInViewport(element) { 
     const rect = element.getBoundingClientRect();
     return (
@@ -5,7 +6,7 @@ function isInViewport(element) {
         rect.bottom >= 0 
     );
 }
-
+// used to call my animation for the p in  my content container item, just to add some dyamic animation 
 function handleScroll() {
     const elements = document.querySelectorAll('.content-container-item p');
     elements.forEach((element) => {
@@ -14,9 +15,9 @@ function handleScroll() {
         }
     });
 }
-
+  // listen for scroll
 window.addEventListener('scroll', handleScroll);
-
+//call animation
 handleScroll();
 
 
