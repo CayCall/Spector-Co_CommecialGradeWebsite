@@ -8,7 +8,7 @@ const navMenuItems = [
 
 // Method for creating Menu Items 
 function CreateMenuItems() {
-    //selecting my nav tag
+    //selecting my nav tag 
     const nav = document.querySelector('nav');
     const ul = document.createElement('ul');
 
