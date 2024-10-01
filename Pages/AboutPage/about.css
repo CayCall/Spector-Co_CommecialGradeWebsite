@@ -37,5 +37,6 @@ textarea {
 @media (max-width: 600px) {
     #contactForm {
         padding: 15px; 
+        margin: 10px;
     }
 }
