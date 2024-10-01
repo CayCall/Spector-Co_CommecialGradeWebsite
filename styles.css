@@ -140,7 +140,27 @@ header {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
 }
 
-
+.backToTopBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #b9c7d1;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    opacity: 0; 
+    transition: opacity 1s ease; 
+    pointer-events: none;
+}
+.backToTopBtn.show {
+    opacity: 0.7; 
+    pointer-events: auto; 
+}
 hr{
     color: black;
     padding: 0.5px;

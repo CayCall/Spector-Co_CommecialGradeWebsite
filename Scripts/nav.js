@@ -11,18 +11,18 @@ function CreateMenuItems() {
     //selecting my nav tag
     const nav = document.querySelector('nav');
     const ul = document.createElement('ul');
-    
-    ul.id = 'nav-links'; 
 
-  
+    ul.id = 'nav-links';
+
+
     //will iterate through my array, and create a list of hyperlinks for my nav
-    navMenuItems.forEach(element => { 
+    navMenuItems.forEach(element => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.textContent = element.name;
-        a.href= element.href;
-        a.addEventListener('click', (event)=>{
-            window.location.href= element.href; 
+        a.href = element.href;
+        a.addEventListener('click', (event) => {
+            window.location.href = element.href;
         });
 
         //add hyperlinks to my list 
@@ -35,19 +35,40 @@ function CreateMenuItems() {
 }
 
 //added event listener to document so that after my homepage index.html script loads, i can manipulate any elements
-document.addEventListener('DOMContentLoaded', ()=> {
-    CreateMenuItems(); 
+document.addEventListener('DOMContentLoaded', () => {
+    CreateMenuItems();
 
     const hamburgerButton = document.getElementById('hamburger-btn');
     const navLinks = document.getElementById('nav-links');
 
     console.log('Hamburger Button:', hamburgerButton);
-    console.log('Nav Links:',  navLinks);
+    console.log('Nav Links:', navLinks);
 
- 
+
     //event listener for hamburger menu is used - specifically for the smaller devices( max 768px)
     hamburgerButton.addEventListener('click', () => {
-            navLinks.classList.toggle('show') ; 
+        navLinks.classList.toggle('show');
     });
 });
 
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Show/hide the button based on scroll position
+window.onscroll = function () {
+    const button = document.getElementById('backToTopBtn');
+    const scrollPosition = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // Check if the user has scrolled down three-quarters of the document height
+    if (scrollPosition > (documentHeight - viewportHeight) * 0.75) {
+        button.classList.add('show'); // Add the 'show' class to trigger opacity transition
+    } else {
+        button.classList.remove('show'); // Remove the 'show' class
+    }
+};
