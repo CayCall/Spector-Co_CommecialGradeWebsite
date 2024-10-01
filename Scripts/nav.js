@@ -1,8 +1,8 @@
 // Creating menu items 
 const navMenuItems = [
     { name: "Home", href: "./index.html" },
-    { name: "About", href: "./Pages/ServicesPage/index.html" },
-    { name: "Services", href: "./Pages/ContactUsPage/index.html" },
+    { name: "About", href: "./Pages/AboutPage/index.html" },
+    { name: "Services", href: "./Pages/ServicesPage/index.html" },
     { name: "Design", href: "./Pages/DesignPage/index.html" }
 ];
 

@@ -1,6 +1,6 @@
 #Hero {
   position: relative;
-  height: 60vh;
+  height: 65vh;
   background: url('../../Images/Equitable_Building.jpg') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
@@ -9,14 +9,16 @@
   text-align: center;
   color: rgb(255, 255, 255);
   padding: 20px;
+  z-index: 0; /* Lower z-index than header */
 }
 
-#Hero-Header{
+#Hero-Header {
   font-weight: lighter;
   color: #E5E5E5;
   font-size: 45px;
 }
-#Hero-H3{
+
+#Hero-H3 {
   padding: 5px;
   color: #E5E5E5;
   font-size: 30px;
@@ -32,26 +34,32 @@
 
 @keyframes rollingTextAnim {
   0% {
-    transform: translateY(100%); 
+    transform: translateY(100%);
     opacity: 0;
   }
+
   25% {
-    transform: translateY(0); 
+    transform: translateY(0);
     opacity: 1;
   }
+
   75% {
     transform: translateY(0);
     opacity: 1;
   }
+
   100% {
-    transform: translateY(-100%); 
+    transform: translateY(-100%);
     opacity: 0;
   }
-} 
+}
+
 .hero-content {
   background: rgba(0, 0, 0, 0.6);
   padding: 10px;
   border-radius: 5px;
+  position: relative;
+  z-index: 1; 
 }
 .hero-content h1 {
   font-size: 2rem;
@@ -64,26 +72,27 @@
 }
 
 
-.content-section-wrapper{
+.content-section-wrapper {
   text-align: center;
 }
+
 #content-section-grid {
-  padding: 2rem; 
+  padding: 2rem;
 
 }
 
 .content-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
 }
 
 .content-container-item {
-  background-color: #002B5C; 
-  color: #FFFFFF; 
-  padding: 15px; 
-  border-radius: 5px; 
-  box-shadow: 12px 12px rgba(0, 0, 0, 0.1); 
+  background-color: #002B5C;
+  color: #FFFFFF;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 12px 12px rgba(0, 0, 0, 0.1);
 }
 
 .content-container-item p {
@@ -96,79 +105,111 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 .content-icons {
   margin: 15px;
   width: 65px;
-  animation: animateIcons 5s ease-in-out infinite; 
+  animation: animateIcons 5s ease-in-out infinite;
 }
 
 @keyframes animateIcons {
   0% {
-    transform: rotate(-45deg); 
+    transform: rotate(-45deg);
   }
-  25%{
-    transform: rotate(45deg); 
-  }
-  50% {
-    transform: rotate(-45deg); 
-  }
-  75%{
+
+  25% {
     transform: rotate(45deg);
   }
+
+  50% {
+    transform: rotate(-45deg);
+  }
+
+  75% {
+    transform: rotate(45deg);
+  }
+
   100% {
-    transform: rotate(-45deg); 
+    transform: rotate(-45deg);
   }
 }
 
-#Bar-graph {
-  width: 100%; 
-  height: auto; 
-  max-width: 768px;
+/* Basic styling for the bar chart container */
+#crime-bar-chart {
+  margin: 50px auto;
+  width: 800px;
+  height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
-.data-item {
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-  flex-direction: column; 
+.bar {
+  fill: #002B5C;
+  /* Use your preferred navy blue color */
 }
+
+.bar:hover {
+  fill: #008080;
+  /* Teal on hover */
+}
+
+.axis-label {
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
 #testimonials {
-  text-align: center; 
-  padding: 20px; 
-  background-color: #f9f9f9; 
-  border-radius: 8px; 
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
 }
 
 .testimonial-item {
   margin: 20px auto;
-  max-width: 600px; 
+  max-width: 600px;
 }
 
 #handshake-img {
-  width: 100%; 
-  max-width: 400px; 
-  height: auto; 
-  border-radius: 5px; 
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 5px;
 }
 
 .testimonial-text {
-  font-size: 16px; 
-  color: #333; 
-  margin-top: 10px; 
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
 }
 
 .client-name {
-  font-size: 14px; 
-  color: #666; 
-  margin-top: 5px; 
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
 }
+
 svg {
-  width: 100%; 
-  height: auto; 
+  width: 100%;
+  height: auto;
 }
+
 @media (max-width: 768px) {
   .content-container {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
-
+  #crime-bar-chart {
+    margin:auto;
+    width: 350px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+ 
 }
