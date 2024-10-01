@@ -4,33 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <link rel="icon" href="./Images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./Pages/HomePage/HomeStyles.css">
-
+    <title>Home - Spector & Co</title>
 
 </head>
 
 <body>
-
+    <!--the same header will be used on all pages-->
     <header class="H1-Main">
+        <!--main header-->
         <h1>
             Spector & Co
         </h1>
+        <!--for the nav links created in nav.js, button for hamburger menu on smaller devices as well-->
         <nav class="Nav-Bar">
             <button class="hamburger" id="hamburger-btn">
-                &#9776; 
+                &#9776;
             </button>
         </nav>
-    </header>
 
+    </header>
+    <div id="Hero">
+        <section class="Hero-content">
+            <h2 id="Hero-Header">Welcome to <span id="rolling-text">Spector & Co</span></h2>
+            <h3 id="Hero-H3">Help us, Help you</h3>
+        </section>
+    </div>
     <main>
-        <div id="Hero">
-            <section class="Hero-content">
-                <h2 id="Hero-Header">Welcome to <span id="rolling-text">Spector & Co</span></h2>
-                <h3 id="Hero-H3">Help us, Help you</h3>
-            </section>
-        </div>
+
+        <!--Filler content for the website-->
         <div class="content-section-wrapper">
             <section id="expertise">
                 <h2 class="sub-heading">Expertise</h2>
@@ -46,7 +50,8 @@
                     legal strategy, Spector & Co is here to provide expert counsel and dedicated support every step of
                     the way.
                 </p>
-                <button class="button-variation-1" >
+                <!--takes us to about page -->
+                <button class="button-variation-1">
                     LEARN MORE
                 </button>
             </section>
@@ -55,18 +60,26 @@
                 <h2 class="sub-heading">Our Services</h2>
                 <div class="content-container">
                     <div class="content-container-item">
-                        <h3>Business Law</h3> <img class="content-icons" src="./Images/SVG/building-user-svgrepo-com.svg">
-                        <p>Our expert legal team provides comprehensive advice on business formation and compliance, ensuring your venture starts off on the right foot. We guide you through the entire process, from drafting the initial documents to ongoing regulatory support.</p>
+                        <h3>Business Law</h3> <img class="content-icons"
+                            src="./Images/SVG/building-user-svgrepo-com.svg">
+                        <p>Our expert legal team provides comprehensive advice on business formation and compliance,
+                            ensuring your venture starts off on the right foot. We guide you through the entire process,
+                            from drafting the initial documents to ongoing regulatory support.</p>
                     </div>
                     <div class="content-container-item">
-                        <h3>Intellectual Property Law</h3>
-                        <img class="content-icons" src="./Images/SVG/computer-svgrepo-com.svg" >
-                        <p>We specialize in intellectual property law, helping you protect your ideas and innovations. Our services include trademark registration, patent filing, and copyright protection, ensuring your intellectual assets are safeguarded against infringement.</p>
+                        <h3>Criminal Law</h3>
+                        <img class="content-icons" src="./Images/SVG/thief-svgrepo-com.svg">
+                        <p>We specialize in criminal law, offering expert representation and guidance in criminal
+                            defense cases. Our services include legal advice, court representation, and assistance with
+                            criminal investigations, ensuring your rights are protected throughout the legal process.
+                        </p>
                     </div>
                     <div class="content-container-item">
                         <h3>Family Law</h3>
                         <img class="content-icons" src="./Images/SVG/family-svgrepo-com.svg">
-                        <p>Our family law services are designed to assist you during life's transitions. Whether it's divorce, custody issues, or adoption, our compassionate lawyers provide the support you need to navigate these challenging times.</p>
+                        <p>Our family law services are designed to assist you during life's transitions. Whether it's
+                            divorce, custody issues, or adoption, our compassionate lawyers provide the support you need
+                            to navigate these challenging times.</p>
                     </div>
                 </div>
             </section>
@@ -75,36 +88,42 @@
             <h2>
                 Your success, is our success
             </h2>
-            <section id="data-visualistion-1">
-            
-                <!----Taken from  https://youtu.be/sTOHoueLVJE?si=oupiekktqexp_1Vl-->
-                <div id="Bar-graph" class="data-item">
-             
-                </div>
+            <h2 class="title">Crime Rates by Category</h2>
+            <section id="data-visualistion-1"></section>
+            <!--- received assistance from  https://youtu.be/sTOHoueLVJE?si=oupiekktqexp_1Vl-->
+            <div id="crime-bar-chart">
+
+            </div>
             </section>
         </div>
+        <hr>
         <div id="testimonials">
             <h2>What Our Clients Say</h2>
             <div class="testimonial-item">
                 <img id="handshake-img" src="./Images/handshake.jpeg" alt="Handshake representing partnership">
                 <p class="testimonial-text">
-                    "Working with Spector & Co has been a fantastic experience. They guided me through every step of the process and ensured my needs were met with the utmost professionalism."
+                    "Working with Spector & Co has been a fantastic experience. They guided me through every step of the
+                    process and ensured my needs were met with the utmost professionalism."
                 </p>
                 <p class="client-name">— John Doe, Business Owner</p>
             </div>
+
+            <!--takes us to services page-->
             <button class="button-variation-1" onclick="">See More Testimonials</button>
         </div>
     </main>
-    <footer>
+    <!--the same footer will be used on all pages-->
 
+    <footer>
         <address>
-            <h2 class="contact-me-header">Contact Us</h2>
-            Tel: 011 007 5274<br>
+            <h3 class="contact-me-header">Contact Us</h3>
+            Contact: 011 007 5274<br>
             E-mail: Spector&Co@gmail.com<br>
             Spector & Co firm<br>
             New York City<br>
             United States of America<br>
         </address>
+        <!--option to add the links to the socials on the svg's for accessing the social page-->
         <section class="footer-socials">
             <p>
                 <span class="fn">&copy; 2024 Spector & Co </span> | All rights reserved.
@@ -123,17 +142,15 @@
                     <!-- SVG path data -->
                 </svg>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path
-                        d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 6c-3.313 0-6 2.686-6 6 0 2.651 1.719 4.9 4.104 5.693.3.056.396-.13.396-.289v-1.117c-1.669.363-2.017-.707-2.017-.707-.272-.693-.666-.878-.666-.878-.544-.373.041-.365.041-.365.603.042.92.619.92.619.535.917 1.403.652 1.746.499.054-.388.209-.652.381-.802-1.333-.152-2.733-.667-2.733-2.965 0-.655.234-1.19.618-1.61-.062-.153-.268-.764.058-1.59 0 0 .504-.161 1.65.615.479-.133.992-.199 1.502-.202.51.002 1.023.069 1.503.202 1.146-.776 1.648-.615 1.648-.615.327.826.121 1.437.06 1.588.385.42.617.955.617 1.61 0 2.305-1.404 2.812-2.74 2.96.216.186.412.551.412 1.111v1.646c0 .16.096.347.4.288 2.383-.793 4.1-3.041 4.1-5.691 0-3.314-2.687-6-6-6z" />
-                    <!-- SVG path data -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
+                    d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 6c-3.313 0-6 2.686-6 6 0 2.651 1.719 4.9 4.104 5.693.3.056.396-.13.396-.289v-1.117c-1.669.363-2.017-.707-2.017-.707-.272-.693-.666-.878-.666-.878-.544-.373.041-.365.041-.365.603.042.92.619.92.619.535.917 1.403.652 1.746.499.054-.388.209-.652.381-.802-1.333-.152-2.733-.667-2.733-2.965 0-.655.234-1.19.618-1.61-.062-.153-.268-.764.058-1.59 0 0 .504-.161 1.65.615.479-.133.992-.199 1.502-.202.51.002 1.023.069 1.503.202 1.146-.776 1.648-.615 1.648-.615.327.826.121 1.437.06 1.588.385.42.617.955.617 1.61 0 2.305-1.404 2.812-2.74 2.96.216.186.412.551.412 1.111v1.646c0 .16.096.347.4.288 2.383-.793 4.1-3.041 4.1-5.691 0-3.314-2.687-6-6-6z" />
+                <!-- SVG path data -->
                 </svg>
             </div>
         </section>
-
     </footer>
     <script src="./Scripts/nav.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script> 
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./Scripts/homepage.js"></script>
 
 </body>

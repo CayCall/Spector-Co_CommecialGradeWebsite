@@ -15,9 +15,12 @@ body{
     height: 100vh;
     padding-top: 80px; 
 }
+main{
+    margin-top: 80px;
+}
 p {
     margin: 20px;      
-    font-size: 17px; 
+    font-size: 22px; 
     border-radius: 5px;                                       
 }
 h1{
@@ -26,14 +29,28 @@ h1{
     font-weight: lighter;
     color: white;
     padding: 0px;
-    margin: 5px 0px 5px 70px;
+    margin: 5px 0px 5px 70px; 
+    animation: animatedH1 2s ease-in-out;
+}
+@keyframes animatedH1 {
+    0%{
+        transform: translateY(-200%);
+        opacity: 0;
+    }      
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 h2{
-    font-size: 25px;
+    font-size:40px;
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.8px; 
     margin:15px;
+    text-align: center;
 }
 
 h3, h4 {
@@ -77,7 +94,7 @@ header {
 .Nav-Bar ul li a {
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    font-size: 22px;
     line-height: 40px;
     padding: 0 20px; 
     display: inline-block;
@@ -92,7 +109,7 @@ header {
     transform: scale(1.2); 
 }
 
-@keyframes animatedNav {
+@keyframes animatedNav { /* animation for hero header that will play forever*/
     0% {
         opacity: 0;
     }
@@ -140,11 +157,13 @@ footer {
 .contact-me-header {
     color: white;
     font: bold;
+    font-size: 35px;
 }
 
 address {
     color: white;
-    margin-left: 30px;
+    margin: 20px 20px;
+    font-size: 19px;
 }
 
 .footer-socials {
