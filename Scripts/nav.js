@@ -40,11 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const hamburgerButton = document.getElementById('hamburger-btn');
     const navLinks = document.getElementById('nav-links');
-
-    console.log('Hamburger Button:', hamburgerButton);
-    console.log('Nav Links:', navLinks);
-
-
     //event listener for hamburger menu is used - specifically for the smaller devices( max 768px)
     hamburgerButton.addEventListener('click', () => {
         navLinks.classList.toggle('show');
