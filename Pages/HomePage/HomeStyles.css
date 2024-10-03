@@ -90,7 +90,7 @@
 .content-container-item {
   background-color: #002B5C;
   color: #FFFFFF;
-  padding: 60px;
+  padding: 30px;
   border-radius: 5px;
   box-shadow: 12px 12px rgba(0, 0, 0, 0.1);
 }
@@ -100,6 +100,7 @@
   transform: translateY(20px);
   transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
+
 
 .content-container-item p.animate {
   opacity: 1;
@@ -193,6 +194,22 @@
   font-size: 14px;
   color: #666;
   margin-top: 5px;
+}
+
+#videoContainer {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#backgroundVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 svg {

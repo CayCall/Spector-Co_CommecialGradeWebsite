@@ -21,7 +21,7 @@ main{
 }
 p {
     margin: 20px;      
-    font-size: 22px; 
+    font-size: 20px; 
     border-radius: 5px;                                       
 }
 h1{
@@ -46,7 +46,7 @@ h1{
     }
 }
 h2{
-    font-size:50px;
+    font-size: 35px;
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.8px; 
@@ -95,7 +95,7 @@ header {
 .Nav-Bar ul li a {
     text-decoration: none;
     color: white;
-    font-size: 22px;
+    font-size: 17px;
     line-height: 40px;
     padding: 0 20px; 
     display: inline-block;
