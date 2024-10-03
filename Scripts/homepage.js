@@ -20,6 +20,7 @@ function handleScroll(){
 
 // listen for scroll
 window.addEventListener('scroll', handleScroll);
+
 //lastly I call the animation
 handleScroll();
 
