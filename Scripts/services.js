@@ -12,81 +12,83 @@ accordions.forEach(accordion => {
     });
 });
 
-async function fetchCaseData() {
-    const response = await fetch('https://www.courtlistener.com/api/rest/v3/cases/?format=json');
-    const data = await response.json();
-    return data.results; // Adjust based on actual data structure
+const apiKey = 'cs07dohr01qrbtrl99ngcs07dohr01qrbtrl99o0'; // Your Finnhub API key
+const fetchButton = document.getElementById('fetchButton');
+const resultDiv = document.getElementById('result');
+
+fetchButton.addEventListener('click', () => {
+    const symbol = document.getElementById('symbol').value;
+    const apiUrl = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            displayData(data, symbol);
+            drawChart(data, symbol); // Call the function to draw the chart
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            resultDiv.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
+        });
+});
+
+function displayData(data, symbol) {
+    if (data) {
+        const html = `
+            <h2>Stock Data for ${symbol}</h2>
+            <p><strong>Current Price:</strong> $${data.c}</p>
+            <p><strong>High Price of the Day:</strong> $${data.h}</p>
+            <p><strong>Low Price of the Day:</strong> $${data.l}</p>
+            <p><strong>Open Price of the Day:</strong> $${data.o}</p>
+            <p><strong>Previous Close Price:</strong> $${data.pc}</p>
+        `;
+        resultDiv.innerHTML = html;
+    } else {
+        resultDiv.innerHTML = '<p>No data available</p>';
+    }
 }
 
-// Create the D3 chart
-async function createChart() {
-    const cases = await fetchCaseData();
+function drawChart(data, symbol) {
+    const svg = d3.select("#chart");
+    svg.selectAll("*").remove(); // Clear previous chart
 
-    // Sample case types and counts
-    const caseCounts = {
-        Criminal: 0,
-        Civil: 0,
-        Family: 0,
-        Commercial: 0,
-        // Add more types as needed
-    };
+    const stockPrices = [
+        { label: "Current Price", value: data.c },
+        { label: "High Price", value: data.h },
+        { label: "Low Price", value: data.l },
+        { label: "Open Price", value: data.o },
+        { label: "Previous Close", value: data.pc }
+    ];
 
-    // Count cases by type (adjust based on actual data)
-    cases.forEach(caseItem => {
-        if (caseItem.type === 'Criminal') caseCounts.Criminal++;
-        if (caseItem.type === 'Civil') caseCounts.Civil++;
-        if (caseItem.type === 'Family') caseCounts.Family++;
-        if (caseItem.type === 'Commercial') caseCounts.Commercial++;
-    });
-
-    const data = Object.entries(caseCounts).map(([type, count]) => ({ type, count }));
-
-    // Set up the SVG canvas dimensions
-    const margin = { top: 20, right: 30, bottom: 40, left: 40 },
-          width = 800 - margin.left - margin.right,
-          height = 400 - margin.top - margin.bottom;
-
-    // Create the SVG container
-    const svg = d3.select('#chart')
-        .append('svg')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
-        .append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    // Set the x scale
     const x = d3.scaleBand()
-        .domain(data.map(d => d.type))
-        .range([0, width])
+        .range([0, 600])
+        .domain(stockPrices.map(d => d.label))
         .padding(0.1);
 
-    // Set the y scale
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.count)])
-        .nice()
-        .range([height, 0]);
+        .domain([0, d3.max(stockPrices, d => d.value)])
+        .range([400, 0]);
 
-    // Add the x axis
-    svg.append('g')
-        .attr('class', 'axis--x')
-        .attr('transform', `translate(0,${height})`)
+    svg.append("g")
+        .attr("transform", "translate(0," + 400 + ")")
         .call(d3.axisBottom(x));
 
-    // Add the y axis
-    svg.append('g')
-        .attr('class', 'axis--y')
+    svg.append("g")
         .call(d3.axisLeft(y));
 
-    // Create the bars
-    svg.selectAll('.bar')
-        .data(data)
-        .enter().append('rect')
-        .attr('class', 'bar')
-        .attr('x', d => x(d.type))
-        .attr('y', d => y(d.count))
-        .attr('width', x.bandwidth())
-        .attr('height', d => height - y(d.count));
+    svg.selectAll(".bar")
+        .data(stockPrices)
+        .enter()
+        .append("rect")
+        .attr("class", "bar")
+        .attr("x", d => x(d.label))
+        .attr("y", d => y(d.value))
+        .attr("width", x.bandwidth())
+        .attr("height", d => 400 - y(d.value))
+        .attr("fill", "#4CAF50");
 }
-
-// Call the function to create the chart
-createChart();

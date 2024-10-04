@@ -48,7 +48,7 @@
     cursor: pointer;
     z-index: 2;
     text-transform: uppercase;
-    animation: float 2s ease-in-out infinite;
+    animation: float 1.5s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -56,7 +56,7 @@
         transform: translateX(-50%) translateY(0);
     }
     50% {
-        transform: translateX(-50%) translateY(-10px);
+        transform: translateX(-50%) translateY(-20px);
     }
     100% {
         transform: translateX(-50%) translateY(0);
@@ -71,14 +71,14 @@
 
 .services-section{
     margin-top: 150px;
+    margin-bottom: 50px;
 }
 .container {
-    max-width: 1200px;
+    max-width: 1270px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Section Title */
 .section-title {
     text-align: center;
     font-size: 36px;
@@ -86,18 +86,17 @@
     margin-bottom: 40px;
 }
 
-/* Grid for Services */
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-/* Service Card */
 .service-card {
     background-color: #FFFFFF;
     border-radius: 8px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -122,33 +121,88 @@
     margin-bottom: 10px;
 }
 
-/* CTA Button */
-.cta-btn {
-    display: inline-block;
-    background-color: #002B5C;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
 
-.cta-btn:hover {
-    background-color: #008080;
-}
-
-/* Service Card Hover Effect */
 .service-card:hover {
     transform: translateY(-5px);
+    color: white;
+    background-color: #008080;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 
+#app {
+    max-width: 650px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+#fetchButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #008080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+#fetchButton:hover {
+    background-color: #000000;
+    color: white;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+svg {
+    margin-top: 20px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto; /* Set to auto to fit content */
+    height: auto; /* Set to auto to fit content */
+    padding: 4px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0; /* Keep initial opacity */
+    transition: opacity 0.3s ease; /* Add smooth transition for opacity */
+}
+
+.bar {
+    fill: #008080; /* Bar color */
+}
+
+.bar:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.legend {
+    cursor: pointer;
+    margin-right: 30px;
+    color: #008080; /* Default legend color */
+}
 
 
 
 .area-of-focus {
+    margin-top: 100px;
     width: 100%;
     font-family: 'Helvetica Neue', Arial, sans-serif; 
 }
