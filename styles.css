@@ -1,3 +1,4 @@
+/*General formatting and styling*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +7,7 @@
 html {
     scroll-behavior: smooth;
 }
-/*General formatting and styling*/
+
 body{
     font-family: Arial, Helvetica, sans-serif;   
     line-height: 1.5; 
@@ -15,9 +16,6 @@ body{
     height: 100vh;
     padding-top: 80px; 
     overflow: auto;
-}
-main{
-    margin-top: 80px;
 }
 p {
     margin: 20px;      
@@ -70,7 +68,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 10%;
+    padding: 20px 10%;
     background-color: #001a38;
     flex-wrap: wrap;
     z-index: 1000; 

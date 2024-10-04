@@ -1,8 +1,6 @@
-/* Styling for the hero section */
-/* Hero section adjustments */
 #Hero-Services {
     position: relative;
-    height: 90vh;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,6 +50,7 @@
     text-transform: uppercase;
     animation: float 2s ease-in-out infinite;
 }
+
 @keyframes float {
     0% {
         transform: translateX(-50%) translateY(0);
@@ -68,12 +67,90 @@
     color: #008080; 
 }
 
-#mission-wrapper{
-    text-align: left;
+
+
+.services-section{
+    margin-top: 150px;
 }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Title */
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    color: #002B5C;
+    margin-bottom: 40px;
+}
+
+/* Grid for Services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Service Card */
+.service-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card h2 {
+    color: #002B5C;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    margin-bottom: 20px;
+}
+
+.service-card ul {
+    margin-bottom: 20px;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.service-card ul li {
+    margin-bottom: 10px;
+}
+
+/* CTA Button */
+.cta-btn {
+    display: inline-block;
+    background-color: #002B5C;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #008080;
+}
+
+/* Service Card Hover Effect */
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
 .area-of-focus {
     width: 100%;
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern sans-serif font */
+    font-family: 'Helvetica Neue', Arial, sans-serif; 
 }
 .area-of-focus h2 {
     text-align: center;
@@ -143,5 +220,25 @@ hr {
     #scrollButton {
         font-size: 16px; 
         margin-bottom: 70px;
+    }
+    main {
+        display: block;
+    }
+
+    
+    #mission-wrapper, #Values-wrapper, #history, #culture, #probono {
+        display: block;
+    }
+
+    #mission-container img, #Values-container img, #history img, #culture img {
+        width: 100%;
+        height: auto;
+    }
+
+    .hidden-controls::-webkit-media-controls {
+        display: none !important;
+    }
+    .hidden-controls {
+        pointer-events: none; 
     }
 }
