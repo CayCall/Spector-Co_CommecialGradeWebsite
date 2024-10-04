@@ -1,3 +1,5 @@
+
+// universal nav for all pages
 // Creating menu items 
 const navMenuItems = [
     { name: "Home", href: "../../index.html" },
@@ -34,6 +36,8 @@ function CreateMenuItems() {
     nav.appendChild(ul);
 }
 
+
+//Home Page naviagation
 //added event listener to document so that after my homepage index.html script loads, i can manipulate any elements
 document.addEventListener('DOMContentLoaded', () => {
     CreateMenuItems();
@@ -46,12 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+// universal scroll to top
 function scrollToTop() {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
 }
+
 
 // Show/hide the button based on scroll position
 window.onscroll = function () {
@@ -67,3 +74,39 @@ window.onscroll = function () {
         button.classList.remove('show'); // Remove the 'show' class
     }
 };
+
+
+
+
+function toggleFocusDetails(element) {
+    var details = element.nextElementSibling;
+    if (details.style.display === "block") {
+        details.style.display = "none";
+    } else {
+        details.style.display = "block";
+    }
+}
+
+//Services section navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const accordions = document.querySelectorAll('.accordion');
+
+    accordions.forEach((accordion) => {
+        accordion.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+});
+
+
+document.getElementById('scrollButton').addEventListener('click', () => {
+    document.getElementById('mission').scrollIntoView({
+        behavior: 'smooth'
+    });
+});

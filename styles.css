@@ -51,7 +51,7 @@ h2{
     line-height: 1.2;
     letter-spacing: 0.8px; 
     margin:15px;
-    text-align: center;
+    
 }
 
 h3, h4 {
@@ -71,7 +71,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 10%;
-    background-color: #001a38;;
+    background-color: #001a38;
     flex-wrap: wrap;
     z-index: 1000; 
 }
@@ -95,7 +95,7 @@ header {
 .Nav-Bar ul li a {
     text-decoration: none;
     color: white;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 40px;
     padding: 0 20px; 
     display: inline-block;
@@ -110,7 +110,7 @@ header {
     transform: scale(1.2); 
 }
 
-@keyframes animatedNav { /* animation for hero header that will play forever*/
+@keyframes animatedNav { 
     0% {
         opacity: 0;
     }
@@ -119,15 +119,14 @@ header {
     }
 }
 
-/*Button variations styling used across all the pages*/
 .button-variation-1 {
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-    background-color: #002B5C; 
+    background-color: #008080; 
     color: white;
     border: none;
-    border-radius: 10px;
-    padding: 10px 20px; 
+    border-radius: 40px;
+    padding: 15px 25px; 
     cursor: pointer;
     margin: 10px;
     display: inline-block;
@@ -145,7 +144,7 @@ header {
     text-decoration: none;
     background-color: #4A4A4A;
     color: white;
-    border: 2px solid #002B5C;
+
     border-radius: 10px;
     padding: 12px 25px;
     cursor: pointer;
@@ -157,7 +156,7 @@ header {
 
 .button-variation-2:hover {
     transform: translateY(-3px);
-    background-color: #002B5C;
+    background-color: red;
     color: #E5E5E5;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -167,8 +166,7 @@ header {
     right: 50px;
     z-index: 99;
     border: none;
-    outline: none;
-    background-color: #b9c7d1;
+    background-color: #008080;;
     color: black;
     cursor: pointer;
     padding: 15px;
@@ -179,20 +177,31 @@ header {
     pointer-events: none;
 }
 .backToTopBtn.show {
-    opacity: 0.7; 
+    opacity: 0.8; 
     pointer-events: auto; 
 }
 hr{
     color: black;
     padding: 0.5px;
-    margin: 30px 50px;
-    background-color: #002B5C;
+    margin: 30px 50px 0px 50px;
+  
 
 }
 /*Footer styling used across all the pages*/
 footer {
     padding: 20px;
     background-color: #001a38;
+    animation: animatedFooter 3s ease-in;
+}
+@keyframes animatedFooter {
+    0%{
+        opacity: 0;
+       
+    }
+    100%{
+        opacity: 1;
+       
+    }
 }
 
 .contact-me-header {
