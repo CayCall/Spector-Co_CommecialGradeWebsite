@@ -70,7 +70,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10%;
+    padding: 15px 10%;
     background-color: #001a38;
     flex-wrap: wrap;
     z-index: 1000; 

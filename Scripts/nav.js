@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.getElementById('scrollButton').addEventListener('click', () => {
-    document.getElementById('mission').scrollIntoView({
+    document.querySelector('main').scrollIntoView({
         behavior: 'smooth'
     });
 });
