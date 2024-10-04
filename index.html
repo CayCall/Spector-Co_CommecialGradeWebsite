@@ -26,12 +26,7 @@
         </nav>
 
     </header>
-    <div id="Hero">
-        <section class="Hero-content">
-            <h2 id="Hero-Header">Welcome to <span id="rolling-text">Spector & Co</span></h2>
-            <h3 id="Hero-H3">Help us, Help you</h3>
-        </section>
-    </div>
+
     <main>
 
         <!--Filler content for the website-->
@@ -51,13 +46,16 @@
                     the way.
                 </p>
                 <!--takes us to about page -->
-                <button class="button-variation-1">
-                    LEARN MORE
-                </button>
+                <div class="expertise-button-container">
+                    <button class="button-variation-1" class="expertise-btn">
+                        Learn more &#x27A1;
+                    </button>
+                </div>
+
             </section>
             <hr>
             <section id="content-section-grid">
-                <h2 class="sub-heading">Our Services</h2>
+                <h2>Our Services</h2>
                 <div class="content-container">
                     <div class="content-container-item">
                         <h3>Business Law</h3> <img class="content-icons"
@@ -84,23 +82,24 @@
                 </div>
             </section>
             <hr>
-
-            <h2>
-                Your success, is our success
-            </h2>
-            
-            <section id="data-visualistion-1">   <h2 class="title">Crime Rates by Category</h2></section>
-            <!--- received assistance from  https://youtu.be/sTOHoueLVJE?si=oupiekktqexp_1Vl-->
-            <div id="crime-bar-chart">
-
-            </div>
+            <!--First data visualisation-->
+            <section id="crimes-homepage">
+                <h2>
+                    Your success, is our success
+                </h2>
+                
+                <div>
+                    <h2 class="title">Crime Rates by Category</h2>
+                </div>
+                <!--- received assistance from  https://youtu.be/sTOHoueLVJE?si=oupiekktqexp_1Vl-->
+                <div id="crime-bar-chart"></div>
             </section>
         </div>
-        <hr>
+
         <div id="testimonials">
             <h2>What Our Clients Say</h2>
             <div class="testimonial-item">
-               
+
                 <div id="videoContainer">
                     <video id="backgroundVideo" autoplay muted>
                         <source src="./Images/Videos/video.mp4" type="video/mp4">
@@ -114,7 +113,7 @@
             </div>
 
             <!--takes us to services page-->
-            <button class="button-variation-1" onclick="">See More Testimonials</button>
+            <button class="button-variation-1" onclick="">See Details</button>
         </div>
     </main>
     <!--the same footer will be used on all pages-->

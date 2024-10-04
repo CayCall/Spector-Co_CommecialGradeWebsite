@@ -70,21 +70,18 @@
   font-size: 1rem;
   margin: 0;
 }
-
-
-.content-section-wrapper {
+#expertise{
   text-align: center;
 }
-
 #content-section-grid {
-  padding: 2rem;
-
+  padding: 25px;
 }
 
 .content-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
+  text-align: center;
 }
 
 .content-container-item {
@@ -136,6 +133,9 @@
 }
 
 /* Basic styling for the bar chart container */
+#crimes-homepage h2{
+  text-align: center;
+}
 #crime-bar-chart {
   margin: 50px auto;
   width: 800px;
@@ -145,13 +145,12 @@
 }
 
 .bar {
-  fill: #002B5C;
-  /* Use your preferred navy blue color */
+  fill: #4A4A4A;
+
 }
 
 .bar:hover {
   fill: #008080;
-  /* Teal on hover */
 }
 
 .axis-label {
@@ -168,8 +167,8 @@
 #testimonials {
   text-align: center;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  background-color: #ececec;
+
 }
 
 .testimonial-item {

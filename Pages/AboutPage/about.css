@@ -1,14 +1,19 @@
+main .sub-heading {
+    text-align: center;
+}
+
 #our-values {
-    background-color: #f9f9f9;
+    background-color: #4A4A4A;
     padding: 40px 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .container {
     max-width: 2200px;
     margin: 0 auto;
     text-align: center;
     background: url('../../Images/about.jpg') no-repeat center center/cover;
-    background-size: cover; 
+    background-size: cover;
     height: 100vh;
 }
 
@@ -16,7 +21,7 @@
     font-size: 30px;
     color: #ffffff;
     margin: 60px 20px 20px;
-    padding-top: 20px; 
+    padding-top: 20px;
 }
 
 .intro-text {
@@ -43,17 +48,29 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: valueItemAnim 5s ease-in-out;
+}
+
+#item-1 {
+    animation: valueItemAnim 6s ease-in-out;
+}
+
+#item-2 {
+    animation: valueItemAnim 4s ease-in-out;
+}
+
+#item-3 {
+    animation: valueItemAnim 2s ease-in-out;
 }
 
 @keyframes valueItemAnim {
-    0%{
+    0% {
         transform: translateY(-25%);
         opacity: 0;
-    }   
-    100%{
+    }
+
+    100% {
         transform: translateY(0);
-        opacity: 1;   
+        opacity: 1;
     }
 }
 
@@ -73,44 +90,72 @@
     color: #4A4A4A;
     line-height: 1.5;
 }
-#map {
-    height: 600px;
-    width: 50%;
-    margin: 100px;
+
+.contact-us h2 {
+    text-align: center;
 }
+
 #contactForm {
-    background-color: #f9f9f9; 
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     padding: 20px;
-    max-width: 600px; 
-    margin: 20px auto; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+
+    align-items: center;
+   
 }
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.form-image {
+    flex: 2;
+    padding: 10px;
+}
+
+.form-image img {
+    max-width: 100%;
+    height: 420px;
+    border-radius: 8px;
+}
+
+.form-fields {
+    flex: 2;
+
+    padding: 10px;
+}
+
 .form-group {
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
 
 label {
-    display: block; 
+    display: block;
     font-weight: bold;
-    margin-bottom: 5px; 
-    color: #4A4A4A; 
+    margin-bottom: 5px;
+    color: #4A4A4A;
 }
 
 input[type="text"],
 input[type="email"],
 textarea {
-    width: 100%; 
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 textarea {
-    resize: vertical; 
-    height: 150px; 
+    resize: vertical;
+    height: 150px;
 }
 
 /* Media Query for Smaller Screens */
@@ -118,8 +163,8 @@ textarea {
     .container {
         padding: 0 20px;
         background-position: top center;
-        background-size: contain; 
-        height: auto; 
+        background-size: contain;
+        height: auto;
     }
 
 
@@ -127,13 +172,13 @@ textarea {
         font-size: 32px;
     }
 
-  
+
     .intro-text {
         font-size: 18px;
         margin: 0 auto 20px;
     }
 
- 
+
     .values-list {
         display: block;
     }
@@ -144,7 +189,7 @@ textarea {
         margin: 10px 0;
     }
 
-  
+
     #contactForm {
         padding: 15px;
         margin: 10px;
