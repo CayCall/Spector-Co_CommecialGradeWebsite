@@ -27,13 +27,13 @@
             </video>
         </div>
         <h1>Our Services</h1>
-        <button id="scrollButton" class="scroll-text">Explore Our Services↓</button>
+        <button id="scrollButton" class="scroll-text">scroll down ↓</button>
     </div>
 
     <main>
         <section class="services-section">
             <div class="container">
-                <h1 class="section-title">What we offer</h1>
+                <h2 class="section-title">What we offer</h2>
                 <div class="services-grid">
                     <div class="service-card">
                         <h2>Legal Consultation</h2>
@@ -45,7 +45,6 @@
                             <li>Contractual Agreements</li>
                             <li>Personal Legal Matters</li>
                         </ul>
-                        <a href="#" class="cta-btn">Learn More</a>
                     </div>
 
                     <div class="service-card">
@@ -58,7 +57,7 @@
                             <li>Regulatory Compliance</li>
                             <li>Mergers & Acquisitions</li>
                         </ul>
-                        <a href="#" class="cta-btn">Learn More</a>
+
                     </div>
 
                     <div class="service-card">
@@ -71,7 +70,7 @@
                             <li>Alternative Dispute Resolution (ADR)</li>
                             <li>Arbitration & Mediation</li>
                         </ul>
-                        <a href="#" class="cta-btn">Learn More</a>
+
                     </div>
 
                     <div class="service-card">
@@ -85,7 +84,7 @@
                             <li>Wrongful Termination</li>
                             <li>Labor Law Compliance</li>
                         </ul>
-                        <a href="#" class="cta-btn">Learn More</a>
+
                     </div>
 
                     <div class="service-card">
@@ -98,7 +97,7 @@
                             <li>Patent Applications</li>
                             <li>IP Enforcement & Litigation</li>
                         </ul>
-                        <a href="#" class="cta-btn">Learn More</a>
+
                     </div>
 
                     <div class="service-card">
@@ -111,7 +110,7 @@
                             <li>Adoption</li>
                             <li>Prenuptial Agreements</li>
                         </ul>
-                        <a href="#" class="cta-btn">Learn More</a>
+
                     </div>
 
                     <div class="service-card">
@@ -125,17 +124,35 @@
                             <li>Real Estate Contracts</li>
                             <li>Property Development</li>
                         </ul>
-                        <a href="#" class="cta-btn">Learn More</a>
+
                     </div>
                 </div>
             </div>
         </section>
 
-        <div id="chartContainer">
-            <h2>Top Reddit Stocks Sentiment Visualization</h2>
-            <div id="chart"></div>
-        </div>
-
+        <h2>Stock Price Data</h2>
+        <p>fvafgjhajfghjkahgjkah</p>
+        <div id="app">
+    
+            <div>
+                <label for="symbol">Choose a stock:</label>
+                <select id="symbol">
+                    <option value="AAPL">Apple Inc. (AAPL)</option>
+                    <option value="AMZN">Amazon.com Inc. (AMZN)</option>
+                    <option value="MSFT">Microsoft Corporation (MSFT)</option>
+                    <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
+                    <option value="TSLA">Tesla, Inc. (TSLA)</option>
+                    <option value="FB">Meta Platforms, Inc. (FB)</option>
+                    <option value="NFLX">Netflix, Inc. (NFLX)</option>
+                    <option value="NVDA">NVIDIA Corporation (NVDA)</option>
+                    <option value="BABA">Alibaba Group Holding Ltd. (BABA)</option>
+                    <option value="DIS">The Walt Disney Company (DIS)</option>
+                </select>
+                <button id="fetchButton">Fetch Stock Data</button>
+            </div>
+            <div id="result"></div>
+            <svg id="chart" width="600" height="400"></svg> <!-- SVG for D3 Chart -->
+        </div> 
         <section class="area-of-focus">
             <h2>Areas of Focus</h2>
             <div class="focus-areas-container">
