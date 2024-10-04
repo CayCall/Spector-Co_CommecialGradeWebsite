@@ -32,7 +32,7 @@ function CreateMenuItems() {
         ul.appendChild(li);
     });
 
-    //lastly the list should get added to the nav element
+    //lastly the list should get the list added to the nav element
     nav.appendChild(ul);
 }
 
@@ -87,24 +87,7 @@ function toggleFocusDetails(element) {
     }
 }
 
-//Services section navigation
-document.addEventListener('DOMContentLoaded', () => {
-    const accordions = document.querySelectorAll('.accordion');
-
-    accordions.forEach((accordion) => {
-        accordion.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    });
-});
-
-
+// SERVICES PAGE
 document.getElementById('scrollButton').addEventListener('click', () => {
     document.querySelector('main').scrollIntoView({
         behavior: 'smooth'

@@ -4,71 +4,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Spector & Co </title>
+    <title>Services - Spector & Co</title>
     <link rel="icon" href="../../Images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../ServicesPage/Services.css">
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
 
 <body>
 
     <header class="H1-Main">
-
-        <h1>
-            Spector & Co
-        </h1>
+        <h1>Spector & Co</h1>
         <nav class="Nav-Bar">
-            <button class="hamburger" id="hamburger-btn">
-                &#9776;
-            </button>
+            <button class="hamburger" id="hamburger-btn">&#9776;</button>
         </nav>
-
     </header>
+
     <div id="Hero-Services">
         <div id="videoContainer">
-            <video id="backgroundVideo" autoplay muted>
+            <video id="backgroundVideo" class="hidden-controls">
                 <source src="../../Images/Videos/sup_court_pan.mp4" type="video/mp4">
             </video>
         </div>
         <h1>Our Services</h1>
-        <button id="scrollButton" class="scroll-text">Explore Our Mission ↓ </button>
+        <button id="scrollButton" class="scroll-text">Explore Our Services↓</button>
     </div>
-    
 
     <main>
-        <section id="mission-wrapper">
-            <div id="mission-container">
-                <h2>Our Mission</h2>
-                <p>At Spector & Co, our mission is to empower businesses by providing top-tier legal consultancy services
-                    that are both strategic and personalized...</p>
+        <section class="services-section">
+            <div class="container">
+                <h1 class="section-title">What we offer</h1>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h2>Legal Consultation</h2>
+                        <p>Our team offers expert legal consultation services tailored to your needs. From initial
+                            consultations to in-depth legal analysis, we ensure that every decision you make is informed
+                            and strategic.</p>
+                        <ul>
+                            <li>Corporate Law</li>
+                            <li>Contractual Agreements</li>
+                            <li>Personal Legal Matters</li>
+                        </ul>
+                        <a href="#" class="cta-btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Corporate Law and Compliance</h2>
+                        <p>We specialize in corporate law, guiding businesses through compliance and regulation. Our
+                            legal team supports every step of business formation, governance, and restructuring.</p>
+                        <ul>
+                            <li>Business Formation</li>
+                            <li>Corporate Governance</li>
+                            <li>Regulatory Compliance</li>
+                            <li>Mergers & Acquisitions</li>
+                        </ul>
+                        <a href="#" class="cta-btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Litigation and Dispute Resolution</h2>
+                        <p>Our litigation team defends your rights with a strategic, results-oriented mindset. We offer
+                            expert representation both in court and through alternative dispute resolution.</p>
+                        <ul>
+                            <li>Commercial Litigation</li>
+                            <li>Employment Disputes</li>
+                            <li>Alternative Dispute Resolution (ADR)</li>
+                            <li>Arbitration & Mediation</li>
+                        </ul>
+                        <a href="#" class="cta-btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Employment Law Advisory</h2>
+                        <p>We offer comprehensive employment law services, ensuring fair and lawful treatment in the
+                            workplace. Our services include drafting contracts, resolving workplace disputes, and
+                            ensuring labor law compliance.</p>
+                        <ul>
+                            <li>Employment Contracts</li>
+                            <li>Workplace Discrimination</li>
+                            <li>Wrongful Termination</li>
+                            <li>Labor Law Compliance</li>
+                        </ul>
+                        <a href="#" class="cta-btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Intellectual Property Law</h2>
+                        <p>Our intellectual property services protect your innovations and creative works from
+                            infringement. We help with trademarks, patents, and copyright protection.</p>
+                        <ul>
+                            <li>Trademark Registration</li>
+                            <li>Copyright Protection</li>
+                            <li>Patent Applications</li>
+                            <li>IP Enforcement & Litigation</li>
+                        </ul>
+                        <a href="#" class="cta-btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Family Law Services</h2>
+                        <p>Our legal team supports you through family law matters like divorce, custody, and adoption
+                            with compassion and personalized attention to your needs.</p>
+                        <ul>
+                            <li>Divorce & Separation</li>
+                            <li>Child Custody & Support</li>
+                            <li>Adoption</li>
+                            <li>Prenuptial Agreements</li>
+                        </ul>
+                        <a href="#" class="cta-btn">Learn More</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>Real Estate Law</h2>
+                        <p>From property transactions to disputes, we provide legal services that ensure smooth,
+                            legally-sound real estate dealings. Our real estate attorneys handle contract negotiations
+                            and more.</p>
+                        <ul>
+                            <li>Property Transactions</li>
+                            <li>Landlord-Tenant Disputes</li>
+                            <li>Real Estate Contracts</li>
+                            <li>Property Development</li>
+                        </ul>
+                        <a href="#" class="cta-btn">Learn More</a>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="Values-wrapper">
-            <div id="Values-container">
-            <h2>Our Values</h2>
-            <ul>
-                <li>Integrity</li>
-                <li>Client-Centricity</li>
-                <li>Collaboration</li>
-                <li>Innovation</li>
-                <li>Diversity and Inclusion</li>
-            </ul>
-        </section>
 
-        
-        <section id="history">
-            <h2>Our History</h2>
-            <p>Founded in [Year], Spector & Co was established to fill the gap in the legal consultancy market...</p>
-        </section>
-        <section id="culture">
-            <h2>Firm Culture</h2>
-            <p>At Spector & Co, we foster a collaborative and inclusive culture where every team member is valued for
-                their unique contributions...</p>
-        </section>
-        <section id="probono">
-            <h2>Pro Bono and Community Service</h2>
-            <p>At Spector & Co, we believe in the importance of giving back to the community...</p>
-        </section>
+        <div id="chartContainer">
+            <h2>Top Reddit Stocks Sentiment Visualization</h2>
+            <div id="chart"></div>
+        </div>
 
         <section class="area-of-focus">
             <h2>Areas of Focus</h2>
@@ -142,43 +208,23 @@
             </div>
         </section>
     </main>
+
     <footer>
         <address>
             <h3 class="contact-me-header">Contact Us</h3>
             Contact: 011 007 5274<br>
             E-mail: Spector&Co@gmail.com<br>
             Spector & Co firm<br>
-            New York City<br>
-            United States of America<br>
+            New York City, United States of America<br>
         </address>
         <section class="footer-socials">
-            <p>
-                <span class="fn">&copy; 2024 Spector & Co </span> | All rights reserved.
-            </p>
-
-            <div class="social-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                    <!-- SVG path data -->
-                </svg>
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path
-                        d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z" />
-                    <!-- SVG path data -->
-                </svg>
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path
-                        d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 6c-3.313 0-6 2.686-6 6 0 2.651 1.719 4.9 4.104 5.693.3.056.396-.13.396-.289v-1.117c-1.669.363-2.017-.707-2.017-.707-.272-.693-.666-.878-.666-.878-.544-.373.041-.365.041-.365.603.042.92.619.92.619.535.917 1.403.652 1.746.499.054-.388.209-.652.381-.802-1.333-.152-2.733-.667-2.733-2.965 0-.655.234-1.19.618-1.61-.062-.153-.268-.764.058-1.59 0 0 .504-.161 1.65.615.479-.133.992-.199 1.502-.202.51.002 1.023.069 1.503.202 1.146-.776 1.648-.615 1.648-.615.327.826.121 1.437.06 1.588.385.42.617.955.617 1.61 0 2.305-1.404 2.812-2.74 2.96.216.186.412.551.412 1.111v1.646c0 .16.096.347.4.288 2.383-.793 4.1-3.041 4.1-5.691 0-3.314-2.687-6-6-6z" />
-                    <!-- SVG path data -->
-                </svg>
-            </div>
+            <p><span class="fn">&copy; 2024 Spector & Co</span> | All rights reserved.</p>
         </section>
     </footer>
-    <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()"> ↑ </button>
-    <script src="../../Scripts/nav.js"></script>
-</body>
 
-</html>
+    <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <script src="../../Scripts/nav.js"></script>
+    <script src="../../Scripts/services.js"></script>
+
+</body>
