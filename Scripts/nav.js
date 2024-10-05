@@ -4,8 +4,8 @@
 const navMenuItems = [
     { name: "Home", href: "/Spector-Co_CommecialGradeWebsite/index.html" },
     { name: "Services", href: "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/index.html" },
-    { name: "Design", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/index.html" },
-    { name: "About", href: "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/index.html" }
+    { name: "About", href: "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/index.html" },
+    { name: "Design", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/index.html" }
 ];
 
 // Method for creating Menu Items 
