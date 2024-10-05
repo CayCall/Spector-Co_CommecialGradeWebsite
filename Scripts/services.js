@@ -11,8 +11,8 @@ const fetchButton = document.getElementById('fetchButton');
 const resultDiv = document.getElementById('result');
 const limitLabel = document.getElementById('limitLabel');
 
-let useCount = 0; // Initialize use count
-const useLimit = 5; // Set the usage limit
+let useCount = 0; // Initialize usecount
+const useLimit = 5;
 
 fetchButton.addEventListener('click', () => {
     if (useCount < useLimit) {
@@ -29,8 +29,8 @@ fetchButton.addEventListener('click', () => {
             .then(data => {
                 displayData(data, symbol);
                 drawChart(data, symbol);
-                useCount++; // Increment use count
-                updateLimitLabel(); // Update the limit label
+                useCount++; // to increment use count
+                updateLimitLabel(); 
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
@@ -38,7 +38,7 @@ fetchButton.addEventListener('click', () => {
             });
     } else {
         resultDiv.innerHTML = '<p>Usage limit reached. Please refresh the page to reset.</p>';
-        fetchButton.disabled = true; // Disable the button if limit is reached
+        fetchButton.disabled = true; // disable the button if limit is reached
     }
 });
 
@@ -103,7 +103,8 @@ function drawChart(data, symbol) {
         .attr("height", d => 400 - y(d.value))
         .attr("fill", "#4CAF50")
         .on("mouseover", function (event, d) {
-            // Show tooltip
+
+            // to show tooltip
             tooltip.transition()
                 .duration(200)
                 .style("opacity", .9);
@@ -111,30 +112,29 @@ function drawChart(data, symbol) {
                 .style("left", (event.pageX + 5) + "px")
                 .style("top", (event.pageY - 28) + "px");
 
-            // Change color on hover
             d3.select(this).attr("fill", "#FF5733");
         })
         .on("mouseout", function (d) {
-            // Hide tooltip
+        
             tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
 
-            // Reset color
+            // Reset the colour
             d3.select(this).attr("fill", "#4CAF50");
         });
 
-    // Add labels with candle type names above the bars
+    
     svg.selectAll(".label")
         .data(stockPrices)
         .enter()
         .append("text")
         .attr("class", "label")
-        .attr("x", d => x(d.label) + x.bandwidth() / 2) // Center the text
-        .attr("y", d => y(d.value) - 5) // Position it above the bar
-        .attr("dy", ".75em") // Adjust vertical positioning
-        .attr("text-anchor", "middle") // Center align text
-        .text(d => d.label); // Display the candle type name
+        .attr("x", d => x(d.label) + x.bandwidth() / 2) 
+        .attr("y", d => y(d.value) - 5) 
+        .attr("dy", ".75em") 
+        .attr("text-anchor", "middle") 
+        .text(d => d.label); 
 }
 
 function updateLimitLabel() {
@@ -143,7 +143,6 @@ function updateLimitLabel() {
 const accordions = document.querySelectorAll('.accordion');
 accordions.forEach(accordion => {
     accordion.addEventListener('click', function () {
-        // Toggle active class
         this.classList.toggle('active');
 
         // Get the panel

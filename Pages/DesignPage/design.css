@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #e9ecef; /* Light gray background */
+    background-color: #e9ecef;
     margin: 0;
     padding: 0;
 }
@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    margin-top: 100px;
 }
 
 .Theory-section,
@@ -31,10 +32,13 @@ h2 {
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin:20px;
     color: #008080; 
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
 }
 
 p {
@@ -53,7 +57,9 @@ button {
     cursor: pointer;
     transition: background-color 0.3s; 
 }
-
+ul{
+    margin-left: 100px;
+}
 button:hover {
     background-color: #3e8e41; 
 }
@@ -100,4 +106,42 @@ tr:hover {
     margin: 30px;
     width: 90%;
     height: 100%;
+}
+#essay-download {
+    background-color: #E5E5E5; 
+    padding: 40px; 
+    text-align: center;
+    border-radius: 8px; 
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
+    margin: 20px auto;
+    max-width: 800px; 
+}
+
+#essay-download h2 {
+    font-size: 28px; 
+    color: #002B5C; 
+    margin-bottom: 20px; 
+}
+
+#essay-download p {
+    font-size: 20px; 
+    color: #4A4A4A; 
+    margin-bottom: 30px; 
+    line-height: 1.6; 
+}
+
+.download-button {
+    background-color: #008080; 
+    color: #FFFFFF; 
+    padding: 15px 30px; 
+    font-size: 18px; 
+    border: none; 
+    border-radius: 5px; 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.download-button:hover {
+    background-color: #005F5F; 
+    cursor: pointer;
 }
