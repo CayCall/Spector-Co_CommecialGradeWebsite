@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const apiKey = 'cs0q7h1r01qru183mr0gcs0q7h1r01qru183mr10'; // Finnhub API key
+const apiKey = 'cs0qc0pr01qru183mrugcs0qc0pr01qru183mrv0'; // Finnhub API key
 const fetchButton = document.getElementById('fetchButton');
 const resultDiv = document.getElementById('result');
 const limitLabel = document.getElementById('limitLabel');
