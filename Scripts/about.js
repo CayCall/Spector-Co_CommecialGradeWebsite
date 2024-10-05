@@ -8,7 +8,7 @@ const isInViewport = (element) => {
     );
 };
 
-// Function to handle scroll event
+// function to handle the scroll event
 const handleScroll = () => {
     const containers = document.querySelectorAll('.container');
     containers.forEach(container => {
@@ -18,8 +18,5 @@ const handleScroll = () => {
     });
 };
 
-// Add scroll event listener
 window.addEventListener('scroll', handleScroll);
-
-// Initial check
 handleScroll();
