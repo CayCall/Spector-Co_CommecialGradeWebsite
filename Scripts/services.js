@@ -12,7 +12,7 @@ accordions.forEach(accordion => {
     });
 });
 
-const apiKey = 'cs07dohr01qrbtrl99ngcs07dohr01qrbtrl99o0'; // Your Finnhub API key
+const apiKey = 'cs07dohr01qrbtrl99ngcs07dohr01qrbtrl99o0'; // Finnhub API key that I obtained through https://finnhub.io/dashboard
 const fetchButton = document.getElementById('fetchButton');
 const resultDiv = document.getElementById('result');
 
@@ -29,7 +29,7 @@ fetchButton.addEventListener('click', () => {
         })
         .then(data => {
             displayData(data, symbol);
-            drawChart(data, symbol); // Call the function to draw the chart
+            drawChart(data, symbol); // Call a function that will draw the chart 
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
@@ -55,7 +55,7 @@ function displayData(data, symbol) {
 
 function drawChart(data, symbol) {
     const svg = d3.select("#chart");
-    svg.selectAll("*").remove(); // Clear previous chart
+    svg.selectAll("*").remove(); // this will clearr the previous chart
 
     const stockPrices = [
         { label: "Current Price", value: data.c },
