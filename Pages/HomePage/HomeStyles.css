@@ -217,8 +217,11 @@ svg {
   width: 100%;
   height: auto;
 }
+.expertise-button-container {
+  text-align: center;
+}
 #services-btn{
-  margin-left: 1070px;
+  margin-left: 50px;
 }
 .dot-container {
   text-align: center;

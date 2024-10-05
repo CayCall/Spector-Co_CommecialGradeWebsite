@@ -23,11 +23,11 @@
     <div id="Hero-Services">
         <div id="videoContainer">
             <video id="backgroundVideo" autoplay muted>
-                <source src="../../Images/Videos/sup_court_pan.mp4" type="video/mp4"  >
+                <source src="../../Images/Videos/sup_court_pan.mp4" type="video/mp4">
             </video>
         </div>
         <h1>Our Services</h1>
-        <button id="scrollButton" class="scroll-text">scroll down ↓</button>
+        <button id="scrollButton" class="scroll-text"> scroll down ↓</button>
     </div>
 
     <main>
@@ -129,11 +129,19 @@
                 </div>
             </div>
         </section>
-
-        <h2>Stock Price Data</h2>
-        <p>fvafgjhajfghjkahgjkah</p>
-        <div id="app">
-    
+        <hr>
+        <div class="stock-wrapper">
+            <h2>Stock Price Data</h2>
+            <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making
+                for our clients in the financial and corporate sectors. Accurate and up-to-date stock information is
+                essential for businesses involved in mergers and acquisitions, compliance with regulatory requirements,
+                and strategic financial planning. Our legal experts work closely with clients to analyze stock
+                performance, assess risks, and ensure that all legal obligations are met, enabling them to navigate the
+                complexities of the market with confidence. By integrating comprehensive stock data into our legal
+                strategies, we empower our clients to make decisions that are not only legally sound but also
+                financially advantageous.</p>
+        </div>
+        <section id="app">
             <div>
                 <label for="symbol">Choose a stock:</label>
                 <select id="symbol">
@@ -152,74 +160,51 @@
             </div>
             <div id="result"></div>
             <svg id="chart" width="600" height="400"></svg> <!-- SVG for D3 Chart -->
-        </div> 
+            <p id="limitLabel">You have used the fetch 0 out of 5 times.</p>
+        </section>
         <section class="area-of-focus">
             <h2>Areas of Focus</h2>
             <div class="focus-areas-container">
                 <div class="focus-card">
                     <button class="accordion">Corporate Law</button>
                     <div class="panel">
-                        <p>Our corporate law services guide businesses through the complexities of corporate governance,
-                            mergers, acquisitions, and regulatory compliance. We assist in structuring transactions to
-                            minimize legal risks while supporting sustainable growth and providing ongoing counsel to
-                            ensure that your business operations adhere to legal requirements.</p>
+                        <p>Our corporate law services guide businesses through the complexities of corporate governance, mergers, acquisitions, and regulatory compliance. We assist in structuring transactions to minimize legal risks while supporting sustainable growth and providing ongoing counsel to ensure that your business operations adhere to legal requirements.</p>
                     </div>
                 </div>
                 <div class="focus-card">
                     <button class="accordion">Criminal Law</button>
                     <div class="panel">
-                        <p>We offer expert legal representation for individuals and businesses facing criminal charges.
-                            Our criminal law team is dedicated to defending your rights at every stage of the process,
-                            whether it involves investigation, trial, or appeals. We specialize in areas such as
-                            white-collar crime, fraud, drug offenses, and serious criminal cases, working diligently to
-                            achieve the best possible outcome for you.</p>
+                        <p>We offer expert legal representation for individuals and businesses facing criminal charges. Our criminal law team is dedicated to defending your rights at every stage of the process, whether it involves investigation, trial, or appeals. We specialize in areas such as white-collar crime, fraud, drug offenses, and serious criminal cases, working diligently to achieve the best possible outcome for you.</p>
                     </div>
                 </div>
                 <div class="focus-card">
                     <button class="accordion">Intellectual Property Law</button>
                     <div class="panel">
-                        <p>We protect your innovations and intellectual property through comprehensive legal services
-                            covering trademarks, patents, copyrights, and trade secrets. Our team assists clients with
-                            filing applications, negotiating licensing agreements, and resolving IP disputes. Whether
-                            you're an inventor, business owner, or artist, we ensure your ideas and creations are
-                            safeguarded from infringement and unauthorized use.</p>
+                        <p>We protect your innovations and intellectual property through comprehensive legal services covering trademarks, patents, copyrights, and trade secrets. Our team assists clients with filing applications, negotiating licensing agreements, and resolving IP disputes. Whether you're an inventor, business owner, or artist, we ensure your ideas and creations are safeguarded from infringement and unauthorized use.</p>
                     </div>
                 </div>
                 <div class="focus-card">
                     <button class="accordion">Employment Law</button>
                     <div class="panel">
-                        <p>We offer extensive employment law services, advising both employers and employees on matters
-                            such as contracts, workplace disputes, wrongful termination, harassment, and compliance with
-                            labor laws. Whether you're looking to protect your company’s interests or seeking fair
-                            treatment in the workplace, we provide the guidance you need to navigate employment
-                            regulations.</p>
+                        <p>We offer extensive employment law services, advising both employers and employees on matters such as contracts, workplace disputes, wrongful termination, harassment, and compliance with labor laws. Whether you're looking to protect your company’s interests or seeking fair treatment in the workplace, we provide the guidance you need to navigate employment regulations.</p>
                     </div>
                 </div>
                 <div class="focus-card">
                     <button class="accordion">Family Law</button>
                     <div class="panel">
-                        <p>We provide compassionate and effective legal support for family law matters, including
-                            divorce, child custody, alimony, adoption, and prenuptial agreements. Our goal is to help
-                            families resolve legal issues with care and sensitivity, ensuring that our clients are
-                            supported during emotionally challenging times.</p>
+                        <p>We provide compassionate and effective legal support for family law matters, including divorce, child custody, alimony, adoption, and prenuptial agreements. Our goal is to help families resolve legal issues with care and sensitivity, ensuring that our clients are supported during emotionally challenging times.</p>
                     </div>
                 </div>
                 <div class="focus-card">
                     <button class="accordion">Real Estate Law</button>
                     <div class="panel">
-                        <p>Our real estate law services cover property transactions, including buying, selling, leasing,
-                            and disputes. We ensure your transactions are legally sound and help resolve conflicts
-                            related to zoning, land use, mortgages, or property rights. Whether you're a homeowner or a
-                            developer, we make sure your interests are protected in all aspects of real estate law.</p>
+                        <p>Our real estate law services cover property transactions, including buying, selling, leasing, and disputes. We ensure your transactions are legally sound and help resolve conflicts related to zoning, land use, mortgages, or property rights. Whether you're a homeowner or a developer, we make sure your interests are protected in all aspects of real estate law.</p>
                     </div>
                 </div>
                 <div class="focus-card">
                     <button class="accordion">Tax Law</button>
                     <div class="panel">
-                        <p>We provide expert guidance on tax law, assisting individuals and businesses in managing tax
-                            liabilities and ensuring compliance with local and international tax regulations. Our team
-                            specializes in tax planning, audits, and dispute resolution with tax authorities, helping
-                            you minimize your tax burdens while remaining compliant with complex tax codes.</p>
+                        <p>We provide expert guidance on tax law, assisting individuals and businesses in managing tax liabilities and ensuring compliance with local and international tax regulations. Our team specializes in tax planning, audits, and dispute resolution with tax authorities, helping you minimize your tax burdens while remaining compliant with complex tax codes.</p>
                     </div>
                 </div>
             </div>
@@ -240,8 +225,8 @@
     </footer>
 
     <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()">↑</button>
-
     <script src="../../Scripts/nav.js"></script>
     <script src="../../Scripts/services.js"></script>
+
 
 </body>
