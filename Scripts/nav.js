@@ -2,12 +2,11 @@
 // universal nav for all pages
 // Creating menu items 
 const navMenuItems = [
-    { name: "Home", href: "../../index.html" },
-    { name: "About", href: "./Pages/AboutPage/index.html" },
-    { name: "Services", href: "./Pages/ServicesPage/index.html" },
-    { name: "Design", href: "./Pages/DesignPage/index.html" }
+    { name: "Home", href: "../index.html" },
+    { name: "About", href: "../Pages/AboutPage/index.html" },
+    { name: "Services", href: "../Pages/ServicesPage/index.html" },
+    { name: "Design", href: "../Pages/DesignPage/index.html" }
 ];
-
 // Method for creating Menu Items 
 function CreateMenuItems() {
     //selecting my nav tag 
