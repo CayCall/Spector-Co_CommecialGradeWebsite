@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9ecef; /* Light gray background */
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.Theory-section,
+.UI-UX-Decisions {
+    background-color: #f7f7f7; /* Light background for sections */
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Rounded corners */
+    width: 100%; /* Make sections full width */
+    max-width: 800px; /* Limit width for better readability */
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #002B5C; /* Navy Blue for headings */
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #008080; /* Teal for subheadings */
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Dark gray for text */
+}
+
+/* Interactive Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders */
+    margin: 20px 0; /* Space around tables */
+}
+
+th, td {
+    padding: 10px; /* Padding for table cells */
+    text-align: left; /* Align text left */
+    border: 1px solid #ddd; /* Light gray borders */
+}
+
+th {
+    background-color: #002B5C; /* Navy blue header */
+    color: white; /* White text for header */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping */
+}
+
+tr:hover {
+    background-color: #d9edf7; /* Light blue on hover */
+}
+
+/* Content visibility */
+.essay-content,
+.preparatory-work-content,
+.reflections-content {
+    display: none; /* Initially hide the content */
+}
+
+.visible {
+    display: block; /* Show the content when the class 'visible' is added */
+}

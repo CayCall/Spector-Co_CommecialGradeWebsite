@@ -3,9 +3,9 @@
 // Creating menu items 
 const navMenuItems = [
     { name: "Home", href: "/Spector-Co_CommecialGradeWebsite/index.html" },
-    { name: "About", href: "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/index.html" },
     { name: "Services", href: "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/index.html" },
-    { name: "Design", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/index.html" }
+    { name: "Design", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/index.html" },
+    { name: "About", href: "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/index.html" }
 ];
 
 // Method for creating Menu Items 
@@ -50,8 +50,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//used to load my about page
+function loadAboutPage() {
+    window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/index.html ";
+}
+//used for my services page
+function loadServicesPage() {
+    window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/index.html ";
+}
 
-// universal scroll to top
+let currentIndex = 0;
+showSlide(currentIndex);
+//testomonials navigation
+function showSlide(index) {
+    let slides = document.getElementsByClassName("testimonial-item");
+    let dots = document.getElementsByClassName("dot");
+    
+    // Hide all slides initially
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    // Remove "active" class from all dots
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    // Show the current slide and activate the corresponding dot
+    slides[index].style.display = "block";
+    dots[index].className += " active";
+}
+
+function currentSlide(index) {
+    currentIndex = index - 1;
+    showSlide(currentIndex);
+}
+
+
+//Function for my back to top button that will be controlled through, how far down i scroll on my document
+window.onscroll = function () {
+    const button = document.getElementById('backToTopBtn');
+    const scrollPosition = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // Check if the user has scrolled down exactly three-quarters of my html document's height
+    if (scrollPosition > (documentHeight - viewportHeight) * 0.75) {
+        button.classList.add('show');
+    } else {
+        button.classList.remove('show'); 
+    }
+};
+
 function scrollToTop() {
     window.scrollTo({
         top: 0,
@@ -59,25 +109,7 @@ function scrollToTop() {
     });
 }
 
-
-// Show/hide the button based on scroll position
-window.onscroll = function () {
-    const button = document.getElementById('backToTopBtn');
-    const scrollPosition = window.scrollY;
-    const viewportHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    // Check if the user has scrolled down three-quarters of the document height
-    if (scrollPosition > (documentHeight - viewportHeight) * 0.75) {
-        button.classList.add('show'); // Add the 'show' class to trigger opacity transition
-    } else {
-        button.classList.remove('show'); // Remove the 'show' class
-    }
-};
-
-
-
-
+// about PAGE
 function toggleFocusDetails(element) {
     var details = element.nextElementSibling;
     if (details.style.display === "block") {
@@ -88,6 +120,8 @@ function toggleFocusDetails(element) {
 }
 
 // SERVICES PAGE
+
+// an aminated(CSS) button that will control the scrolling of my page down to a specific tag, that enhances user's experience
 document.getElementById('scrollButton').addEventListener('click', () => {
     document.querySelector('main').scrollIntoView({
         behavior: 'smooth'

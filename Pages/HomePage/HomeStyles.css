@@ -132,7 +132,6 @@
   }
 }
 
-/* Basic styling for the bar chart container */
 #crimes-homepage h2{
   text-align: center;
 }
@@ -168,14 +167,29 @@
   text-align: center;
   padding: 20px;
   background-color: #ececec;
-
+  display: flex;              
+  flex-direction: column;    
+  align-items: center;        
 }
 
 .testimonial-item {
-  margin: 20px auto;
-  max-width: 600px;
+  display: none;           
+  position: relative;     
+  height: 150px;        
+  overflow: hidden;       
+  padding: 10px;         
+  box-sizing: border-box;  
 }
+.testimonial-item.active {
+  display: block;
+}
+.testimonial-item p {
+  max-height: 120px;      
+  overflow: hidden;      
+  text-overflow: ellipsis; 
+  display: -webkit-box;  
 
+}
 #handshake-img {
   width: 100%;
   max-width: 400px;
@@ -195,16 +209,34 @@
   margin-top: 5px;
 }
 #imageContainer img {
-  width: 70%;
-  height: 50%;
-  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
-
 svg {
   width: 100%;
   height: auto;
 }
+#services-btn{
+  margin-left: 1070px;
+}
+.dot-container {
+  text-align: center;
+  margin-top: 10px;
+}
+.dot {
+  cursor: pointer;        
+  height: 20px;           
+  width: 20px;            
+  margin: 0 5px;         
+  background-color: #bbb; 
+  border-radius: 50%;    
+  display: inline-block;   
+}
 
+.dot.active {
+    background-color: #008080;
+}
 @media (max-width: 768px) {
   .content-container {
     grid-template-columns: 1fr;

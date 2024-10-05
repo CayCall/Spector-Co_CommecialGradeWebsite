@@ -50,7 +50,7 @@
                 </p>
                 <!--takes us to about page -->
                 <div class="expertise-button-container">
-                    <button class="button-variation-1" class="expertise-btn">
+                    <button class="button-variation-1" class="expertise-btn"onclick="loadServicesPage()">
                         Learn more &#x27A1;
                     </button>
                 </div>
@@ -83,7 +83,9 @@
                             to navigate these challenging times.</p>
                     </div>
                 </div>
+               
             </section>
+            <button class="button-variation-1" id = "services-btn" onclick="loadServicesPage() ">See Details &#x27A1;</button>
             <hr>
             <!--First data visualisation-->
             <section id="crimes-homepage">
@@ -101,20 +103,37 @@
 
         <div id="testimonials">
             <h2>What Our Clients Say</h2>
+            
             <div class="testimonial-item">
-
                 <div id="imageContainer">
                     <img src="./Images/handshake.jpeg">
                 </div>
-                <p class="testimonial-text">
-                    "Working with Spector & Co has been a fantastic experience. They guided me through every step of the
-                    process and ensured my needs were met with the utmost professionalism."
-                </p>
+                <p class="testimonial-text">"Working with Spector & Co has been a fantastic experience. They guided me through every step of the process and ensured my needs were met with the utmost professionalism."</p>
                 <p class="client-name">— John Doe, Business Owner</p>
             </div>
-
-            <!--takes us to services page-->
-            <button class="button-variation-1" onclick="">See Details</button>
+        
+            <div class="testimonial-item">
+                <div id="imageContainer">
+                    <img src="./Images/harvey.jpeg">
+                </div>
+                <p class="testimonial-text">"Spector & Co's attention to detail was impressive. They helped us navigate complex legal matters with ease."</p>
+                <p class="client-name">— Jane Smith, CEO</p>
+            </div>
+        
+            <div class="testimonial-item">
+                <div id="imageContainer">
+                    <img src="./Images/scott-graham.jpg">
+                </div>
+                <p class="testimonial-text">"I felt supported and confident thanks to the excellent team at Spector & Co."</p>
+                <p class="client-name">— Mark Taylor, Entrepreneur</p>
+            </div>
+        
+            <!-- Dot navigation -->
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
         </div>
     </main>
     <!--the same footer will be used on all pages-->
