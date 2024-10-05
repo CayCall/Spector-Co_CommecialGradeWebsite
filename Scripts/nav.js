@@ -119,11 +119,4 @@ function toggleFocusDetails(element) {
     }
 }
 
-// SERVICES PAGE
 
-// an aminated(CSS) button that will control the scrolling of my page down to a specific tag, that enhances user's experience
-document.getElementById('scrollButton').addEventListener('click', () => {
-    document.querySelector('main').scrollIntoView({
-        behavior: 'smooth'
-    });
-});
