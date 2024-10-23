@@ -1,6 +1,6 @@
-#Hero {
+#hero {
   position: relative;
-  height: 65vh;
+  height: 95vh;
   background: url('../../Images/Equitable_Building.jpg') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
@@ -12,16 +12,31 @@
   z-index: 0; 
 }
 
-#Hero-Header {
-  font-weight: lighter;
-  color: #E5E5E5;
-  font-size: 45px;
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); 
+  z-index: 1; 
 }
 
-#Hero-H3 {
+#hero-header {
+  font-weight: bold; 
+  color: #E5E5E5;
+  font-size: 50px; 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+  z-index: 2; 
+}
+
+#hero-h3 {
   padding: 5px;
   color: #E5E5E5;
-  font-size: 30px;
+  font-size: 35px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  z-index: 2; 
 }
 
 #rolling-text {
@@ -29,8 +44,9 @@
   display: inline-block;
   animation: rollingTextAnim 5s ease-in-out infinite;
   transform-origin: bottom center;
+  color: #008080;
+  z-index: 2; 
 }
-
 
 @keyframes rollingTextAnim {
   0% {
@@ -70,7 +86,8 @@
   font-size: 1rem;
   margin: 0;
 }
-#expertise{
+#expertise {
+  margin: 100px;
   text-align: center;
 }
 #content-section-grid {
@@ -86,7 +103,7 @@
 
 .content-container-item {
   background-color: #002B5C;
-  color: #FFFFFF;
+  color: #E5E5E5;
   padding: 30px;
   border-radius: 5px;
   box-shadow: 12px 12px rgba(0, 0, 0, 0.1);
@@ -218,12 +235,13 @@ svg {
   height: auto;
 }
 .expertise-button-container {
-  text-align: center;
+  margin-top: 30px; 
 }
-#services-btn{
-  margin-left: 50px;
+#services-btn {
+  display: block; 
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .dot-container {
   text-align: center;
   margin-top: 10px;

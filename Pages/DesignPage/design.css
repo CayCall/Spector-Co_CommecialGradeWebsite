@@ -13,8 +13,8 @@ body {
     margin-top: 100px;
 }
 
-.Theory-section,
-.UI-UX-Decisions {
+.theory-section,
+.ui-ux-decisions {
     background-color: #f7f7f7;
     padding: 20px;
     margin-bottom: 20px;
@@ -50,7 +50,7 @@ p {
 
 button {
     background-color: #4CAF50; 
-    color: #fff;
+    color: #E5E5E5;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -78,7 +78,7 @@ th, td {
 
 th {
     background-color: #002B5C; 
-    color: white;
+    color: #E5E5E5;
 }
 
 tr:nth-child(even) {
@@ -132,7 +132,7 @@ tr:hover {
 
 .download-button {
     background-color: #008080; 
-    color: #FFFFFF; 
+    color: #E5E5E5; 
     padding: 15px 30px; 
     font-size: 18px; 
     border: none; 

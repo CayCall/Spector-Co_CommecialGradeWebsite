@@ -1,31 +1,3 @@
-// check if elements rect is in viewport 
-function isInViewport(element){
-  const rect= element.getBoundingClientRect();
-  return (
-    rect.top <= window.innerHeight &&
-    rect.bottom >= 0
-  );
-
-}
-// used to call my animation for the p in  my content container item, just to add some dyamic animation 
-function handleScroll(){
-  const elements= document.querySelectorAll('.content-container-item p');
-  elements.forEach((element) => {
-    if (isInViewport(element)) {
-      element.classList.add('animate');
-    }
-  });
-
-}
-
-// listen for scroll
-window.addEventListener('scroll', handleScroll);
-
-//lastly I call the animation
-handleScroll();
-
-
-
 
 // Fetch live crime data from the Police Data API (UK) link to the API must be included in the fetch function
 fetch('https://data.police.uk/api/crimes-street/all-crime?lat=51.5074&lng=-0.1278')

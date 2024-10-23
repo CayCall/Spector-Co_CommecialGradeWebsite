@@ -4,6 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Spector & Co's wide range of legal services, including corporate law, litigation, family law, real estate law, and intellectual property protection.">
+    <meta name="keywords" content="Spector & Co, legal services, corporate law, litigation, family law, real estate law, intellectual property, legal consultation, employment law, tax law">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Services - Spector & Co">
+    <meta property="og:description" content="Our services cover corporate law, litigation, employment law, family law, real estate, and intellectual property protection.">
+    <meta property="og:image" content="URL to service page image or video thumbnail">
+    <meta property="og:url" content="URL to your services page">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Services - Spector & Co">
+    <meta name="twitter:description" content="Explore our comprehensive range of legal services, including corporate law, family law, and intellectual property protection.">
+    <meta name="twitter:image" content="URL to image or video thumbnail">
+
     <link rel="icon" href="../../Images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../ServicesPage/Services.css">
@@ -13,21 +30,21 @@
 
 <body>
 
-    <header class="H1-Main">
+    <header>
         <h1>Spector & Co</h1>
-        <nav class="Nav-Bar">
+        <nav class="nav-bar">
             <button class="hamburger" id="hamburger-btn">&#9776;</button>
         </nav>
     </header>
 
-    <div id="Hero-Services">
-        <div id="videoContainer">
-            <video id="backgroundVideo" autoplay muted>
+    <div id="hero-services">
+        <div id="video-container">
+            <video id="background-video" autoplay muted>
                 <source src="../../Images/Videos/sup_court_pan.mp4" type="video/mp4">
             </video>
         </div>
         <h1>Our Services</h1>
-        <button id="scrollButton" class="scroll-text"> scroll down ↓</button>
+        <button id="scroll-button" class="scroll-text"> scroll down ↓</button>
     </div>
 
     <main>
@@ -156,7 +173,7 @@
                     <option value="BABA">Alibaba Group Holding Ltd. (BABA)</option>
                     <option value="DIS">The Walt Disney Company (DIS)</option>
                 </select>
-                <button id="fetchButton">Fetch Stock Data</button>
+                <button id="fetch-button">Fetch Stock Data</button>
             </div>
             <div id="result"></div>
             <svg id="chart" width="600" height="400"></svg> <!-- SVG for D3 Chart -->
