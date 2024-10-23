@@ -29,20 +29,35 @@
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" required>
+                            <div class="error" id="name-error"></div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" id="email" required>
+                            <div class="error" id="email-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" required>
+                            <div class="error" id="phone-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" required>
+                            <div class="error" id="password-error"></div>
                         </div>
                         <div class="form-group">
                             <label for="message">Message:</label>
                             <textarea id="message" required></textarea>
+                            <div class="error" id="message-error"></div>
                         </div>
                         <div class="checkbox-group">
                             <input type="checkbox" id="subscribe" required>
                             <label for="subscribe">I agree to the terms and conditions.</label>
+                            <div class="error" id="subscribe-error"></div>
                         </div>
                         <button type="submit" class="button-variation-2">Send</button>
+                        <div class="success" id="success-message"></div>
                     </div>
                 </div>
             </form>
@@ -97,5 +112,6 @@
     </footer>
     
     <script src="../../Scripts/nav.js"></script>
+    <script src="../../Scripts/contact.js"></script>
 </body>
 </html>
