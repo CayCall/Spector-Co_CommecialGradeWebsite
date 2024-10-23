@@ -39,6 +39,8 @@ label {
 }
 input[type="text"],
 input[type="email"],
+input[type="password"],
+input[type="tel"],
 textarea {
     width: 100%;
     padding: 10px;
@@ -49,6 +51,8 @@ textarea {
 }
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
 textarea:focus {
     border-color: #007BFF;
     outline: none;
@@ -77,4 +81,15 @@ textarea {
 }
 .checkbox-group input[type="checkbox"] {
     margin-right: 10px;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.success {
+    color: green;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
 }
