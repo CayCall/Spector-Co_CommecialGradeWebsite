@@ -1,6 +1,6 @@
 #hero {
   position: relative;
-  height: 95vh;
+  height: 90vh;
   background: url('../../Images/Equitable_Building.jpg') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
 #hero-header {
   font-weight: bold; 
   color: #E5E5E5;
-  font-size: 50px; 
+  font-size: px; 
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
   z-index: 2; 
 }
@@ -91,20 +91,20 @@
   text-align: center;
 }
 #content-section-grid {
-  padding: 25px;
+  padding: 80px;
 }
 
 .content-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 25px;
   text-align: center;
 }
 
 .content-container-item {
   background-color: #002B5C;
   color: #E5E5E5;
-  padding: 30px;
+  padding: 25px;
   border-radius: 5px;
   box-shadow: 12px 12px rgba(0, 0, 0, 0.1);
 }
@@ -241,6 +241,7 @@ svg {
   display: block; 
   margin-left: auto;
   margin-right: auto;
+  margin-top:50px ;
 }
 .dot-container {
   text-align: center;

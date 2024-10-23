@@ -46,7 +46,9 @@
         <h1>Our Services</h1>
         <button id="scroll-button" class="scroll-text"> scroll down ↓</button>
     </div>
+    <section class="scroll-to">
 
+    </section>
     <main>
         <section class="services-section">
             <div class="container">
@@ -146,39 +148,6 @@
                 </div>
             </div>
         </section>
-        <hr>
-        <div class="stock-wrapper">
-            <h2>Stock Price Data</h2>
-            <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making
-                for our clients in the financial and corporate sectors. Accurate and up-to-date stock information is
-                essential for businesses involved in mergers and acquisitions, compliance with regulatory requirements,
-                and strategic financial planning. Our legal experts work closely with clients to analyze stock
-                performance, assess risks, and ensure that all legal obligations are met, enabling them to navigate the
-                complexities of the market with confidence. By integrating comprehensive stock data into our legal
-                strategies, we empower our clients to make decisions that are not only legally sound but also
-                financially advantageous.</p>
-        </div>
-        <section id="app">
-            <div>
-                <label for="symbol">Choose a stock:</label>
-                <select id="symbol">
-                    <option value="AAPL">Apple Inc. (AAPL)</option>
-                    <option value="AMZN">Amazon.com Inc. (AMZN)</option>
-                    <option value="MSFT">Microsoft Corporation (MSFT)</option>
-                    <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
-                    <option value="TSLA">Tesla, Inc. (TSLA)</option>
-                    <option value="FB">Meta Platforms, Inc. (FB)</option>
-                    <option value="NFLX">Netflix, Inc. (NFLX)</option>
-                    <option value="NVDA">NVIDIA Corporation (NVDA)</option>
-                    <option value="BABA">Alibaba Group Holding Ltd. (BABA)</option>
-                    <option value="DIS">The Walt Disney Company (DIS)</option>
-                </select>
-                <button id="fetch-button">Fetch Stock Data</button>
-            </div>
-            <div id="result"></div>
-            <svg id="chart" width="600" height="400"></svg> <!-- SVG for D3 Chart -->
-            <p id="limitLabel">You have used the fetch 0 out of 5 times.</p>
-        </section>
         <section class="area-of-focus">
             <h2>Areas of Focus</h2>
             <div class="focus-areas-container">
@@ -226,6 +195,40 @@
                 </div>
             </div>
         </section>
+        <hr>
+        <div class="stock-wrapper">
+            <h2>Stock Price Data</h2>
+            <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making
+                for our clients in the financial and corporate sectors. Accurate and up-to-date stock information is
+                essential for businesses involved in mergers and acquisitions, compliance with regulatory requirements,
+                and strategic financial planning. Our legal experts work closely with clients to analyze stock
+                performance, assess risks, and ensure that all legal obligations are met, enabling them to navigate the
+                complexities of the market with confidence. By integrating comprehensive stock data into our legal
+                strategies, we empower our clients to make decisions that are not only legally sound but also
+                financially advantageous.</p>
+        </div>
+        <section id="app">
+            <div>
+                <label for="symbol">Choose a stock:</label>
+                <select id="symbol">
+                    <option value="AAPL">Apple Inc. (AAPL)</option>
+                    <option value="AMZN">Amazon.com Inc. (AMZN)</option>
+                    <option value="MSFT">Microsoft Corporation (MSFT)</option>
+                    <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
+                    <option value="TSLA">Tesla, Inc. (TSLA)</option>
+                    <option value="FB">Meta Platforms, Inc. (FB)</option>
+                    <option value="NFLX">Netflix, Inc. (NFLX)</option>
+                    <option value="NVDA">NVIDIA Corporation (NVDA)</option>
+                    <option value="BABA">Alibaba Group Holding Ltd. (BABA)</option>
+                    <option value="DIS">The Walt Disney Company (DIS)</option>
+                </select>
+                <button id="fetch-button">Fetch Stock Data</button>
+            </div>
+            <div id="result"></div>
+            <svg id="chart" width="600" height="400"></svg> <!-- SVG for D3 Chart -->
+            <p id="limitLabel">You have used the fetch 0 out of 5 times.</p>
+        </section>
+       
     </main>
 
     <footer>
@@ -244,6 +247,5 @@
     <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()">↑</button>
     <script src="../../Scripts/nav.js"></script>
     <script src="../../Scripts/services.js"></script>
-
-
 </body>
+</html>

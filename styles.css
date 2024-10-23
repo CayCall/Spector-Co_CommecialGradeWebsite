@@ -20,12 +20,12 @@ main{
     margin-top: 120px;
 }
 p {
-    margin: 20px;      
-    font-size: 20px; 
+    margin: 15px;      
+    font-size: 18px; 
     border-radius: 5px;                                       
 }
 h1{
-    font-size: 27px;
+    font-size: 30px;
     font-style: italic;
     font-weight: lighter;
     color: #E5E5E5;
@@ -64,7 +64,7 @@ h3, h4 {
 }
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: rgb(253, 248, 248);
+    background-color: rgb(236, 236, 236);
 }
 
 ::-webkit-scrollbar {
@@ -89,17 +89,21 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10%;
+    padding: 25px 10%;
     background-color: #001a38;
     flex-wrap: wrap;
     z-index: 1000; 
     box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, padding 0.2s ease, height 0.2s ease; 
+}
+header.shrink {
+    padding: 12px 10%; 
 }
 .hamburger {
     background: none;
     border: none;
     color: #E5E5E5;
-    font-size: 30px;
+    font-size: 24px; 
     cursor: pointer;
     display: none; 
 }
@@ -138,11 +142,13 @@ header {
     transform: scale(1.2); 
 }
 .nav-bar ul li a.active {
-    background-color: #008080; 
-    transform: scale(1.2); 
-    color: #E5E5E5; 
-    border-radius: 5px; 
-    padding: 10px 20px; 
+    color: #008080;
+    text-decoration: underline;
+    transform: scale(1.2);
+    background-color: #008080;
+    color: #E5E5E5;
+    border-radius: 5px;
+    padding: 10px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -214,7 +220,7 @@ header {
     background-color: rgba(0, 0, 0, 0.5); 
     border: none;
     color: #E5E5E5;
-    font-size: 20px;
+    font-size: 15px;
     position: absolute;
     bottom: 60px;
     left: 50%;
@@ -249,6 +255,7 @@ header {
 
 #scroll-button:hover {
     color: #008080; /* Change text color on hover */
+    background-color: #E5E5E5;
 }
 
 hr{
@@ -260,7 +267,7 @@ hr{
 }
 /*Footer styling used across all the pages*/
 footer {
-    padding: 20px;
+    padding: 5px 50px px 50px;
     background-color: #001a38;
     animation: animatedFooter 3s ease-in;
 }
@@ -278,13 +285,14 @@ footer {
 .contact-me-header {
     color: #E5E5E5;
     font: bold;
-    font-size: 35px;
+    font-size: 25px;
+    margin-bottom: 10px;
 }
 
 address {
-    color: #E5E5E5;
+    color: #b9c7d1;
     margin: 20px 20px;
-    font-size: 19px;
+    font-size: 15px;
 }
 
 .footer-socials {

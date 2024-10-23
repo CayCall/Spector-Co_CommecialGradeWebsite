@@ -27,7 +27,7 @@
     <title>Home - Spector & Co</title>
 </head>
 
-<body>
+<body>1
     <!--the same header will be used on all pages-->
     <header>
         <!--main header-->
@@ -46,11 +46,13 @@
         <h2 id="hero-header">Welcome to <span id="rolling-text">Spector & Co</span></h2>
         <h3 id="hero-h3"> Help us, Help you</h3>
         <button id="scroll-button" class="scroll-text"> scroll down ↓</button>
-    </div>
-    <main>
-        <section class="scroll-to">
 
-        </section>
+    </div>
+    <section class="scroll-to">
+
+    </section>
+    <main>
+
         <!--Filler content for the website-->
         <div class="content-section-wrapper">
             <div id="expertise">
@@ -67,6 +69,7 @@
                     legal strategy, Spector & Co is here to provide expert counsel and dedicated support every step of
                     the way.
                 </p>
+
                 <!--takes us to about page -->
                 <div class="expertise-button-container">
                     <button class="button-variation-1" class="expertise-btn"onclick="loadServicesPage()">
@@ -81,14 +84,14 @@
                 <div class="content-container">
                     <div class="content-container-item">
                         <h3>Business Law</h3> <img class="content-icons"
-                            src="./Images/SVG/building-user-svgrepo-com.svg">
+                            src="./Images/SVG/building-user-svgrepo-com.svg" alt="Business law icon">
                         <p>Our expert legal team provides comprehensive advice on business formation and compliance,
                             ensuring your venture starts off on the right foot. We guide you through the entire process,
                             from drafting the initial documents to ongoing regulatory support.</p>
                     </div>
                     <div class="content-container-item">
                         <h3>Criminal Law</h3>
-                        <img class="content-icons" src="./Images/SVG/thief-svgrepo-com.svg">
+                        <img class="content-icons" src="./Images/SVG/thief-svgrepo-com.svg" alt="Criminal Law icon">
                         <p>We specialize in criminal law, offering expert representation and guidance in criminal
                             defense cases. Our services include legal advice, court representation, and assistance with
                             criminal investigations, ensuring your rights are protected throughout the legal process.
@@ -96,15 +99,15 @@
                     </div>
                     <div class="content-container-item">
                         <h3>Family Law</h3>
-                        <img class="content-icons" src="./Images/SVG/family-svgrepo-com.svg">
+                        <img class="content-icons" src="./Images/SVG/family-svgrepo-com.svg" alt="Family Law icon">
                         <p>Our family law services are designed to assist you during life's transitions. Whether it's
                             divorce, custody issues, or adoption, our compassionate lawyers provide the support you need
                             to navigate these challenging times.</p>
                     </div>
                 </div>
-               
+                <button class="button-variation-1"  id = "services-btn" onclick="loadServicesPage() ">Learn More&#x27A1;</button>
             </div>
-            <button class="button-variation-1" id = "services-btn" onclick="loadServicesPage() ">See Details &#x27A1;</button>
+           
             <hr>
             <!--First data visualisation-->
             <div id="crimes-homepage">
@@ -169,9 +172,11 @@
         </address>
         <!--option to add the links to the socials on the svg's for accessing the social page-->
         <section class="footer-socials">
-            <p>
+            <h5>
                 <span class="fn">&copy; 2024 Spector & Co </span> | All rights reserved.
-            </p>
+            </h5>
+              
+            
 
             <div class="social-icons">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

@@ -132,19 +132,24 @@ function drawChart(data, symbol) {
 function updateLimitLabel() {
     limitLabel.textContent = `You have used the fetch ${useCount} out of ${useLimit} times.`;
 }
-const accordions = document.querySelectorAll('.accordion');
-accordions.forEach(accordion => {
-    accordion.addEventListener('click', function () {
-        this.classList.toggle('active');
 
-        // Get the panel
-        const panel = this.nextElementSibling;
 
-        // Toggle the panel display
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(accordion => {
+        accordion.addEventListener('click', function () {
+            this.classList.toggle('active');
+
+            // Get the panel
+            const panel = this.nextElementSibling;
+
+            // Toggle the panel display
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
     });
 });
