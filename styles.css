@@ -12,10 +12,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;   
     line-height: 1.5; 
     letter-spacing: 0.2px; 
-    background-color: white;
-    height: 100vh;
     padding-top: 80px; 
     overflow: auto;
+    background-color:#E5E5E5;
+}
+main{
+    margin-top: 120px;
 }
 p {
     margin: 20px;      
@@ -26,7 +28,7 @@ h1{
     font-size: 27px;
     font-style: italic;
     font-weight: lighter;
-    color: white;
+    color: #E5E5E5;
     padding: 0px;
     margin: 5px 0px 5px 70px; 
     animation: animatedH1 2s ease-in-out;
@@ -49,6 +51,7 @@ h2{
     line-height: 1.2;
     letter-spacing: 0.8px; 
     margin:15px;
+    text-align: center;
     
 }
 
@@ -74,7 +77,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #ffffff, #002B5C);
+    background: linear-gradient(to bottom, #E5E5E5, #002B5C);
     border-radius: 10px; 
 }
 /*Nav bar styling */
@@ -90,27 +93,28 @@ header {
     background-color: #001a38;
     flex-wrap: wrap;
     z-index: 1000; 
+    box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .hamburger {
     background: none;
     border: none;
-    color: white;
+    color: #E5E5E5;
     font-size: 30px;
     cursor: pointer;
     display: none; 
 }
-.Nav-Bar ul{
+.nav-bar ul{
     list-style-type: none;
 }
-.Nav-Bar ul li{
+.nav-bar ul li{
     display: inline-block;
     height: 100%;
     vertical-align: middle;
 }
 
-.Nav-Bar ul li a {
+.nav-bar ul li a {
     text-decoration: none;
-    color: white;
+    color: #E5E5E5;
     font-size: 18px;
     line-height: 40px;
     padding: 0 20px; 
@@ -119,13 +123,6 @@ header {
     opacity: 0; 
     transition: color 0.2s ease-in, transform 0.2s ease-out; 
 }
-
-.Nav-Bar ul li a:hover {
-    color: #008080;
-    text-decoration: underline;
-    transform: scale(1.2); 
-}
-
 @keyframes animatedNav { 
     0% {
         opacity: 0;
@@ -135,12 +132,27 @@ header {
     }
 }
 
+.nav-bar ul li a:hover {
+    color: #008080;
+    text-decoration: underline;
+    transform: scale(1.2); 
+}
+.nav-bar ul li a.active {
+    background-color: #008080; 
+    transform: scale(1.2); 
+    color: #E5E5E5; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .button-variation-1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     text-decoration: none;
-    background-color: #008080; 
-    color: white;
+    background-color:#008080 ; 
+    color: #E5E5E5;
     border: none;
     border-radius: 40px;
     padding: 15px 25px; 
@@ -153,15 +165,15 @@ header {
 
 .button-variation-1:hover {
     transform: scale(1.1); 
-    background-color: #008080; 
+    background-color:#39cece ; 
+    
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
 }
 .button-variation-2 {
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     background-color: #4A4A4A;
-    color: white;
-
+    color: #E5E5E5;
     border-radius: 10px;
     padding: 12px 25px;
     cursor: pointer;
@@ -183,7 +195,7 @@ header {
     right: 50px;
     z-index: 99;
     border: none;
-    background-color: #008080;;
+    background-color: #39cece;
     color: black;
     cursor: pointer;
     padding: 15px;
@@ -194,9 +206,51 @@ header {
     pointer-events: none;
 }
 .backToTopBtn.show {
-    opacity: 0.8; 
+    opacity: 0.7; 
     pointer-events: auto; 
 }
+
+#scroll-button {
+    background-color: rgba(0, 0, 0, 0.5); 
+    border: none;
+    color: #E5E5E5;
+    font-size: 20px;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 2;
+    text-transform: uppercase;
+    border-radius: 25px; 
+    padding: 10px 20px;
+    box-shadow: 0 0 20px rgba(0, 128, 128, 0.5);
+    animation: float 1.5s ease-in-out infinite;
+    transition: all 0.1s ease;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+#scroll-button:focus {
+    outline: none; 
+    box-shadow: 0 0 15px #008080; /* Enhanced focus outline */
+    transition: box-shadow 0.1s ease; /* Quick transition for box-shadow */
+}
+
+#scroll-button:hover {
+    color: #008080; /* Change text color on hover */
+}
+
 hr{
     color: black;
     padding: 0.5px;
@@ -222,13 +276,13 @@ footer {
 }
 
 .contact-me-header {
-    color: white;
+    color: #E5E5E5;
     font: bold;
     font-size: 35px;
 }
 
 address {
-    color: white;
+    color: #E5E5E5;
     margin: 20px 20px;
     font-size: 19px;
 }
@@ -240,7 +294,7 @@ address {
     text-align: center;          
     margin: 20px 0;            
     padding: 10px;         
-    color: white;              
+    color: #E5E5E5;              
     bottom: 0;              
     left: 0;                 
     right: 0;                
@@ -266,20 +320,19 @@ address {
 }
   
 .social-icons svg:hover {
-    fill: white; 
+    fill: #E5E5E5; 
 }
 .fn {
     color: #b9c7d1;
-  
 }
 
 /*media queries for smaller all the smaller devices*/
 @media (max-width: 768px) {
-    .Nav-Bar ul li {
+    .nav-bar ul li {
         display: block;
         text-align: center; 
     }
-    .Nav-Bar ul {
+    .nav-bar ul {
         display: none; 
         flex-direction: column; 
         position: absolute;
@@ -290,7 +343,7 @@ address {
         z-index: 999;
     }
 
-    .Nav-Bar ul.show {
+    .nav-bar ul.show {
         display: flex; 
     }
 
@@ -298,7 +351,7 @@ address {
         display: block; 
     }
 
-    .Nav-Bar ul li {
+    .nav-bar ul li {
         text-align: center; 
         margin: 10px 0; 
     }

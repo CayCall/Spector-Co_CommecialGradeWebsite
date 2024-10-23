@@ -1,46 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('scrollButton').addEventListener('click', () => {
-        document.querySelector('main').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+
 
 const apiKey = 'cs0qc0pr01qru183mrugcs0qc0pr01qru183mrv0'; // Finnhub API key
 const fetchButton = document.getElementById('fetchButton');
 const resultDiv = document.getElementById('result');
 const limitLabel = document.getElementById('limitLabel');
 
-let useCount = 0; // Initialize usecount
+let useCount = 0; // Initialize use count
 const useLimit = 5;
 
-fetchButton.addEventListener('click', () => {
+fetchButton.addEventListener('click', async () => {
     if (useCount < useLimit) {
         const symbol = document.getElementById('symbol').value;
         const apiUrl = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
 
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                displayData(data, symbol);
-                drawChart(data, symbol);
-                useCount++; // to increment use count
-                updateLimitLabel(); 
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-                resultDiv.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
-            });
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            const data = await response.json();
+            displayData(data, symbol);
+            drawChart(data, symbol);
+            useCount++; // Increment use count
+            updateLimitLabel();
+        } catch (error) {
+            console.error('There has been a problem with your fetch operation:', error);
+            resultDiv.innerHTML = `<p>Error fetching data: ${error.message}</p>`;
+        }
     } else {
         resultDiv.innerHTML = '<p>Usage limit reached. Please refresh the page to reset.</p>';
-        fetchButton.disabled = true; // disable the button if limit is reached
+        fetchButton.disabled = true; // Disable the button if limit is reached
     }
 });
+
 
 function displayData(data, symbol) {
     if (data) {
