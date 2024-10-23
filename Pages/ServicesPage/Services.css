@@ -1,6 +1,6 @@
 #hero-services {
     position: relative;
-    height: 95vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,7 @@
     padding: 20px;
     z-index: 1;
     overflow: hidden;
+    box-shadow: 10px 0 20px #000000;
 }
 
 #video-container {
@@ -33,6 +34,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7); 
     z-index: 2;
 }
 
@@ -90,15 +92,6 @@
 .service-card ul li {
     margin-bottom: 10px;
 }
-
-
-.service-card:hover {
-    transform: translateY(-5px);
-    color: #E5E5E5;
-    background-color: #008080;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 .stock-wrapper {
     display: flex; 
     flex-direction: column;

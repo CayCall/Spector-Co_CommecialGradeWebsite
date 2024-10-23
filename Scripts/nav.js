@@ -1,6 +1,3 @@
-
-// universal nav for all pages
-// Creating menu items 
 const navMenuItems = [
     { name: "Home", href: "/Spector-Co_CommecialGradeWebsite/index.html" },
     { name: "Services", href: "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html" },
@@ -9,31 +6,46 @@ const navMenuItems = [
 ];
 
 // Method for creating Menu Items 
-// Method for creating Menu Items 
 const createMenuItems = () => {
-    //selecting my nav tag 
-    const nav = document.querySelector('nav');
+    const nav = document.querySelector('.nav-bar');
     const ul = document.createElement('ul');
     ul.id = 'nav-links';
 
-    //will iterate through my array, and create a list of hyperlinks for my nav
-    navMenuItems.forEach(element => {
+    navMenuItems.forEach((element) => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.textContent = element.name;
         a.href = element.href;
         a.addEventListener('click', (event) => {
             window.location.href = element.href;
-            a.style.color = '#6A7B8A';
         });
-        //add hyperlinks to my list 
+
+        // Check if the current page matches the link's href
+        if (window.location.pathname === element.href) {
+            a.classList.add('active');
+        }
+
         li.appendChild(a);
         ul.appendChild(li);
     });
 
-    //lastly the list should get the list added to the nav element
     nav.appendChild(ul);
 };
+
+// Add scroll event listener
+const header = document.querySelector('header'); // Select the header
+const navBar = document.querySelector('.nav-bar'); // Select the nav-bar
+const scrollThreshold = 200; // Adjust this value as needed
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= scrollThreshold) {
+        header.classList.add('shrink'); // Add shrink class to header
+        navBar.classList.add('scroll-to'); // Add scroll-to class to nav-bar
+    } else {
+        header.classList.remove('shrink'); // Remove shrink class from header
+        navBar.classList.remove('scroll-to'); // Remove scroll-to class from nav-bar
+    }
+});
 
 
 
@@ -144,7 +156,7 @@ const scrollToTop = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('scroll-button').addEventListener('click', () => {
-        document.querySelector('main').scrollIntoView({
+        document.querySelector('section').scrollIntoView({
             behavior: 'smooth'
         });
     });

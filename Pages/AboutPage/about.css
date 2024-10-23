@@ -115,8 +115,7 @@ main .sub-heading {
 
 .values-list {
     display: grid; 
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto); 
+    grid-template-columns: repeat(3, 1fr); 
     gap: 50px; 
     justify-items: center; 
     margin: 25px; 
@@ -145,8 +144,8 @@ main .sub-heading {
 }
 
 #item-3 {
-    grid-column: 1 / span 2; /* Third item spans both columns */
-    grid-row: 2; 
+    grid-column:3;
+    grid-row: 1; 
     animation: valueItemAnim 2s ease-in-out;
 }
 
@@ -160,11 +159,6 @@ main .sub-heading {
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-.value-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .value-item h3 {
