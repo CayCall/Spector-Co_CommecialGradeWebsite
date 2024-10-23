@@ -18,33 +18,34 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; 
+    z-index: -1;
     overflow: hidden;
 }
 
-#background-video{
+#background-video {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 #hero-services h1 {
-    font-size: 48px; 
+    font-size: 48px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7); 
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
     z-index: 2;
 }
 
 
 
 
-.services-section{
+.services-section {
     margin-top: 150px;
     margin-bottom: 50px;
 }
+
 .container {
     max-width: 1270px;
     margin: 0 auto;
@@ -92,12 +93,14 @@
 .service-card ul li {
     margin-bottom: 10px;
 }
+
 .stock-wrapper {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center; 
+    text-align: center;
 }
+
 #app {
     max-width: 650px;
     margin: auto;
@@ -106,15 +109,17 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 #chart {
     border: 1px solid #ccc;
     margin: 20px 0;
 }
+
 h1 {
     text-align: center;
 }
 
-#fetch-button{
+#fetch-button {
     width: 100%;
     padding: 10px;
     background-color: #008080;
@@ -122,7 +127,8 @@ h1 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Add transition */
+    transition: background-color 0.3s ease;
+    /* Add transition */
 }
 
 #fetch-button:hover {
@@ -153,7 +159,7 @@ svg {
 }
 
 .bar {
-    fill: #008080;  
+    fill: #008080;
     transition: fill 0.3s ease;
 }
 
@@ -165,7 +171,7 @@ svg {
 .legend {
     cursor: pointer;
     margin-right: 30px;
-    color: #008080; 
+    color: #008080;
 }
 
 .axis path,
@@ -179,55 +185,60 @@ svg {
     font-size: 12px;
     fill: #333;
 }
+
 .label {
     font-family: Arial, sans-serif;
     font-size: 12px;
     fill: #333;
     font-weight: bold;
 }
+
 label {
     font-size: 18px;
     color: #4A4A4A;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     display: block;
 }
 
 select {
-    width: 100%; 
-    padding: 10px; 
+    width: 100%;
+    padding: 10px;
     border: 2px solid #002B5C;
-    border-radius: 5px; 
-    background-color: #E5E5E5; 
-    color: #4A4A4A; 
-    font-size: 16px; 
-    transition: border-color 0.3s, background-color 0.3s; 
+    border-radius: 5px;
+    background-color: #E5E5E5;
+    color: #4A4A4A;
+    font-size: 16px;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
 select:focus {
-    outline: none; 
-    border-color: #008080; 
-    background-color: #E5E5E5; 
+    outline: none;
+    border-color: #008080;
+    background-color: #E5E5E5;
 }
 
 select:hover {
-    border-color: #008080; 
+    border-color: #008080;
 }
 
 option {
-    padding: 10px; 
+    padding: 10px;
 }
+
 .area-of-focus {
     margin-top: 100px;
     width: 100%;
-    font-family: 'Helvetica Neue', Arial, sans-serif; 
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
+
 .area-of-focus h2 {
     text-align: center;
 }
+
 .focus-areas-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; 
+    gap: 15px;
 }
 
 .accordion {
@@ -235,26 +246,26 @@ option {
     color: rgb(0, 0, 0);
     cursor: pointer;
     padding: 20px;
-    width: 100%; 
+    width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 22px; 
-    font-weight: 500; 
-    transition: 0.4s; 
+    font-size: 22px;
+    font-weight: 500;
+    transition: 0.4s;
     border-bottom: 2px solid #E5E5E5;
 }
 
 .accordion:after {
-    content: '\002B'; 
+    content: '\002B';
     color: rgb(0, 0, 0);
     font-weight: bold;
     float: right;
-    font-size: 24px; 
+    font-size: 24px;
 }
 
 .accordion.active:after {
-    content: "\2212"; 
+    content: "\2212";
 }
 
 .panel {
@@ -262,7 +273,7 @@ option {
     background-color: #f9f9f9;
     display: none;
     overflow: hidden;
-    border-bottom: 2px solid #E5E5E5; 
+    border-bottom: 2px solid #E5E5E5;
 }
 
 .panel p {
@@ -272,31 +283,38 @@ option {
     color: #4A4A4A;
 }
 
+/* Add your CSS styles here */
+
+
 hr {
     border: none;
     height: 2px;
-    background-color: #E5E5E5; 
-    margin: 20px 0; 
+    background-color: #E5E5E5;
+    margin: 20px 0;
 }
 
 /* Optional: Add padding for smaller screens */
 @media (max-width: 768px) {
     #hero-services h1 {
         font-size: 42px;
-        padding: 0 20px; 
+        padding: 0 20px;
         margin-bottom: 150px;
     }
+
     #scroll-button {
-        font-size: 16px; 
+        font-size: 16px;
         margin-bottom: 70px;
     }
+
     main {
         display: block;
     }
+
     .hidden-controls::-webkit-media-controls {
         display: none !important;
     }
+
     .hidden-controls {
-        pointer-events: none; 
+        pointer-events: none;
     }
 }

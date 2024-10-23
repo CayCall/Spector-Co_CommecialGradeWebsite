@@ -134,7 +134,6 @@ function updateLimitLabel() {
 }
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const accordions = document.querySelectorAll('.accordion');
     accordions.forEach(accordion => {
@@ -153,3 +152,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// Set up the SVG element
+const svg = d3.select("svg");
+const margin = {top: 20, right: 30, bottom: 40, left: 40};
+const width = +svg.attr("width") - margin.left - margin.right;
+const height = +svg.attr("height") - margin.top - margin.bottom;
+
+const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+// Sample data (replace with API data)
+const data = [
+    {date: "2020-01-01", value: 10},
+    {date: "2020-02-01", value: 20},
+    {date: "2020-03-01", value: 30},
+    {date: "2020-04-01", value: 40},
+    {date: "2020-05-01", value: 50}
+];
+
+// Parse the date
+const parseTime = d3.timeParse("%Y-%m-%d");
+data.forEach(d => {
+    d.date = parseTime(d.date);
+});
+
+// Create scales
+const xScale = d3.scaleTime()
+    .domain(d3.extent(data, d => d.date))
+    .range([0, width]);
+
+const yScale = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.value)])
+    .range([height, 0]);
+
+// Create axes
+const xAxis = d3.axisBottom(xScale);
+const yAxis = d3.axisLeft(yScale);
+
+g.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", `translate(0,${height})`)
+    .call(xAxis);
+
+g.append("g")
+    .attr("class", "axis axis--y")
+    .call(yAxis);
+
+// Create the line
+const line = d3.line()
+    .x(d => xScale(d.date))
+    .y(d => yScale(d.value));
+
+g.append("path")
+    .datum(data)
+    .attr("class", "line")
+    .attr("d", line)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue");
+
+// Add a transition effect
+g.selectAll("path")
+    .transition()
+    .duration(1000)
+    .attr("stroke", "orange");

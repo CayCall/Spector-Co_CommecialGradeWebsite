@@ -2,7 +2,9 @@ const navMenuItems = [
     { name: "Home", href: "/Spector-Co_CommecialGradeWebsite/index.html" },
     { name: "Services", href: "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html" },
     { name: "About", href: "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/about.html" },
-    { name: "Design", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/design.html" }
+    { name: "Design", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/design.html" },
+    { name: "Contact us", href: "/Spector-Co_CommecialGradeWebsite/Pages/ContactPage/contact.html" }
+
 ];
 
 // Method for creating Menu Items 
@@ -19,7 +21,10 @@ const createMenuItems = () => {
         a.addEventListener('click', (event) => {
             window.location.href = element.href;
         });
-
+        // Add a class for styling the "Contact Us" link as a button
+        if (element.name === "Contact us") {
+            a.classList.add('button-link');
+        }
         // Check if the current page matches the link's href
         if (window.location.pathname === element.href) {
             a.classList.add('active');
@@ -56,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const hamburgerButton = document.getElementById('hamburger-btn');
     const navLinks = document.getElementById('nav-links');
-    
+
     // Event listener for hamburger menu is used - specifically for the smaller devices (max 768px)
     hamburgerButton.addEventListener('click', () => {
         navLinks.classList.toggle('show');
