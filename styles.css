@@ -135,7 +135,7 @@ header.shrink {
         opacity: 1;
     }
 }
-/*underline effect for nav */
+/*underline effect */
 .nav-bar ul li a::after {
     content: ''; /* Create a pseudo-element */
     position: absolute; 
@@ -165,19 +165,20 @@ header.shrink {
 }
 .button-link {
     display: inline-block; 
-
-    background-color: #008080; 
-    color: white; 
+    background-color: #008080 ;
+    color: #001a38;
     text-decoration: none; 
     border-radius: 20px; 
     transition: background-color 0.3s ease; 
 }
 
 .button-link:hover {
-    background-color: white ;
-    color: #001a38;
+    background-color: white; 
+    color: #E5E5E5; 
 }
-
+.button-link :active{
+    background-color: white;     
+}
 
 .button-variation-1 {
     font-family: Arial, Helvetica, sans-serif;
