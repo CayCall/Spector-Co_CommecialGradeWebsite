@@ -113,6 +113,7 @@ header.shrink {
     display: inline-block;
     height: 100%;
     vertical-align: middle;
+    position: relative; /* Position relative for the pseudo-element */
 }
 
 .nav-bar ul li a {
@@ -134,31 +135,42 @@ header.shrink {
         opacity: 1;
     }
 }
+/*underline effect for nav */
+.nav-bar ul li a::after {
+    content: ''; /* Create a pseudo-element */
+    position: absolute; 
+    left: 0; /* Start from the left */
+    bottom: 0; /* Position it at the bottom of the text */
+    width: 100%;
+    height: 1.5px; /* Height of the underline */
+    background-color: #008080; 
+    transform: scaleX(0); 
+    transition: transform 0.3s ease; 
+}
+
+.nav-bar ul li a:hover::after,
+.nav-bar ul li a.active::after {
+    transform: scaleX(0.75);
+}
 
 .nav-bar ul li a:hover {
-    color: #008080;
-    text-decoration: underline;
+    color: #008080; 
     transform: scale(1.2); 
 }
+
 .nav-bar ul li a.active {
     color: #008080;
-    text-decoration: underline;
-    transform: scale(1.2);
-    background-color: #00808044;
-    color: #E5E5E5;
-    border-radius: 5px;
-    padding: 10px 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transform: scale(1.2); 
+    transition: color 0.3s ease, transform 0.3s ease; 
 }
 .button-link {
-    display: inline-block; /* Makes it behave like a button */
+    display: inline-block; 
 
-    background-color: #008080; /* Background color */
-    color: white; /* Text color */
-    text-decoration: none; /* Remove underline */
-    border-radius: 20px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    background-color: #008080; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 20px; 
+    transition: background-color 0.3s ease; 
 }
 
 .button-link:hover {
