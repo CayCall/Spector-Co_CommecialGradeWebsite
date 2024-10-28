@@ -1,7 +1,7 @@
 const navMenuItems = [
     { name: "Home", href: "/Spector-Co_CommecialGradeWebsite/index.html" },
-    { name: "Services", href: "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html" },
     { name: "About", href: "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/about.html" },
+    { name: "Services", href: "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html" },
     { name: "Design", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/design.html" },
     { name: "Contact us", href: "/Spector-Co_CommecialGradeWebsite/Pages/ContactPage/contact.html" }
 ];
