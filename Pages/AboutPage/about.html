@@ -36,17 +36,33 @@
             <button class="hamburger" id="hamburger-btn">&#9776;</button>
         </nav>
     </header>
+    <div id="hero-splash-images">
+        <div id="video-container">
+            <video id="background-video" autoplay muted>
+                <source src="../../Images/Videos/LawVid.mp4" id="about-splash-video" type="video/mp4">
+            </video>
+        </div>
+        <h1>About us</h1>
+        <button id="scroll-button" class="scroll-text"> scroll down ↓</button>
+    </div>
+    <section class="scroll-to">
 
+    </section>
     <main>
         <section class="about-section">
-            <h2 class="sub-heading">About</h2>
+            <h2 class="sub-heading" id="about-us-header">Who are we?</h2>
             <p>
-                At Spector & Co, we specialize in delivering <strong>tailored legal solutions</strong> that simplify
-                complex legal landscapes. Our commitment to <strong>precision</strong> and <strong>client-centric
-                    advocacy</strong> sets us apart, ensuring your business thrives within the legal framework.</p>
+                At Spector & Co, we provide tailored legal solutions that simplify complexities and ensure your business thrives.</p>
         </section>
+        
+        <div class="scroll-indicator">
+            <p class="scroll-prompt">Click to learn more about our firm!</p>
+            <div class="scroll-arrow">&darr;</div>
+        </div>
+
 
         <section class="firm-info">
+            <div class="section-divider"></div>
             <!-- Mission Section -->
             <div class="container left-container">
                 <div class="text-box left animate-left">
@@ -57,7 +73,7 @@
                 </div>
                 <img class="animate-left" src="../../Images/photography.jpg" alt="Our Mission Image">
             </div>
-
+            <div class="section-divider"></div>
             <!-- History Section -->
             <div class="container right-container">
                 <div class="text-box animate-right">
@@ -67,6 +83,7 @@
                 </div>
                 <img class="animate-right" src="../../Images/wesley-tingey.jpg" alt="Our History Image">
             </div>
+            <div class="section-divider"></div>
             <!-- Culture Section -->
             <div class="container left-container">
                 <div class="text-box left animate-left">
@@ -75,7 +92,7 @@
                 </div>
                 <img class="animate-left" src="../../Images/giammarco.jpg" alt="Firm Culture Image">
             </div>
-
+            <div class="section-divider"></div>
             <!-- Pro Bono Section -->
             <div class="container right-container">
                 <div class="text-box animate-right">
@@ -85,8 +102,9 @@
                 </div>
                 <img class="animate-right" src="../../Images/wesley-tingey.jpg" alt="Our History Image">
             </div>
+           
         </section>
-
+        <hr>
         <section id="our-values">
             <div class="container-values">
                 <h2>Our Values</h2>
@@ -112,10 +130,6 @@
                 </div>
             </div>
         </section>
-        <section>
-            <!--<h2>Our Locations</h2>-->
-        </section>
-
     </main>
 
 
@@ -171,7 +185,7 @@
         </section>
     </footer>
     <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()"> ↑ </button>
-    <script src="../../Scripts/nav.js"></script>
+    <script src="../../Scripts/nav.js" defer></script>
     <script src="../../Scripts/about.js"></script>
 </body>
 

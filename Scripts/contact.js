@@ -16,6 +16,7 @@ const subscribeError = document.getElementById('subscribe-error');
 const successMessage = document.getElementById('success-message');
 
 
+
 //system revolves aroud local bool declarations in 1 fucntion that will streamline the entire form
 //listen for this event interacting with submit
 form.addEventListener('submit', (e) => {
@@ -89,7 +90,30 @@ form.addEventListener('submit', (e) => {
         subscribeError.textContent = '';
     }
 
+    let waitTime = 5; 
+    const successMessage = document.getElementById('success-message'); 
+    
+    // Function to update the success message element when the user types everything in correctly
+    function updateSuccessMessage() {
+        if (waitTime > 0) {
+            successMessage.textContent = 'Form submitted successfully!';
+        } else {
+            successMessage.textContent = ''; // Clear the message if the waitTime is =0
+        }
+    }
+    
+    // Decrease waitTime every 1 second so the message is only there for 5 seconds
+    const intervalId = setInterval(() => {
+        if (waitTime > 0) {
+            waitTime -= 1;
+            updateSuccessMessage(); 
+        } else {
+            clearInterval(intervalId); // Stop the interval when waitTime reaches 0
+        }
+    }, 1000); // 1000 milliseconds = 1 second
+    
+    // Call this function when the form is valid and each field is filled in correctly
     if (isValid) {
-        successMessage.textContent = 'Form submitted successfully!';
+        updateSuccessMessage(); 
     }
 });
