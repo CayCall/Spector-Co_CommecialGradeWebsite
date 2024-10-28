@@ -50,6 +50,25 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Scroll-to button on every page
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollButton = document.getElementById('scroll-button');
+
+    scrollButton.addEventListener('click', () => {
+        const buttonRect = scrollButton.getBoundingClientRect();
+        const buttonInView = buttonRect.top >= 0 && buttonRect.bottom <= window.innerHeight;
+
+        if (buttonInView) {
+            document.querySelector('.scroll-to').scrollIntoView({
+                behavior: 'smooth'
+            });
+        } else {
+            console.log("Button is not in view.");
+            
+        }
+    });
+});
+
 // Home Page navigation
 document.addEventListener('DOMContentLoaded', () => {
     createMenuItems(); // Call the function to create menu items
@@ -63,15 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Function to load the About page
-const loadAboutPage = () => {
-    window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/about.html";
-};
 
-// Function to load the Services page
-const loadServicesPage = () => {
-    window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html";
-};
 // Check if an element is in the viewport
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
@@ -94,7 +105,7 @@ function handleScroll() {
 // Listen for scroll
 window.addEventListener('scroll', handleScroll);
 
-// Function for the back to top button
+// scroll to the top button
 const backToTopButton = document.getElementById('backToTopBtn');
 window.onscroll = () => {
     const scrollPosition = window.scrollY;
@@ -108,13 +119,6 @@ window.onscroll = () => {
     }
 };
 
-// About PAGE nav
-const toggleFocusDetails = (element) => {
-    const details = element.nextElementSibling;
-    details.style.display = details.style.display === "block" ? "none" : "block";
-};
-
-// Page navigation
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,
@@ -122,12 +126,22 @@ const scrollToTop = () => {
     });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('scroll-button').addEventListener('click', () => {
-        document.querySelector('.scroll-to').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
 
+// About PAGE nav for the accordions
+const toggleFocusDetails = (element) => {
+    const details = element.nextElementSibling;
+    details.style.display = details.style.display === "block" ? "none" : "block";
+};
+
+
+//page loaders - for buttons in case i want to load a specific page
+// Function to load the About page
+const loadAboutPage = () => {
+    window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/AboutPage/about.html";
+};
+
+// Function to load the Services page
+const loadServicesPage = () => {
+    window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html";
+};
 console.log('nav.js loaded');
