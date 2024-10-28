@@ -206,9 +206,6 @@ header.shrink {
 }
 
 
-
-
-
 .button-link {
     display: inline-block; 
     background-color: #008080 ;
@@ -223,7 +220,8 @@ header.shrink {
     color: #E5E5E5; 
 }
 .button-link :active{
-    background-color: white;     
+    background-color: white;  
+    color: #E5E5E5;    
 }
 
 .button-variation-1 {
