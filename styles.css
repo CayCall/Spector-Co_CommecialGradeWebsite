@@ -217,12 +217,11 @@ header.shrink {
 
 .button-link:hover {
     background-color: white; 
-    color: #E5E5E5; 
+   
 }
 
 .button-link:active {
-    background-color: white; 
-    color: #E5E5E5;  
+    background-color: white;   
 }
 
 .button-variation-1 {
