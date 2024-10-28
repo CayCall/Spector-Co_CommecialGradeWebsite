@@ -167,13 +167,12 @@ header.shrink {
 /*hero for each page*/
 #hero-splash-images {
     position: relative;
-    height: 95vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: rgb(255, 255, 255);
-    padding: 20px;
     z-index: 1;
     overflow: hidden;
     box-shadow: 10px 0 20px #000000;

@@ -8,7 +8,6 @@
   align-items: center;
   text-align: center;
   color: rgb(255, 255, 255);
-  padding: 20px;
   z-index: 0; 
   top: 0;
   margin: 0; 
@@ -298,4 +297,5 @@ svg {
   #testimonials h2{
     font-size: 1.5rem;
   }
+
 }
