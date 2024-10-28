@@ -208,20 +208,21 @@ header.shrink {
 
 .button-link {
     display: inline-block; 
-    background-color: #008080 ;
+    background-color: #008080;
     color: #001a38;
     text-decoration: none; 
     border-radius: 20px; 
-    transition: background-color 0.3s ease; 
+    transition: color 0.3s, background-color 0.3s ease; 
 }
 
 .button-link:hover {
     background-color: white; 
     color: #E5E5E5; 
 }
-.button-link :active{
-    background-color: white;  
-    color: #E5E5E5;    
+
+.button-link:active {
+    background-color: white; 
+    color: #E5E5E5;  
 }
 
 .button-variation-1 {
