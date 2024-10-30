@@ -53,10 +53,8 @@ h2{
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.8px; 
-    opacity: 0.7; 
     margin:15px;
     text-align: center;
-    
 }
 
 h3, h4 {
@@ -64,7 +62,8 @@ h3, h4 {
     font-weight: 700;
 }
 .sub-heading{
-    margin: 100px 100px 70px 100px;
+    margin: 0px 100px 50px 100px;
+    opacity: 0.75;
 }
 
 @media (max-width: 768px) {
@@ -332,21 +331,19 @@ header.shrink {
 }
 
 #scroll-button:hover {
-    color: #008080; /* Change text color on hover */
+    color: #008080;
     background-color: #E5E5E5;
 }
 @media (max-width: 768px) {
     .button-variation-1, .button-variation-2 {
-        padding: 12px 20px; /* Adjusted padding */
-        font-size: 18px; /* Adjusted size */
+        padding: 12px 20px; 
+        font-size: 18px; 
     }
 }
 hr{
     color: black;
     padding: 0.5px;
     margin: 30px 50px 0px 50px;
-  
-
 }
 /*Footer styling used across all the pages*/
 footer {

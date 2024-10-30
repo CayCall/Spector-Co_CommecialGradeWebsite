@@ -89,7 +89,7 @@
   margin-top: 30px; text-align: center;
 }
 #expertise {
-  margin: 3.125em;
+  margin: 8rem;
 }
 .expertise-paragraph{
   margin: 1em 5%; 
@@ -197,7 +197,7 @@
 #testimonials {
   text-align: center;
   margin: 100px;
-  padding: 40px;
+  padding: 30px;
   display: flex;              
   flex-direction: column;    
   align-items: center;        
