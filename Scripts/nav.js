@@ -144,4 +144,6 @@ const loadAboutPage = () => {
 const loadServicesPage = () => {
     window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html";
 };
+
+
 console.log('nav.js loaded');

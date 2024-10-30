@@ -98,11 +98,7 @@ h1 {
     margin-top: 20px;
 }
 
-svg {
-    margin-top: 20px;
-    background: #f9f9f9;
-    border-radius: 4px;
-}
+
 
 .tooltip {
     position: absolute;

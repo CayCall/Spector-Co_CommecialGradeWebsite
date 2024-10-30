@@ -197,7 +197,7 @@
 #testimonials {
   text-align: center;
   margin: 100px;
-  padding: 20px;
+  padding: 40px;
   display: flex;              
   flex-direction: column;    
   align-items: center;        
@@ -206,24 +206,24 @@
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
 }
 
-.testimonial-item {
-  display: none;           
+.testimonial-item {        
   position: relative;     
-  height: 150px;        
-  overflow: hidden;       
+  height: 150px;             
   padding: 10px;         
   box-sizing: border-box;  
 }
 .testimonial-item.active {
   display: block;
 }
-.testimonial-item p {
-  max-height: 120px;      
+.testimonials p {
+  max-height: 150px;      
+  margin: 10;
   overflow: hidden;      
   text-overflow: ellipsis; 
   display: -webkit-box;  
 
 }
+
 #handshake-img {
   width: 100%;
   max-width: 400px;
@@ -243,8 +243,8 @@
   margin-top: 5px;
 }
 #imageContainer img {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 130px;
   border-radius: 50%;
 }
 svg {
@@ -256,7 +256,7 @@ svg {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  margin-top: 20px;
+  margin-top: 100px;
   gap: 30px;
 }
 
@@ -278,24 +278,79 @@ svg {
 }
 
 @media (max-width: 768px) {
-  .content-container {
-    grid-template-columns: 1fr;
-  }
-  #crime-bar-chart {
-    margin:auto;
-    width: 350px;
-    height: 500px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  /* Hero Section */
+  #hero {
+    height: 70vh; /* Reduce height on smaller screens */
+    padding: 20px; /* Add some padding */
   }
 
-  #testimonials{
-    margin: 20px;
-    grid-column: 1;
-    padding: 100px;
+  #hero-header {
+    font-size: 1.5rem; /* Adjust font size */
   }
-  #testimonials h2{
-    font-size: 1.5rem;
+
+  #hero-h3 {
+    font-size: 1.2rem; /* Adjust font size */
   }
+
+  /* Content Section */
+  #content-section-grid {
+    padding: 40px 20px; /* Reduce padding */
+  }
+
+  .content-container {
+    grid-template-columns: 1fr; /* Stack items vertically */
+    gap: 20px; /* Reduce gap */
+  }
+
+  .content-container-item {
+    padding: 15px; /* Reduce padding */
+  }
+
+  /* Testimonials Section */
+  #testimonials {
+    margin: 20px; /* Reduce margin */
+    padding: 20px; /* Reduce padding */
+  }
+
+  #testimonials h2 {
+    font-size: 34px; 
+  }
+
+  /* Crime Bar Chart */
+  #crime-bar-chart {
+    width: 100%; /* Make chart full width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px auto; /* Center the chart */
+  }
+
+  /* Buttons */
+  #services-btn {
+    width: 100%; /* Make button full width */
+    margin-top: 20px; /* Adjust margin */
+  }
+
+  .arrow {
+    font-size: 18px; /* Adjust font size */
+    padding: 10px; /* Adjust padding */
+  }
+
+  /* Adjust Images */
+  #handshake-img {
+    max-width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Adjust Paragraphs */
+  .expertise-paragraph {
+    font-size: 1em; /* Adjust font size */
+    margin: 1em 10%; /* Adjust margin */
+  }
+
+  /* Adjust Icons */
+  .content-icons {
+    width: 50px; /* Reduce icon size */
+  }
+
+  /* General Body Padding */
 
 }
