@@ -21,25 +21,27 @@
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 50px;
 }
 
 .service-card {
     background-color: #E5E5E5;
     border-radius: 8px;
-    padding: 25px;
+    padding: 17px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    letter-spacing: 1.6px;
+    
+}
+.service-card h3{
+    margin: 1rem;
+    color: #002B5C;
 }
 
-.service-card h2 {
-    color: #002B5C;
-    font-size: 28px;
-    margin-bottom: 10px;
-}
 
 .service-card p {
     margin-bottom: 20px;
+    opacity: 0.7;
 }
 
 .service-card ul {
@@ -50,6 +52,7 @@
 
 .service-card ul li {
     margin-bottom: 10px;
+    opacity: 0.7;
 }
 
 .stock-wrapper {

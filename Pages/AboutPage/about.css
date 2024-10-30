@@ -90,8 +90,7 @@
 /* Section Divider */
 .section-divider {
     height: 25px;
-    background: linear-gradient(to bottom, transparent, #f0f0f0);
-    /* Example gradient */
+    background: linear-gradient(to bottom, transparent, #e5e5e5);
 }
 
 /* Our Values Section */
@@ -112,9 +111,9 @@
 /* Flex Container */
 .container {
     display: flex;
-    margin: 150px;
+    margin: 130px;
     align-items: center;
-    padding: 20px;
+    padding: 5px;
     gap: 20px;
     overflow: hidden;
     opacity: 0;
@@ -186,7 +185,7 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
