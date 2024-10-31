@@ -1,4 +1,21 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(accordion => {
+        accordion.addEventListener('click', function () {
+            this.classList.toggle('active');
 
+            // Get the panel
+            const panel = this.nextElementSibling;
+
+            // Toggle the panel display
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+});
 
 const apiKey = 'cs0qc0pr01qru183mrugcs0qc0pr01qru183mrv0'; // Finnhub API key
 const fetchButton = document.getElementById('fetchButton');
@@ -132,27 +149,6 @@ function drawChart(data, symbol) {
 function updateLimitLabel() {
     limitLabel.textContent = `You have used the fetch ${useCount} out of ${useLimit} times.`;
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const accordions = document.querySelectorAll('.accordion');
-    accordions.forEach(accordion => {
-        accordion.addEventListener('click', function () {
-            this.classList.toggle('active');
-
-            // Get the panel
-            const panel = this.nextElementSibling;
-
-            // Toggle the panel display
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    });
-});
-
 
 // Set up the SVG element
 const svg = d3.select("svg");

@@ -183,7 +183,7 @@ option {
 }
 
 .area-of-focus {
-    margin-top: 100px;
+    margin: 100px 0px 100px 0px;
     width: 100%;
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
@@ -195,7 +195,7 @@ option {
 .focus-areas-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
 }
 
 .accordion {
@@ -211,6 +211,8 @@ option {
     font-weight: 500;
     transition: 0.4s;
     border-bottom: 2px solid #E5E5E5;
+  
+
 }
 
 .accordion:after {
@@ -240,15 +242,7 @@ option {
     color: #4A4A4A;
 }
 
-/* Add your CSS styles here */
 
-
-hr {
-    border: none;
-    height: 2px;
-    background-color: #E5E5E5;
-    margin: 20px 0;
-}
 
 /* Optional: Add padding for smaller screens */
 @media (max-width: 768px) {
@@ -273,5 +267,8 @@ hr {
 
     .hidden-controls {
         pointer-events: none;
+    }
+    svg{
+        width: 80%;
     }
 }

@@ -435,7 +435,7 @@ footer {
     margin-top: 20px; 
 }
 
-.footer-socials p {
+.footer-socials p { 
     margin: 0;                  
     padding: 5px 0;            
 }
@@ -447,14 +447,17 @@ footer {
 }
 
 .social-icons svg {
-    margin: 0 10px; /* Space between icons */
+    margin: 0 10px; 
     width: 24px;              
     height: 24px;               
-    fill: #008080; /* Icon color */
+    fill: #008080; 
+    transition: transform 0.2s ease, fill 0.2s ease;
+    transform-origin: center; 
+    
 }
-
 .social-icons svg:hover {
-    fill: #E5E5E5; /* Change icon color on hover */
+    fill: #E5E5E5; 
+    transform: scale(1.2); 
 }
 /*media queries for smaller all the smaller devices*/
 @media (max-width: 768px) {
