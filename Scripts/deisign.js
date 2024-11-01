@@ -1,4 +1,3 @@
-
 const sideMenuItems = [
     { name: "Style Guide", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/styleguide.html", icon: "fas fa-paint-brush" },
     { name: "Wireframes", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/wireframes.html", icon: "fas fa-drafting-compass" },
@@ -14,7 +13,7 @@ function renderMenu() {
     sideMenuItems.forEach(item => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <a href="${item.href}" class="menu-item">
+            <a href="#" class="menu-item" data-href="${item.href}">
                 <i class="${item.icon}"></i> ${item.name}
             </a>`;
         menuList.appendChild(li);
@@ -23,14 +22,26 @@ function renderMenu() {
 
 // Function to handle menu item clicks
 function handleMenuClick(event) {
-    event.preventDefault(); // Prevent the default anchor behavior
+    const menuItem = event.target.closest('.menu-item');
+    if (!menuItem) return; // Exit if not a menu item
 
+    // Prevent the default action of the anchor tag
+    event.preventDefault();
+
+    // Remove active class from all items
     const items = document.querySelectorAll('.sidebar li');
-    items.forEach(item => item.classList.remove('active')); // Remove active class from all
-    event.currentTarget.parentElement.classList.add('active'); // Add active class to the clicked item
+    items.forEach(item => item.classList.remove('active'));
 
-    // Fetch the content from the href
-    const url = event.currentTarget.getAttribute('href');
+    // Add active class to the clicked item
+    menuItem.parentElement.classList.add('active');
+
+    // Fetch and display the content
+    const href = menuItem.getAttribute('data-href');
+    fetchContent(href);
+}
+
+// Function to fetch and display the HTML content
+function fetchContent(url) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -39,23 +50,20 @@ function handleMenuClick(event) {
             return response.text();
         })
         .then(html => {
-            contentDiv.innerHTML = html; // Load the HTML into the content div
+            // Update the content div with the fetched HTML
+            contentDiv.innerHTML = html;
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
+            contentDiv.innerHTML = '<p>Error loading content. Please try again later.</p>';
         });
 }
 
 // Render the menu
 renderMenu();
 
-// Add click event listeners to menu items after rendering the menu
-menuList.addEventListener('click', (event) => {
-    if (event.target.closest('.menu-item')) {
-        handleMenuClick(event);
-    }
-});
-
+// Add click event listener to the menu list
+menuList.addEventListener('click', handleMenuClick);
 
 // for the wire frames on wireframes.html
 let currentIndex = 0;

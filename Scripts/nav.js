@@ -39,7 +39,6 @@ const createMenuItems = () => {
 // Scroll-to button on every page
 document.addEventListener('DOMContentLoaded', () => {
 
-    // creates the hamburger nav menu for responsive design
     createMenuItems();
     const hamburgerButton = document.getElementById('hamburger-btn');
     const navLinks = document.getElementById('nav-links');
