@@ -1,4 +1,3 @@
-
 .services-section {
     margin-top: 150px;
     margin-bottom: 50px;
@@ -27,13 +26,14 @@
 .service-card {
     background-color: #E5E5E5;
     border-radius: 8px;
-    padding: 17px;
+    padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     letter-spacing: 1.6px;
-    
+
 }
-.service-card h3{
+
+.service-card h3 {
     margin: 1rem;
     color: #002B5C;
 }
@@ -60,6 +60,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+.stock-wrapper p{
+    text-align: left;
+    margin: 40px 100px 100px 100px ;
+    padding: 10px;
+    letter-spacing: 1.3px;
+    word-spacing: 1px;
 }
 
 #app {
@@ -211,7 +218,7 @@ option {
     font-weight: 500;
     transition: 0.4s;
     border-bottom: 2px solid #E5E5E5;
-  
+
 
 }
 
@@ -243,6 +250,43 @@ option {
 }
 
 
+#crimes-homepage h2 {
+    text-align: center;
+}
+#crimes-homepage p {
+    text-align: left;
+    margin: 40px 100px 100px 100px ;
+    padding: 10px;
+    letter-spacing: 1.3px;
+    word-spacing: 1px;
+}
+#crime-bar-chart {
+    margin: 50px auto;
+    width: 800px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.bar {
+    fill: #4A4A4A;
+
+}
+
+.bar:hover {
+    fill: #008080;
+}
+
+.axis-label {
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.title {
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 0;
+}
 
 /* Optional: Add padding for smaller screens */
 @media (max-width: 768px) {
@@ -268,7 +312,8 @@ option {
     .hidden-controls {
         pointer-events: none;
     }
-    svg{
+
+    svg {
         width: 80%;
     }
 }

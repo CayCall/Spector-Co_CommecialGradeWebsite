@@ -21,7 +21,7 @@
 
 /* About Section */
 .about-section h2 {
-    font-size: 50px;
+    font-size: 45px;
     font-weight: bold;
     color: black;
     opacity: 0.6;
@@ -35,56 +35,6 @@
     line-height: 1.8;
     max-width: 800px;
     margin: 50px auto;
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-    text-align: center;
-    margin: 100px 10px 0;
-    padding: 20px;
-}
-
-.scroll-arrow {
-    font-size: 50px;
-    padding: 0;
-    color: #008080;
-    transition: transform 0.3s ease ;
-    animation: bounce 1.5s infinite ;
-    /* Smooth transition for transform */
-    cursor: pointer;
-    /* Change cursor to pointer on hover */
-}
-
-.scroll-arrow:hover {
-    color: #39CECE;
-    animation: bounce ;
-}
-
-@keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-10px);
-    }
-
-    60% {
-        transform: translateY(-5px);
-    }
-}
-
-.scroll-prompt {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
-    color: #555;
-    opacity: 0.7;
 }
 
 /* Section Divider */
@@ -152,10 +102,8 @@
 
 /* Values Section Heading */
 #our-values h2 {
-    font-size: 30px;
     margin: 60px 20px 20px;
     padding-top: 20px;
-    opacity: 0.7;
 }
 
 .intro-text {
@@ -216,7 +164,7 @@
 }
 
 .value-item h3 {
-    font-size: 28px;
+    font-size: 26px;
     color: #008080;
     margin-bottom: 10px;
 }
@@ -226,7 +174,118 @@
     color: #4A4A4A;
     line-height: 1.5;
 }
+/* Bubble chart container styling */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
+.title {
+    font-size: 32px; /* Increased font size */
+    font-weight: bold;
+    color: #002B5C; /* Consistent color scheme */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+.chart-title,
+.details-title {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#chart {
+    display: flex;
+    justify-content: center;
+    margin: 20px 200px 100px 200px;
+    background: linear-gradient(to bottom right, #e6f7ff, #fff); /* Light gradient background */
+    border: 2px solid #4a4a4a; /* Border to define the chart area */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Padding inside the chart area */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+#loading {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    animation: fadeIn 1s ease-in-out; /* Fade-in effect */
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+#page-filter {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.2s;
+}
+
+#page-filter:hover {
+    border-color: #002B5C; /* Change border color on hover */
+}
+.bubble {
+    transition: transform 0.2s ease, fill 0.2s ease;
+    cursor: pointer;
+    stroke: #fff; /* White outline */
+    stroke-width: 2; /* Outline width */
+}
+
+.bubble:hover {
+    transform: scale(1.1);
+    fill: #ffcc00; /* Change color on hover */
+    stroke: #ff6600; /* Change outline color on hover */
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    font: 14px sans-serif;
+    background: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+    border: 1px solid #333; /* Dark border */
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    pointer-events: none;
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 /* Media Queries */
 @media (max-width: 900px) {
     .container {

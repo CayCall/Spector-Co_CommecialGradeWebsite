@@ -163,36 +163,8 @@
   margin-right: auto;
   margin-top:50px ;
 }
-#crimes-homepage h2{
-  text-align: center;
-}
-#crime-bar-chart {
-  margin: 50px auto;
-  width: 800px;
-  height: 500px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
 
-.bar {
-  fill: #4A4A4A;
 
-}
-
-.bar:hover {
-  fill: #008080;
-}
-
-.axis-label {
-  font-size: 12px;
-  font-family: sans-serif;
-}
-
-.title {
-  text-align: center;
-  font-size: 16px;
-  margin: 20px 0;
-}
 
 #testimonials {
   text-align: center;
