@@ -1,49 +1,61 @@
 
-document.querySelectorAll('.read-more').forEach(button => {
-    button.addEventListener('click', function () {
-        const content = this.nextElementSibling;
-        content.classList.toggle('visible');
-
-        // Change button text based on content visibility
-        this.textContent = content.classList.contains('visible') ? 'Read Less' : 'Read More';
-    });
-});
 const sideMenuItems = [
-    { name: "Style Guide", href: "/Spector-Co_CommecialGradeWebsite/DesignPage/LoadPage/styleguide.html", icon: "fas fa-paint-brush" },
-    { name: "Wireframes", href: "/Spector-Co_CommecialGradeWebsite/DesignPage/LoadPage/wireframes.html", icon: "fas fa-drafting-compass" },
-    { name: "UI and UX Decisions", href: "/Spector-Co_CommecialGradeWebsite/DesignPage/LoadPage/uidecisions.html", icon: "fas fa-lightbulb" },
-    { name: "My Essay", href: "/Spector-Co_CommecialGradeWebsite/DesignPage/LoadPage/essay.html", icon: "fas fa-book" }
+    { name: "Style Guide", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/styleguide.html", icon: "fas fa-paint-brush" },
+    { name: "Wireframes", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/wireframes.html", icon: "fas fa-drafting-compass" },
+    { name: "UI and UX Decisions", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/uidecisions.html", icon: "fas fa-lightbulb" },
+    { name: "My Essay", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/essay.html", icon: "fas fa-book" }
 ];
 
 const menuList = document.getElementById('menu-list');
+const contentDiv = document.querySelector('.content');
 
 // Function to render the menu
 function renderMenu() {
     sideMenuItems.forEach(item => {
         const li = document.createElement('li');
         li.innerHTML = `
-                <a href="${item.href}" class="menu-item">
-                    <i class="${item.icon}"></i> ${item.name}
-                </a>`;
+            <a href="${item.href}" class="menu-item">
+                <i class="${item.icon}"></i> ${item.name}
+            </a>`;
         menuList.appendChild(li);
     });
 }
 
 // Function to handle menu item clicks
 function handleMenuClick(event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+
     const items = document.querySelectorAll('.sidebar li');
     items.forEach(item => item.classList.remove('active')); // Remove active class from all
     event.currentTarget.parentElement.classList.add('active'); // Add active class to the clicked item
+
+    // Fetch the content from the href
+    const url = event.currentTarget.getAttribute('href');
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(html => {
+            contentDiv.innerHTML = html; // Load the HTML into the content div
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
 }
 
 // Render the menu
 renderMenu();
 
-// Add click event listeners to menu items
-const menuItems = document.querySelectorAll('.menu-item');
-menuItems.forEach(item => {
-    item.addEventListener('click', handleMenuClick);
+// Add click event listeners to menu items after rendering the menu
+menuList.addEventListener('click', (event) => {
+    if (event.target.closest('.menu-item')) {
+        handleMenuClick(event);
+    }
 });
+
 
 // for the wire frames on wireframes.html
 let currentIndex = 0;

@@ -35,23 +35,22 @@ const createMenuItems = () => {
     nav.appendChild(ul);
 };
 
-// Add scroll event listener
-const header = document.querySelector('header'); // Select the header
-const navBar = document.querySelector('.nav-bar'); // Select the nav-bar
-const scrollThreshold = 200; // Adjust this value as needed
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY >= scrollThreshold) {
-        header.classList.add('shrink'); // Add shrink class to header
-        navBar.classList.add('scroll-to'); // Add scroll-to class to nav-bar
-    } else {
-        header.classList.remove('shrink'); // Remove shrink class from header
-        navBar.classList.remove('scroll-to'); // Remove scroll-to class from nav-bar
-    }
-});
 
 // Scroll-to button on every page
 document.addEventListener('DOMContentLoaded', () => {
+
+    // creates the hamburger nav menu for responsive design
+    createMenuItems();
+    const hamburgerButton = document.getElementById('hamburger-btn');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburgerButton.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+
+
+    // universal scroll down button on hero's
     const scrollButton = document.getElementById('scroll-button');
 
     scrollButton.addEventListener('click', () => {
@@ -64,74 +63,93 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             console.log("Button is not in view.");
-            
+
         }
     });
-});
-
-// Home Page navigation
-document.addEventListener('DOMContentLoaded', () => {
-    createMenuItems(); // Call the function to create menu items
-
-    const hamburgerButton = document.getElementById('hamburger-btn');
-    const navLinks = document.getElementById('nav-links');
-
-    // Event listener for hamburger menu for smaller devices
-    hamburgerButton.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-    });
-});
 
 
-// Check if an element is in the viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top <= window.innerHeight &&
-        rect.bottom >= 0
-    );
-}
+    //Scroll effects
+    // Add scroll event listener for the nav bar to shrink and increase
+    const header = document.querySelector('header');
+    const navBar = document.querySelector('.nav-bar');
+    const scrollThreshold = 200;
 
-// Function to handle scroll animation
-function handleScroll() {
-    const elements = document.querySelectorAll('.content-container-item p');
-    elements.forEach((element) => {
-        if (isInViewport(element)) {
-            element.classList.add('animate');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY >= scrollThreshold) {
+            header.classList.add('shrink');
+            navBar.classList.add('scroll-to');
+        } else {
+            header.classList.remove('shrink');
+            navBar.classList.remove('scroll-to');
         }
     });
-}
 
-// Listen for scroll
-window.addEventListener('scroll', handleScroll);
-
-// scroll to the top button
-const backToTopButton = document.getElementById('backToTopBtn');
-window.onscroll = () => {
-    const scrollPosition = window.scrollY;
-    const viewportHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    // Check if the user has scrolled down exactly three-quarters of the html document's height
-    if (scrollPosition > (documentHeight - viewportHeight) * 0.75) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= window.innerHeight &&
+            rect.bottom >= 0
+        );
     }
-};
 
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // Function to handle scroll animation
+    function handleScroll() {
+        const elements = document.querySelectorAll('.content-container-item p');
+        elements.forEach((element) => {
+            if (isInViewport(element)) {
+                element.classList.add('animate');
+            }
+        });
+    }
+    // Listen for scroll
+    window.addEventListener('scroll', handleScroll);
+
+
+
+    //Buttons nav
+    // scroll back to the top button - universal
+    const backToTopButton = document.getElementById('backToTopBtn');
+
+    window.onscroll = () => {
+        const scrollPosition = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        // Check if the user has scrolled down exactly three-quarters of the html document's height
+        if (scrollPosition > (documentHeight - viewportHeight) * 0.75) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    // Attach the scrollToTop function to the button click
+    backToTopButton.addEventListener('click', scrollToTop);
+
+    // About PAGE nav for the accordions
+    const toggleFocusDetails = (element) => {
+        const details = element.nextElementSibling;
+        details.style.display = details.style.display === "block" ? "none" : "block";
+    };
+
+    // Smooth scroll to the firm-info section
+    const scrollArrow = document.querySelector('.scroll-arrow');
+    const firmInfoSection = document.querySelector('.scroll-down-to');
+
+    scrollArrow.addEventListener('click', () => {
+        firmInfoSection.scrollIntoView({ behavior: 'smooth' });
     });
-};
 
-
-// About PAGE nav for the accordions
-const toggleFocusDetails = (element) => {
-    const details = element.nextElementSibling;
-    details.style.display = details.style.display === "block" ? "none" : "block";
-};
+    window.addEventListener('scrollLearn', handleLearnscroll);
+    handleLearnscroll();
+});
 
 
 //page loaders - for buttons in case i want to load a specific page
@@ -146,4 +164,5 @@ const loadServicesPage = () => {
 };
 
 
-console.log('nav.js loaded');
+// for checking if the nav script is loading 
+console.log('nav.js loaded'); 

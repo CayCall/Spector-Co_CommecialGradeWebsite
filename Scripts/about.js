@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const handleScroll = () => {
-        const containers = document.querySelectorAll('.container'); 
+        const containers = document.querySelectorAll('.container');
         containers.forEach(container => {
             if (isInViewport(container)) {
                 container.classList.add('visible');
@@ -20,21 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const isInViewport = (element) => {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    };
 
     const handleLearnscroll = () => {
-        const containers = document.querySelectorAll('.container'); 
+        const containers = document.querySelectorAll('.container');
         containers.forEach(container => {
             if (isInViewport(container)) {
                 container.classList.add('visible');
@@ -42,17 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Smooth scroll to the firm-info section
-    const scrollArrow = document.querySelector('.scroll-arrow');
-    const firmInfoSection = document.querySelector('.scroll-down-to');
 
-    scrollArrow.addEventListener('click', () => {
-        firmInfoSection.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    window.addEventListener('scrollLearn', handleLearnscroll);
-    handleLearnscroll();
 });
+
 
 
 // Generating Dummy Data for 20 Pages
@@ -132,22 +112,22 @@ async function createBubbleChart() {
         .attr("cy", (d, i) => Math.floor(i / 10) * 60 + 60) // Space rows apart
         .attr("r", (d, i) => sizeScale(pageCounts[d]))
         .style("fill", "steelblue")
-        .on("mouseover", function(event, d) {
+        .on("mouseover", function (event, d) {
             tooltip.transition().duration(200).style("opacity", .9);
             tooltip.html(`Page: ${d}<br>Opinions: ${pageCounts[d]}<br>${data.find(op => op.page === d).importantInfo}`)
                 .style("left", (event.pageX + 5) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
-        .on("mouseout", function() {
+        .on("mouseout", function () {
             tooltip.transition().duration(500).style("opacity", 0);
         })
-        .on("click", function(event, d) {
+        .on("click", function (event, d) {
             const detailsDiv = d3.select("#details");
             detailsDiv.style("display", "block").html(`Page: ${d}<br>Opinions: ${pageCounts[d]}<br>${data.find(op => op.page === d).importantInfo}`);
         });
 
     // Filtering functionality
-    d3.select("#page-filter").on("change", function() {
+    d3.select("#page-filter").on("change", function () {
         const selectedPage = this.value;
         svg.selectAll(".bubble").style("opacity", 0.1);
         if (selectedPage === "all") {

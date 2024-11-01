@@ -391,9 +391,7 @@ header.shrink {
     color: #008080;
     transition: transform 0.3s ease;
     animation: bounce 1.5s infinite;
-    /* Smooth transition for transform */
     cursor: pointer;
-    /* Change cursor to pointer on hover */
 }
 
 .scroll-arrow:hover {
