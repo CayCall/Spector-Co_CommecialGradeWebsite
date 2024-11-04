@@ -195,14 +195,6 @@
   display: -webkit-box;  
 
 }
-
-#handshake-img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 5px;
-}
-
 .testimonial-text {
   font-size: 16px;
   color: #333;
@@ -215,9 +207,11 @@
   margin-top: 5px;
 }
 #imageContainer img {
-  width: 160px;
+  width: 100%;
+  max-width: 160px;
   height: 130px;
   border-radius: 50%;
+  image-resolution: 100%;
 }
 svg {
   width: 100%;

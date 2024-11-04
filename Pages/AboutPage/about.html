@@ -63,11 +63,11 @@
         </div>
 
 
-        <section  class="scroll-down-to">
+        <section class="scroll-down-to">
             <div class="section-divider"></div>
             <!-- Mission Section -->
             <div class="container left-container">
-                <div class="text-box left animate-left">
+                <div>
                     <h2>Our Mission</h2>
                     <p>Empower businesses by providing top-tier legal consultancy
                         services.</p>
@@ -78,9 +78,9 @@
             <div class="section-divider"></div>
             <!-- History Section -->
             <div class="container right-container">
-                <div class="text-box animate-right">
+                <div>
                     <h2>Our History</h2>
-                    <p>Founded in [Year], Spector & Co was established to fill the gap in the legal consultancy
+                    <p>Founded in 1979, Spector & Co was established to fill the gap in the legal consultancy
                         market...</p>
                 </div>
                 <img class="animate-right" src="../../Images/wesley-tingey.jpg" alt="Our History Image">
@@ -88,7 +88,7 @@
             <div class="section-divider"></div>
             <!-- Culture Section -->
             <div class="container left-container">
-                <div class="text-box left animate-left">
+                <div >
                     <h2>Firm Culture</h2>
                     <p>Fostering a collaborative and inclusive culture where every team member is valued.</p>
                 </div>
@@ -97,12 +97,11 @@
             <div class="section-divider"></div>
             <!-- Pro Bono Section -->
             <div class="container right-container">
-                <div class="text-box animate-right">
-                    <h2>Our History</h2>
-                    <p>Founded in 2003, Spector & Co was established to fill the gap in the legal consultancy market...
-                    </p>
+                <div>
+                    <h2>Our Commitment to Excellence</h2>
+                    <p>At Spector & Co, we are dedicated to maintaining the highest standards of legal consultancy.</p>
                 </div>
-                <img class="animate-right" src="../../Images/wesley-tingey.jpg" alt="Our History Image">
+                <img class="animate-right" src="../../Images/stock-image-law.jpg" alt="Our History Image">
             </div>
 
         </section>
@@ -135,39 +134,66 @@
         <hr>
         <section>
             <div>
-                <h2 class="sub-heading" >
-                    Our Legal Opinions
-                </h2>
-                <p></p>
+                <div>
+                    <h2 class="legal-opinion-h2">Our Legal Opinions</h2>
+                    <p class="legal-opinion-p">
+                        At Spector and Co, we are dedicated to providing comprehensive insights into the justice system
+                        through our standard court opinions. Our expertise empowers legal professionals, business
+                        owners,
+                        and individuals alike to navigate complex legal landscapes with confidence. We strive to clarify
+                        the
+                        intricacies of justice, enabling informed decision-making. <strong>Please note</strong>, due to
+                        confidentiality requirements, we provide only aggregated information, ensuring the privacy of
+                        our
+                        clients and sensitive case details.
+                    </p>
 
-                <!-- Page Filter Dropdown -->
-                <label for="page-filter">Select Page:</label>
-                <select id="page-filter">
-                    <option value="all">All Pages</option>
-                    <!-- Options will be populated dynamically -->
-                </select>
+                    <!-- New Fetch Button -->
 
-                <!-- Chart Section -->
-                <div class="chart-title">Bubble Chart</div>
-                <div id="chart"></div>
+                    
+                    <div class="chart-title">Legal pages containing our Spector & Co opinions</div>
+                    <div class="button-container">
+                        <button id="fetch-legal-opinions" style="display: none;">
+                            Fetch Legal Opinions
+                            <svg fill="#000000" viewBox="0 0 24 24" id="update" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path id="primary" d="M4,12A8,8,0,0,1,18.93,8" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                                    <path id="primary-2" data-name="primary" d="M20,12A8,8,0,0,1,5.07,16" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                                    <polyline id="primary-3" data-name="primary" points="14 8 19 8 19 3" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline>
+                                    <polyline id="primary-4" data-name="primary" points="10 16 5 16 5 21" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                           <!-- Loading Message -->
+                           <div id="loading" style="display: none;">Loading, please wait... </div>
+                    <!-- Page Filter Dropdown -->
+                    <div class="page-filter-container">
+                        <label for="page-filter">Select Page:</label>
+                        <select id="page-filter">
+                            <option value="all">All Pages</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+            
+             
+                
+                    <div id="chart"></div>
 
-                <!-- Details Section -->
-                <div class="details-title">Details</div>
-                <div id="details"></div>
-
-                <!-- Modal for Detailed View -->
-                <div id="modal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <div id="modal-details"></div>
+                    <!-- Modal for Detailed View -->
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div id="modal-details"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
-
     </main>
-
+    <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()"> ↑ </button>
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -213,7 +239,7 @@
             </div>
         </div>
     </footer>
-    <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()"> ↑ </button>
+
     <script src="../../Scripts/nav.js" defer></script>
     <script type="module" src="../../Scripts/datamanager.js"></script>
     <script type="module" src="../../Scripts/about.js""></script>

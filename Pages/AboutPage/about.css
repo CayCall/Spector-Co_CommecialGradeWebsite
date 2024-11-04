@@ -37,6 +37,20 @@
     margin: 50px auto;
 }
 
+.legal-opinion-h2 {
+    padding: 20px;
+    margin: 30px;
+}
+
+.legal-opinion-p {
+    margin: 20px 100px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+
+}
+
 /* Section Divider */
 .section-divider {
     height: 25px;
@@ -53,7 +67,6 @@
     border-radius: 5px;
 }
 
-/* Flex Container */
 .container {
     display: flex;
     margin: 130px;
@@ -75,9 +88,14 @@
 }
 
 .text-box {
-    max-width: 50%;
-    padding: 20px;
-    opacity: 1;
+    opacity: 0; /* Start as invisible */
+    transform: translateY(20px); /* Slightly lower position */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Animation for fade and move */
+}
+
+.text-box.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Original position */
 }
 
 /* Image Animations */
@@ -174,6 +192,7 @@
     color: #4A4A4A;
     line-height: 1.5;
 }
+
 /* Bubble chart container styling */
 .header {
     text-align: center;
@@ -181,15 +200,19 @@
 }
 
 .title {
-    font-size: 32px; /* Increased font size */
+    font-size: 32px;
+    /* Increased font size */
     font-weight: bold;
-    color: #002B5C; /* Consistent color scheme */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    color: #002B5C;
+    /* Consistent color scheme */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
 }
+
 .chart-title,
 .details-title {
-    margin-top: 20px;
-    font-size: 24px;
+    margin-top: 60px;
+    font-size: 22px;
     font-weight: bold;
     text-align: center;
 }
@@ -198,45 +221,75 @@
     display: flex;
     justify-content: center;
     margin: 20px 200px 100px 200px;
-    background: linear-gradient(to bottom right, #e6f7ff, #fff); /* Light gradient background */
-    border: 2px solid #4a4a4a; /* Border to define the chart area */
-    border-radius: 10px; /* Rounded corners */
-    padding: 10px; /* Padding inside the chart area */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    background: linear-gradient(to bottom right, #e6f7ff, #fff);
+    /* Light gradient background */
+    border: 2px solid #4a4a4a;
+    /* Border to define the chart area */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 10px;
+    /* Padding inside the chart area */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Shadow for depth */
 }
 
 #loading {
     text-align: center;
     font-size: 18px;
-    color: #555;
-    animation: fadeIn 1s ease-in-out; /* Fade-in effect */
+    color: #008080;
+    animation: fadeIn 1s ease-in-out;
+    /* Fade-in effect */
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
+
+.page-filter-container {
+    text-align: center;
+    /* Center the dropdown */
+    margin: 20px
+}
+
 #page-filter {
-    margin: 20px;
     padding: 10px;
+    /* Add padding for better touch target */
     border: 1px solid #ccc;
+    /* Border styling */
     border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size for readability */
     transition: border-color 0.2s;
+    /* Smooth transition for border color */
 }
 
 #page-filter:hover {
-    border-color: #002B5C; /* Change border color on hover */
+    border-color: #002B5C;
+    /* Change border color on hover */
 }
+
 .bubble {
     transition: transform 0.2s ease, fill 0.2s ease;
     cursor: pointer;
-    stroke: #fff; /* White outline */
-    stroke-width: 2; /* Outline width */
+    stroke: #fff;
+    /* White outline */
+    stroke-width: 2;
+    /* Outline width */
 }
 
 .bubble:hover {
-    transform: scale(1.1);
-    fill: #ffcc00; /* Change color on hover */
-    stroke: #ff6600; /* Change outline color on hover */
+
+    fill: #ffcc00;
+    /* Change color on hover */
+    stroke: #ff0000;
+    /* Change outline color on hover */
 }
 
 .tooltip {
@@ -244,33 +297,47 @@
     text-align: center;
     padding: 10px;
     font: 14px sans-serif;
-    background: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
-    border: 1px solid #333; /* Dark border */
+    background: rgba(255, 255, 255, 0.9);
+    /* Slightly opaque background */
+    border: 1px solid #333;
+    /* Dark border */
     border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* Shadow for depth */
     pointer-events: none;
-    transition: opacity 0.3s ease; /* Smooth transition */
+    transition: opacity 0.3s ease;
+    /* Smooth transition */
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
+    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
 }
 
 .close {
@@ -282,9 +349,38 @@
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #008080;
     text-decoration: none;
     cursor: pointer;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if needed) */
+ 
+}
+#fetch-legal-opinions {
+    background-color: #008080; /* Navy Blue */
+    color: #FFFFFF; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 20px; /* Space between button and chart */
+
+}
+#fetch-legal-opinions svg {
+    width: 20px; /* Set desired width */
+    height: 20px; /* Set desired height */
+    vertical-align: middle; /* Aligns the icon vertically with text */
+    margin-left: 5px; /* Space between text and SVG */
+}
+/* Button Hover Effect */
+#fetch-legal-opinions:hover {
+    background-color: #39cece; /* A lighter shade of navy for hover */
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 /* Media Queries */
 @media (max-width: 900px) {

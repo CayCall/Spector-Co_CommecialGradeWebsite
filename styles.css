@@ -313,7 +313,7 @@ header.shrink {
     border-radius: 5px;
     font-size: 18px;
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added transition for transform and box-shadow */
     pointer-events: none;
 }
 
@@ -322,13 +322,20 @@ header.shrink {
     pointer-events: auto;
 }
 
+.backToTopBtn:hover {
+    background-color: #31b2b2; /* Slightly darker background color on hover */
+    transform: scale(1.1); /* Slightly scale up the button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+
+
 #scroll-button {
     background-color: rgba(0, 0, 0, 0.5);
     border: none;
     color: #E5E5E5;
     font-size: 15px;
     position: absolute;
-    bottom: 60px;
+    bottom:80px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
@@ -498,7 +505,7 @@ footer {
 
 .bottom-nav ul li a:hover {
     color: #39cece;
-    transform: scale(1.2);
+
     z-index: 1;
 }
 
