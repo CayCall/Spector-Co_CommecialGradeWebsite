@@ -1,7 +1,6 @@
 .contact-info {
     display: grid; 
-    margin: 80px; 
-    gap: 100px;
+    margin: 200px; 
     grid-template-columns: repeat(3, 1fr); 
 }
 

@@ -105,6 +105,10 @@ function updateWireframe() {
     const currentWireframe = wireframes[currentWireframeIndex];
     wireframeTitle.textContent = currentWireframe.title;
     wireframeImage.src = currentWireframe.imgSrc;
+
+    // Update visibility of the Previous and Next buttons based on the current index
+    prevButton.style.display = currentWireframeIndex === 0 ? "none" : "block";
+    nextButton.style.display = currentWireframeIndex === wireframes.length - 1 ? "none" : "block";
 }
 
 // Event listener for the "Previous" button
@@ -123,5 +127,5 @@ nextButton.addEventListener('click', () => {
     }
 });
 
-// Initialize the first wireframe
+// Initial call to update the wireframe content on page load
 updateWireframe();
