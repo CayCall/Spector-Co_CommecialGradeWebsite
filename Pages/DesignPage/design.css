@@ -129,29 +129,115 @@ h3 {
 /*Wireframe styling*/
 /* Shared styling for all wireframe containers */
 #wireframe-container {
-    margin: 20px;
+    max-width: 800px;  
+    margin: 0 auto;    
+    text-align: center; 
     padding: 20px;
-    text-align: center;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #f4f4f4;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 #current-wireframe {
-    width: 80%;
-    height: auto;
-    margin-top: 20px;
+    max-width: 100%;  
+    max-height: 600px; 
+    margin: 20px 0;    
+    border-radius: 8px; 
 }
+
+
+#wireframe-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; 
+    margin-bottom: 10px;
+}
+
+/* Button styles */
 .wireframe-button {
     padding: 10px 20px;
+    background-color: #002B5C; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease; 
     margin: 10px;
-    background-color: #002B5C;
-    color: white;
-    border: none;
-    border-radius: 5px;
 }
+
 .wireframe-button:hover {
-    background-color: #004080;
+    background-color: #005b8e;
+}
+
+.wireframe-button:focus {
+    outline: none; 
+}
+/*Design decisons page*/
+#design-decisions {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#design-decisions h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#design-decisions p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#design-decisions ul {
+    padding-left: 20px;
+}
+
+#design-decisions ul li {
+    font-size: 16px;
+}
+
+#design-decisions ul li strong {
+    color: #002B5C;
+}
+
+/* Styling for #folder-structure */
+#folder-structure {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#folder-structure h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#folder-structure p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#folder-structure ul {
+    padding-left: 20px;
+}
+
+#folder-structure ul li {
+    font-size: 16px;
+}
+
+#folder-structure ul li strong {
+    color: #002B5C;
+}
+
+#folder-structure img {
+    display: block;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
 }
