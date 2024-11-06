@@ -88,7 +88,7 @@
             <div class="section-divider"></div>
             <!-- Culture Section -->
             <div class="container left-container">
-                <div >
+                <div>
                     <h2>Firm Culture</h2>
                     <p>Fostering a collaborative and inclusive culture where every team member is valued.</p>
                 </div>
@@ -133,63 +133,70 @@
         </section>
         <hr>
         <section>
+
             <div>
-                <div>
-                    <h2 class="legal-opinion-h2">Our Legal Opinions</h2>
-                    <p class="legal-opinion-p">
-                        At Spector and Co, we are dedicated to providing comprehensive insights into the justice system
-                        through our standard court opinions. Our expertise empowers legal professionals, business
-                        owners,
-                        and individuals alike to navigate complex legal landscapes with confidence. We strive to clarify
-                        the
-                        intricacies of justice, enabling informed decision-making. <strong>Please note</strong>, due to
-                        confidentiality requirements, we provide only aggregated information, ensuring the privacy of
-                        our
-                        clients and sensitive case details.
-                    </p>
+                <h2 class="legal-opinion-h2">Our Legal Opinions</h2>
+                <p class="legal-opinion-p">
+                    At Spector and Co, we are dedicated to providing comprehensive insights into the justice system
+                    through our standard court opinions. Our expertise empowers legal professionals, business
+                    owners,
+                    and individuals alike to navigate complex legal landscapes with confidence. We strive to clarify
+                    the
+                    intricacies of justice, enabling informed decision-making. <strong>Please note</strong>, due to
+                    confidentiality requirements, we provide only aggregated information, ensuring the privacy of
+                    our
+                    clients and sensitive case details.
+                </p>
 
-                    <!-- New Fetch Button -->
+                <!-- New Fetch Button -->
+                <div class="chart-title">Legal cases with our opinions</div>
+                <div class="button-container">
+                    <button id="fetch-legal-opinions" style="display: none;">
+                        Fetch Cases
+                        <svg fill="#000000" viewBox="0 0 24 24" id="update" data-name="Flat Line"
+                            xmlns="http://www.w3.org/2000/svg" class="icon flat-line">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path id="primary" d="M4,12A8,8,0,0,1,18.93,8"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </path>
+                                <path id="primary-2" data-name="primary" d="M20,12A8,8,0,0,1,5.07,16"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </path>
+                                <polyline id="primary-3" data-name="primary" points="14 8 19 8 19 3"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </polyline>
+                                <polyline id="primary-4" data-name="primary" points="10 16 5 16 5 21"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </polyline>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Loading Message -->
+                <div id="loading" style="display: none;">Loading, please wait... </div>
+                <!-- Page Filter Dropdown -->
+                <div class="page-filter-container">
+                    <label for="page-filter">Select Case:</label>
+                    <select id="page-filter">
+                        <option value="all">All Cases</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
 
-                    
-                    <div class="chart-title">Legal pages containing our Spector & Co opinions</div>
-                    <div class="button-container">
-                        <button id="fetch-legal-opinions" style="display: none;">
-                            Fetch Legal Opinions
-                            <svg fill="#000000" viewBox="0 0 24 24" id="update" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <path id="primary" d="M4,12A8,8,0,0,1,18.93,8" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
-                                    <path id="primary-2" data-name="primary" d="M20,12A8,8,0,0,1,5.07,16" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
-                                    <polyline id="primary-3" data-name="primary" points="14 8 19 8 19 3" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline>
-                                    <polyline id="primary-4" data-name="primary" points="10 16 5 16 5 21" style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></polyline>
-                                </g>
-                            </svg>
-                        </button>
-                    </div>
-                           <!-- Loading Message -->
-                           <div id="loading" style="display: none;">Loading, please wait... </div>
-                    <!-- Page Filter Dropdown -->
-                    <div class="page-filter-container">
-                        <label for="page-filter">Select Page:</label>
-                        <select id="page-filter">
-                            <option value="all">All Pages</option>
-                            <!-- Options will be populated dynamically -->
-                        </select>
-                    </div>
-            
-             
-                
-                    <div id="chart"></div>
 
-                    <!-- Modal for Detailed View -->
-                    <div id="modal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div id="modal-details"></div>
-                        </div>
+
+                <div id="chart"></div>
+
+                <!-- Modal for Detailed View -->
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div id="modal-details"></div>
                     </div>
                 </div>
+            </div>
         </section>
 
     </main>

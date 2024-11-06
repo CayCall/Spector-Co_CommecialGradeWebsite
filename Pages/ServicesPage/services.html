@@ -133,8 +133,11 @@
         <div class="scroll-down-to"></div>
         <hr>
         <section class="area-of-focus">
-  
+
             <h2 class="sub- ">Areas Of Focus</h2>
+            <p>Our firm specializes in key areas of law to serve your unique needs. From Corporate and Criminal Law to Intellectual Property, Employment, Family, and Real Estate, we provide clear, effective guidance 
+                to protect your interests and navigate legal challenges 
+                with confidence. </p>
             <div class="focus-areas-container">
                 <div class="focus-card">
                     <button class="accordion">Corporate Law</button>
@@ -198,58 +201,61 @@
             </div>
         </section>
         <hr>
-        <div class="stock-wrapper">
+
+        <section class="stock-wrapper">
             <h2>We Inform On Stock Price Data</h2>
-            <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making
-                for our clients in the financial and corporate sectors. Accurate and up-to-date stock information is
-                essential for businesses involved in mergers and acquisitions, compliance with regulatory requirements,
-                and strategic financial planning. Our legal experts work closely with clients to analyze stock
-                performance, assess risks, and ensure that all legal obligations are met, enabling them to navigate the
-                complexities of the market with confidence. By integrating comprehensive stock data into our legal
-                strategies, we empower our clients to make decisions that are not only legally sound but also
-                financially advantageous.</p>
-        </div>
-        <section id="app">
-            <div>
-                <label for="symbol">Choose a stock:</label>
-                <select id="symbol">
-                    <option value="AAPL">Apple Inc. (AAPL)</option>
-                    <option value="AMZN">Amazon.com Inc. (AMZN)</option>
-                    <option value="MSFT">Microsoft Corporation (MSFT)</option>
-                    <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
-                    <option value="TSLA">Tesla, Inc. (TSLA)</option>
-                    <option value="FB">Meta Platforms, Inc. (FB)</option>
-                    <option value="NFLX">Netflix, Inc. (NFLX)</option>
-                    <option value="NVDA">NVIDIA Corporation (NVDA)</option>
-                    <option value="BABA">Alibaba Group Holding Ltd. (BABA)</option>
-                    <option value="DIS">The Walt Disney Company (DIS)</option>
-                </select>
-                <button id="fetch-button">Fetch Stock Data</button>
-            </div>
-            <div id="result"></div>
-            <svg id="chart" width="600" height="400"></svg> <!-- SVG for D3 Chart -->
-            <p id="limitLabel">You have used the fetch 0 out of 5 times.</p>
-        </section>
-        <hr>
-        <section>
-            <div id="crimes-homepage">
-                <h2>
-                    Understanding Criminal Justice
-                </h2>
-                <p>
-                    Data-Driven Legal Insights
-                    We leverage criminal justice data visualizations to offer clients a deeper understanding of relevant legal trends and case patterns. These insights help support case strategies, inform legal decisions, and provide a clearer view of the justice landscape to empower clients.
-                </p>
+            <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making for our clients in the financial and corporate sectors. Accurate and up-to-date stock information is essential for businesses involved in mergers and acquisitions, compliance with regulatory requirements, and strategic financial planning. Our legal experts work closely with clients to analyze stock performance, assess risks, and ensure that all legal obligations are met, enabling them to navigate the complexities of the market with confidence. By integrating comprehensive stock data into our legal strategies, we empower our clients to make decisions that are not only legally sound but also financially advantageous.</p>
+            
+            <div id="app">
                 <div>
-                    <p class="crimes-p" style="text-align: center;">At Spector & Co, we have a zero-tolerance policy for
-                        crime.</p>
-                    <h2 class="title">Exploring Crime Rates Across Categories</h2>
+                    <label for="symbol">Choose a stock:</label>
+                    <p>Bar graph reveals our client <strong>stock  prices </strong> below</p>
+                    <select id="symbol">
+                        <option value="AAPL">Apple Inc. (AAPL)</option>
+                        <option value="AMZN">Amazon.com Inc. (AMZN)</option>
+                        <option value="MSFT">Microsoft Corporation (MSFT)</option>
+                        <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
+                        <option value="TSLA">Tesla, Inc. (TSLA)</option>
+                        <option value="FB">Meta Platforms, Inc. (FB)</option>
+                        <option value="NFLX">Netflix, Inc. (NFLX)</option>
+                        <option value="NVDA">NVIDIA Corporation (NVDA)</option>
+                        <option value="BABA">Alibaba Group Holding Ltd. (BABA)</option>
+                        <option value="DIS">The Walt Disney Company (DIS)</option>
+                    </select>
+                    <button id="fetch-button">Fetch Stock Data   <svg fill="#000000" viewBox="0 0 24 24" id="update" data-name="Flat Line"
+                        xmlns="http://www.w3.org/2000/svg" class="icon flat-line">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path id="primary" d="M4,12A8,8,0,0,1,18.93,8"
+                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                            </path>
+                            <path id="primary-2" data-name="primary" d="M20,12A8,8,0,0,1,5.07,16"
+                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                            </path>
+                            <polyline id="primary-3" data-name="primary" points="14 8 19 8 19 3"
+                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                            </polyline>
+                            <polyline id="primary-4" data-name="primary" points="10 16 5 16 5 21"
+                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                            </polyline>
+                        </g>
+                    </svg></button>
                 </div>
-                <!--- received assistance from  https://youtu.be/sTOHoueLVJE?si=oupiekktqexp_1Vl-->
-                <div id="crime-bar-chart"></div>
-            </div>    
+                <hr>
+                <div id="result"></div>
+                <svg id="chart" width="600" height="500"></svg> <!-- SVG for D3 Chart -->
+                <p id="limitLabel">You have used the fetch 0 out of 5 times.</p>
+                
+            </div>
+
+            <div>
+                <h2>Crime Rates by State</h2>
+                <svg id="map" width="960" height="600"></svg>
+            </div>
         </section>
-    
+
+
     </main>
 
 

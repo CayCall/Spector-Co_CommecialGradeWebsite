@@ -296,7 +296,8 @@
     position: absolute;
     text-align: center;
     padding: 10px;
-    font: 14px sans-serif;
+    font: 14px Arial, Helvetica, sans-serif;
+    ;
     background: rgba(255, 255, 255, 0.9);
     /* Slightly opaque background */
     border: 1px solid #333;
@@ -334,7 +335,7 @@
     background-color: #fefefe;
     margin: 15% auto;
     /* 15% from the top and centered */
-    padding: 20px;
+    padding: 40px;
     border: 1px solid #888;
     width: 80%;
     /* Could be more or less, depending on screen size */
@@ -343,7 +344,7 @@
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
 }
 
