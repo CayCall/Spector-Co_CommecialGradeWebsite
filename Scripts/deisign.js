@@ -38,6 +38,9 @@ function handleMenuClick(event) {
     // Fetch and display the content
     const href = menuItem.getAttribute('data-href');
     fetchContent(href);
+
+    // Update the browser's URL without reloading the page
+    history.pushState({ page: href }, '', href);
 }
 
 // Function to fetch and display the HTML content
@@ -62,7 +65,17 @@ function fetchContent(url) {
 // Render the menu
 renderMenu();
 
-// Function to initialise wireframe navigation
+// Listen for menu item clicks
+menuList.addEventListener('click', handleMenuClick);
+
+// Listen for popstate events (back/forward browser navigation)
+window.addEventListener('popstate', (event) => {
+    if (event.state) {
+        fetchContent(event.state.page);
+    }
+});
+
+
 function initializeWireframeNavigation(wireframeId, wireframeImages) {
     let currentIndex = 0;
     const nextButton = document.getElementById('next-' + wireframeId);

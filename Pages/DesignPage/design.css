@@ -127,13 +127,16 @@ h3 {
 }
 
 /*Wireframe styling*/
+/* Shared styling for all wireframe containers */
 #wireframe-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 20px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
+
 #current-wireframe {
     width: 80%;
     height: auto;
