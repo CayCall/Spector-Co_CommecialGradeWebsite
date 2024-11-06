@@ -29,35 +29,84 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function fetchLegalOpinions() {
         if (legalData.length > 0) return legalData; // Return cached data if it already exists
-    
+
         try {
             const response = await fetch(API_URL);
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
             const data = await response.json();
-    
+
             // Log the raw data for debugging
             console.log(data);
-    
-            // Adjust the mapping based on the actual structure of the API response
-            legalData = data.results.map(opinion => ({
-                id: opinion.id,
-                Document: opinion.case_name || 'Unknown Document', // Check if case_name exists
-                court: opinion.court || 'Unknown Court', // Check if court exists
-                opinionsCount: opinion.opinions_count || 0, // Check if opinions_count exists
-                pageCount: opinion.page_count || 0, // Check if page_count exists
-                dateCreated: opinion.date_created || new Date().toISOString().split('T')[0], // Check if date_created exists
-                type: opinion.type || '100trialcourt',
-                cluster: opinion.cluster || '#', // Check if absolute_url exists
-            }));
-    
+
+            // Initialize the opinions count
+            let opinionsCount = 0;
+
+            // Fetch details from cluster URLs
+            const opinionsPromises = data.results.map(async opinion => {
+                opinionsCount++; // Increment the opinions count for each opinion
+                return await fetchOpinionDetails(opinion, opinionsCount); // Pass count to details fetching
+            });
+
+            legalData = await Promise.all(opinionsPromises);
+
             return legalData;
         } catch (error) {
             console.error('Error fetching legal opinions:', error);
             return []; // Return an empty array in case of error
         }
     }
+    async function fetchOpinionDetails(opinion) {
+
+        // Fetch the case details from the cluster URL
+        try {
+            const clusterResponse = await fetch(opinion.cluster);
+            if (!clusterResponse.ok) {
+                throw new Error('Failed to fetch opinion details: ' + clusterResponse.statusText);
+            }
+            const clusterData = await clusterResponse.json();
+            // Extract necessary data from clusterData
+            const caseName = clusterData.case_name || 'Unknown Case';
+            const docketUrl = clusterData.docket || null;
+            let natureOfSuit = 'Unknown Nature of Suit';
+
+            // Fetch nature_of_suit from docket URL if it exists
+            if (docketUrl) {
+                natureOfSuit = await fetchNatureOfSuit(docketUrl);
+            }
+
+            return {
+                id: opinion.id,
+                Document: caseName, // Use case name from cluster data
+                opinionsCount: opinion.opinions_count || 1,
+                pageCount: opinion.page_count || 0,
+                dateCreated: opinion.date_created || new Date().toISOString().split('T')[0],
+                courtType: opinion.court || '100trialcourt',
+                clusterUrl: opinion.cluster || '#',
+                natureOfSuit: natureOfSuit // Add nature_of_suit to the returned object
+            };
+        } catch (error) {
+            console.error('Error fetching opinion details:', error);
+            return opinion; // Return original opinion in case of error
+        }
+    }
+
+    async function fetchNatureOfSuit(docketUrl) {
+        try {
+            const docketResponse = await fetch(docketUrl);
+            if (!docketResponse.ok) {
+                throw new Error('Failed to fetch docket details: ' + docketResponse.statusText);
+            }
+            const docketData = await docketResponse.json();
+            // Extract nature_of_suit from docket data
+            return docketData.nature_of_suit || 'Confidential Information'; // Default value if not found
+        } catch (error) {
+            console.error('Error fetching nature_of_suit:', error);
+            return 'Error fetching nature of suit'; // Return an error message in case of failure
+        }
+    }
+
     async function populatePageDropdown() {
         const data = await fetchLegalOpinions();
         const dropdown = document.getElementById("page-filter");
@@ -84,9 +133,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (selectedPage) {
             bubbles.each(function (d) {
                 if (d.Document === selectedPage) {
-                    d3.select(this).style("opacity", 1) 
+                    d3.select(this).style("opacity", 1) // Highlight the selected bubble
                         .style("stroke", "orange")
-                        .style("stroke-width", 2);
+                        .style("stroke-width", 3);
                 }
             });
         } else {
@@ -113,10 +162,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             .attr("class", "tooltip")
             .style("opacity", 0);
 
+        // Scale for X-Axis (Opinions Count)
         const xScale = d3.scaleLinear()
             .domain([0, d3.max(data, d => d.opinionsCount) + 1])
             .range([0, width]);
 
+        // Scale for Y-Axis (Page Count)
         const yScale = d3.scaleLinear()
             .domain([0, d3.max(data, d => d.pageCount) + 1])
             .range([height, 0]);
@@ -163,63 +214,56 @@ document.addEventListener('DOMContentLoaded', async () => {
             .style("stroke-width", 1);
 
         bubbles
-            //when mouse hovers over the individual bubbles
             .on("mouseover", function (event, d) {
                 d3.select(this).style("stroke", "orange").style("stroke-width", 3);
                 tooltip.transition().duration(200).style("opacity", 0.9);
-                tooltip.html(s`
-                    <strong>Opinion Id: #</strong> ${d.id}<br>
+                tooltip.html(`
+                    <strong>Opinion Id:</strong> #${d.id}<br>
                     <strong>Number Of Opinions:</strong> ${d.opinionsCount}<br>
-                    <strong>Page Number:</strong> ${d.pageCount}<br>
+                    <strong>Page Count:</strong> ${d.pageCount}<br>
                     <strong>Date Created:</strong> ${d.dateCreated}<br>
-                    <span class="view-details" style="color: #008080; font-weight: bold;">Click to view details</span>
+                    <strong>Document:</strong> ${d.Document}<br>
+                    <strong>Nature of Suit:</strong> ${d.natureOfSuit}<br>
+                    <strong>Opinion Link:</strong> <a href="${d.clusterUrl}" target="_blank" style="color: #008080; font-weight: bold;">View Opinion</a>
                 `)
                     .style("left", (event.pageX + 5) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })
-            //when mouse hovering off the individual bubbles
             .on("mouseout", function () {
                 d3.select(this).style("stroke", "black").style("stroke-width", 1);
                 tooltip.transition().duration(500).style("opacity", 0);
             })
-            // clicking on the bubbles
             .on("click", function (event, d) {
-                const detailsDiv = d3.select("#modal-details");
-                detailsDiv.html(`
-                    <strong>Opinion Id: #</strong> ${d.id}<br>
-                    <strong>Number Of Opinions:</strong> ${d.opinionsCount}<br>
-                    <strong>Page Count:</strong> ${d.pageCount}<br>
-                    <strong>Lawyer:</strong> ${d.Lawyer}<br>
-                    <strong>Date Created:</strong> ${d.dateCreated}<br>
-                    <strong>Court:</strong> ${d.court}
-                    <strong>Opinion Link:</strong> <a href="${d.cluster}" target="_blank" style="color: #008080;">View Opinion details</a>
-                `);
-                d3.select("#modal").style("display", "block");
+                // Open modal with additional information
+                showModal(d);
             });
 
-        // Dropdown menu change listener
-        document.getElementById("page-filter").addEventListener("change", function () {
-            const selectedPage = this.value;
-
-            d3.selectAll(".bubble").style("stroke", "black").style("stroke-width", 1);
-
-            if (selectedPage) {
-                d3.selectAll(".bubble").filter(d => d.Document === selectedPage)
-                    .style("stroke", "orange").style("stroke-width", 3);
-            }
+        // Modal Functionality
+        function showModal(data) {
+            const modal = d3.select("#modal");
+            modal.style("display", "block"); // Show the modal
+    
+            modal.select("#modal-details").html(`
+                <h2>Opinion Details</h2>
+                <p><strong>Opinion Id:</strong> #${data.id}</p>
+                <p><strong>Document:</strong> ${data.Document}</p>
+                <p><strong>Date Created:</strong> ${data.dateCreated}</p>
+                <p><strong>Nature of Suit:</strong> ${data.natureOfSuit}</p>
+                <p><strong>Opinion Link:</strong> <a href="${data.clusterUrl}" target="_blank" style="color: #008080; font-weight: bold;">View Opinion</a></p>
+            `);
+        }
+    
+        // Close Modal functionality
+        d3.select(".close").on("click", function () {
+            d3.select("#modal").style("display", "none"); // Hide the modal
         });
-
-        //close modal
-        d3.select(".close").on("click", () => {
-            d3.select("#modal").style("display", "none");
-        });
-
-
-        window.onclick = function (event) {
-            if (event.target === d3.select("#modal").node()) {
+    
+        // Close modal when clicking outside of the modal content
+        d3.select("#modal").on("click", function (event) {
+            if (event.target === this) { // Check if the target is the modal background
                 d3.select("#modal").style("display", "none");
             }
-        };
+        });
     }
 
     let clickCount = 0;
@@ -247,4 +291,5 @@ document.addEventListener('DOMContentLoaded', async () => {
             loadingMessage.style.display = 'none';
         }
     });
+
 });
