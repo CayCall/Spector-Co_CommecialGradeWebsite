@@ -62,23 +62,51 @@ function fetchContent(url) {
 // Render the menu
 renderMenu();
 
-// Add click event listener to the menu list
-menuList.addEventListener('click', handleMenuClick);
+// Function to initialise wireframe navigation
+function initializeWireframeNavigation(wireframeId, wireframeImages) {
+    let currentIndex = 0;
+    const nextButton = document.getElementById('next-' + wireframeId);
+    const prevButton = document.getElementById('prev-' + wireframeId);
+    const imageElement = document.getElementById('current-wireframe-' + wireframeId);
 
-// for the wire frames on wireframes.html
-let currentIndex = 0;
-const wireframes = [
-    'path_to_wireframe_image1.png',
-    'path_to_wireframe_image2.png',
-    // Add more wireframe images here
-];
+    // Show the first wireframe image initially
+    imageElement.src = wireframeImages[currentIndex];
 
-document.getElementById('next').addEventListener('click', function () {
-    currentIndex = (currentIndex + 1) % wireframes.length;
-    document.getElementById('current-wireframe').src = wireframes[currentIndex];
-});
+    // Next button listener
+    nextButton.addEventListener('click', function () {
+        currentIndex = (currentIndex + 1) % wireframeImages.length;
+        imageElement.src = wireframeImages[currentIndex];
+    });
 
-document.getElementById('prev').addEventListener('click', function () {
-    currentIndex = (currentIndex - 1 + wireframes.length) % wireframes.length;
-    document.getElementById('current-wireframe').src = wireframes[currentIndex];
-});
+    // Previous button listener
+    prevButton.addEventListener('click', function () {
+        currentIndex = (currentIndex - 1 + wireframeImages.length) % wireframeImages.length;
+        imageElement.src = wireframeImages[currentIndex];
+    });
+}
+
+// Wireframe images for each page
+const wireframeData = {
+    wireframe1: [
+        '../../../Images/Wireframes/annotated - Home Page.png',
+    ],
+    wireframe2: [
+        '../../../Images/Wireframes/annotated - about page.png',
+    ],
+    wireframe3: [
+        '../../../Images/Wireframes/annotated - services page.png',
+    ],
+    wireframe4: [
+        '../../../Images/Wireframes/DesignPage- annotated.png',
+    ],
+    wireframe5: [
+        '../../../Images/Wireframes/contactusPage.png',
+    ]
+};
+
+// Initialize the wireframe navigation for all pages
+for (const wireframeId in wireframeData) {
+    if (wireframeData.hasOwnProperty(wireframeId)) {
+        initializeWireframeNavigation(wireframeId, wireframeData[wireframeId]);
+    }
+}
