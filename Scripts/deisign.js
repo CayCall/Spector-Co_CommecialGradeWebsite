@@ -72,23 +72,23 @@ document.addEventListener('DOMContentLoaded', function() {
 const wireframes = [
     {
         title: "Wireframe 1: Homepage Layout",
-        imgSrc: "../../../Images/Wireframes/annotated - Home Page.png"
+        imgSrc: "../../Images/Wireframes/annotated - Home Page.png"
     },
     {
         title: "Wireframe 2: About Page",
-        imgSrc: "../../../Images/Wireframes/annotated - about page.png"
+        imgSrc: "../../Images/Wireframes/annotated - about page.png"
     },
     {
         title: "Wireframe 3: Services Page",
-        imgSrc: "../../../Images/Wireframes/annotated - services page.png"
+        imgSrc: "../../Images/Wireframes/annotated - services page.png"
     },
     {
         title: "Wireframe 4: Design Page",
-        imgSrc: "../../../Images/Wireframes/DesignPage- annotated.png"
+        imgSrc: "../../Images/Wireframes/DesignPage- annotated.png"
     },
     {
         title: "Wireframe 5: Contact Us Page",
-        imgSrc: "../../../Images/Wireframes/contactusPage.png"
+        imgSrc: "../../Images/Wireframes/contactusPage.png"
     }
 ];
 
