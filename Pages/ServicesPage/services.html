@@ -53,7 +53,13 @@
 
     </section>
     <main>
+        <section class="service-intro">
+            <h2 class="section-title">Empowering Legal Solutions Tailored for You</h2>
+            <p>At Spector & CO, we provide tailored legal consulting that meets your unique needs. Our dedicated
+                team is here to offer expert guidance, ensuring clarity and confidence at every step.</p>
+        </section>
         <section class="services-section">
+
             <div class="container">
                 <h2 class="section-title">What We Offer</h2>
                 <div class="services-grid">
@@ -134,9 +140,10 @@
         <hr>
         <section class="area-of-focus">
 
-            <h2 class="sub- ">Areas Of Focus</h2>
-            <p>Our firm specializes in key areas of law to serve your unique needs. From Corporate and Criminal Law to Intellectual Property, Employment, Family, and Real Estate, we provide clear, effective guidance 
-                to protect your interests and navigate legal challenges 
+            <h2 class="section-title">Areas Of Focus</h2>
+            <p>Our firm specializes in key areas of law to serve your unique needs. From Corporate and Criminal Law to
+                Intellectual Property, Employment, Family, and Real Estate, we provide clear, effective guidance
+                to protect your interests and navigate legal challenges
                 with confidence. </p>
             <div class="focus-areas-container">
                 <div class="focus-card">
@@ -203,13 +210,20 @@
         <hr>
 
         <section class="stock-wrapper">
-            <h2>We Inform On Stock Price Data</h2>
-            <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making for our clients in the financial and corporate sectors. Accurate and up-to-date stock information is essential for businesses involved in mergers and acquisitions, compliance with regulatory requirements, and strategic financial planning. Our legal experts work closely with clients to analyze stock performance, assess risks, and ensure that all legal obligations are met, enabling them to navigate the complexities of the market with confidence. By integrating comprehensive stock data into our legal strategies, we empower our clients to make decisions that are not only legally sound but also financially advantageous.</p>
-            
+            <h2 class="section-title">We Inform On Stock Price Data</h2>
+            <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making
+                for our clients in the financial and corporate sectors. Accurate and up-to-date stock information is
+                essential for businesses involved in mergers and acquisitions, compliance with regulatory requirements,
+                and strategic financial planning. Our legal experts work closely with clients to analyze stock
+                performance, assess risks, and ensure that all legal obligations are met, enabling them to navigate the
+                complexities of the market with confidence. By integrating comprehensive stock data into our legal
+                strategies, we empower our clients to make decisions that are not only legally sound but also
+                financially advantageous.</p>
+
             <div id="app">
                 <div>
                     <label for="symbol">Choose a stock:</label>
-                    <p>Bar graph reveals our client <strong>stock  prices </strong> below</p>
+                    <p>Bar graph reveals our client <strong>stock prices </strong> below</p>
                     <select id="symbol">
                         <option value="AAPL">Apple Inc. (AAPL)</option>
                         <option value="AMZN">Amazon.com Inc. (AMZN)</option>
@@ -222,36 +236,50 @@
                         <option value="BABA">Alibaba Group Holding Ltd. (BABA)</option>
                         <option value="DIS">The Walt Disney Company (DIS)</option>
                     </select>
-                    <button id="fetch-button">Fetch Stock Data   <svg fill="#000000" viewBox="0 0 24 24" id="update" data-name="Flat Line"
-                        xmlns="http://www.w3.org/2000/svg" class="icon flat-line">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path id="primary" d="M4,12A8,8,0,0,1,18.93,8"
-                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                            </path>
-                            <path id="primary-2" data-name="primary" d="M20,12A8,8,0,0,1,5.07,16"
-                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                            </path>
-                            <polyline id="primary-3" data-name="primary" points="14 8 19 8 19 3"
-                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                            </polyline>
-                            <polyline id="primary-4" data-name="primary" points="10 16 5 16 5 21"
-                                style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                            </polyline>
-                        </g>
-                    </svg></button>
+                    <button id="fetch-button">Fetch Stock Data <svg fill="#000000" viewBox="0 0 24 24" id="update"
+                            data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path id="primary" d="M4,12A8,8,0,0,1,18.93,8"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </path>
+                                <path id="primary-2" data-name="primary" d="M20,12A8,8,0,0,1,5.07,16"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </path>
+                                <polyline id="primary-3" data-name="primary" points="14 8 19 8 19 3"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </polyline>
+                                <polyline id="primary-4" data-name="primary" points="10 16 5 16 5 21"
+                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                </polyline>
+                            </g>
+                        </svg></button>
                 </div>
                 <hr>
                 <div id="result"></div>
                 <svg id="chart" width="600" height="500"></svg> <!-- SVG for D3 Chart -->
                 <p id="limitLabel">You have used the fetch 0 out of 5 times.</p>
-                
+
             </div>
 
-            <div>
-                <h2>Crime Rates by State</h2>
-                <svg id="map" width="960" height="600"></svg>
+            <hr>
+            <div id="crimes-homepage">
+                <h2>Understanding Criminal Justice</h2>
+            
+                <div>
+                    <p class="crimes-p" style="text-align: center;">At Spector & Co, we have a zero-tolerance policy for crime.</p>
+                    <h2 class="title">Exploring Crime Rates Across Categories</h2>
+                </div>
+            
+                <!-- Crime Bubble Chart Visualization -->
+                <div id="crime-bubble-chart-container" style="text-align: center; padding: 20px;">
+                    <svg id="crime-bubble-chart"></svg>
+                </div>
+            
+                <!-- Tooltip for showing more crime information on hover -->
+                <div id="tooltip" style="position: absolute; opacity: 0; pointer-events: none; background: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; max-width: 200px;">
+                </div>
             </div>
         </section>
 

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Your existing code goes here, such as:
+    // all my menu Items
     const sideMenuItems = [
         { name: "Style Guide", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/styleguide.html", icon: "fas fa-paint-brush" },
         { name: "Wireframes", href: "/Spector-Co_CommecialGradeWebsite/Pages/DesignPage/LoadPage/wireframes.html", icon: "fas fa-drafting-compass" },
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuList = document.getElementById('menu-list');
     const contentDiv = document.querySelector('.content');
 
-    // Function to render the menu
+    // will render the menu in the menu-list container
     function renderMenu() {
         sideMenuItems.forEach(item => {
             const li = document.createElement('li');
@@ -22,27 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to handle menu item clicks
+    // handles the clicks, depending on the menu item clicked, the arra
     function handleMenuClick(event) {
         const menuItem = event.target.closest('.menu-item');
         if (!menuItem) return; // Exit if not a menu item
 
-        // Prevent the default action of the anchor tag
         event.preventDefault();
-
-        // Remove active class from all items
         const items = document.querySelectorAll('.sidebar li');
-        items.forEach(item => item.classList.remove('active'));
+        items.forEach(item => item.classList.remove('active'));// this will apply remove the active class from every menu item 
 
-        // Add active class to the clicked item
-        menuItem.parentElement.classList.add('active');
-
-        // Fetch and display the content
-        const href = menuItem.getAttribute('data-href');
+        menuItem.parentElement.classList.add('active');// which ever item I click the active class gets appended to the item as a parent
+        const href = menuItem.getAttribute('data-href'); // displays content
         fetchContent(href);
     }
 
-    // Function to fetch and display the HTML content
+    // fetch and display the HTML content 
     function fetchContent(url) {
         fetch(url)
             .then(response => {
@@ -60,11 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 contentDiv.innerHTML = '<p>Error loading content. Please try again later.</p>';
             });
     }
-
-    // Render the menu
     renderMenu();
-
-    // Add click event listener to the menu list
     menuList.addEventListener('click', handleMenuClick);
 });
 

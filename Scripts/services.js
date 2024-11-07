@@ -88,19 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
             .padding(0.1);
 
         const y = d3.scaleLinear()
-            .domain([0, d3.max(stockPrices, d => d.value)]) 
-            .range([400, 20]); 
+            .domain([0, d3.max(stockPrices, d => d.value)])
+            .range([400, 20]);
 
         svg.append("g")
             .attr("transform", "translate(0," + 400 + ")")
             .call(d3.axisBottom(x))
             .selectAll("text")
-            .attr("fill", "#000"); 
-        
+            .attr("fill", "#000");
+
         svg.append("g")
             .call(d3.axisLeft(y))
             .selectAll("text")
-            .attr("fill", "#000"); 
+            .attr("fill", "#000");
 
         // Create a tooltip
         const tooltip = d3.select("body").append("div")
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tooltip.html(`${d.label}: $${d.value}`)
                     .style("left", (event.pageX + 5) + "px")
                     .style("top", (event.pageY - 28) + "px");
-                
+
                 d3.select(this).attr("fill", "#FF5733");
             })
             .on("mouseout", function (d) {
@@ -156,74 +156,143 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-const apiUrl = 'https://api.usa.gov/crime/fbi/cde/';
-const apiKey = 'NhsfqDUodVYRJJ6DtvfnDeqctRK3KFULccqj7pk9'; // Your API key
 
-const fetchData = async () => {
-    try {
-        // Append the API key as a query parameter correctly
-        const response = await fetch(`${apiUrl}?api_key=${apiKey}`);
-        
-        // Check if the response is OK
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+fetch('https://data.police.uk/api/crimes-street/all-crime?lat=51.5074&lng=-0.1278')
+    .then(response => response.json())
+    .then(data => {
+        // Counting crime categories with additional data attributes
+        const crimeCounts = {};
+        data.forEach(crime => {
+            const { category, location, outcome_status } = crime;
+            if (category in crimeCounts) {
+                crimeCounts[category].count++;
+            } else {
+                crimeCounts[category] = {
+                    count: 1,
+                    exampleLocation: location.street.name,
+                    exampleOutcome: outcome_status ? outcome_status.category : "Unknown"
+                };
+            }
+        });
+
+        // Data preparation for visualization, sorted by top crimes
+        const crimeData = Object.keys(crimeCounts).map(category => ({
+            name: category,
+            count: crimeCounts[category].count,
+            exampleLocation: crimeCounts[category].exampleLocation,
+            exampleOutcome: crimeCounts[category].exampleOutcome
+        }));
+
+        // Top 10 categories by crime count
+        const topCrimeData = crimeData.sort((a, b) => b.count - a.count).slice(0, 10);
+
+        // Setup dimensions for the bubble chart
+        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        const width = 1100 - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
+
+        // Create the SVG container
+        const svg = d3.select("#crime-bubble-chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+        // Scales for bubble sizes
+        const radiusScale = d3.scaleSqrt()
+            .domain([0, d3.max(topCrimeData, d => d.count)])
+            .range([10, 50]);
+
+        // Color scale for specific categories
+        const colorScale = d3.scaleOrdinal()
+            .domain(topCrimeData.map(d => d.name))
+            .range([
+                "#4A90E2", "#50E3C2", "#F5A623", "#D0021B", "#7B92A1", 
+                "#B8E986", "#8B572A", "#9B9B9B", "#F8E71C", "#BD10E0"
+            ]);
+
+        // Force simulation to arrange bubbles with more space
+        const simulation = d3.forceSimulation(topCrimeData)
+            .force("charge", d3.forceManyBody().strength(-20))  // Increased strength for better spacing
+            .force("center", d3.forceCenter(0, 0))
+            .force("collision", d3.forceCollide(d => radiusScale(d.count) + 10))  // Adjust collision for more space
+            .on("tick", ticked);
+
+        function ticked() {
+            const circles = svg.selectAll("circle")
+                .data(topCrimeData, d => d.name);
+
+            circles.enter()
+                .append("circle")
+                .attr("r", d => radiusScale(d.count))
+                .attr("fill", d => colorScale(d.name)) // Apply color based on crime category
+                .attr("stroke", "#333")
+                .attr("stroke-width", 1)
+                .merge(circles)
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y);
+
+            circles.exit().remove();
+
+            // Add labels to each bubble
+            const labels = svg.selectAll(".label")
+                .data(topCrimeData, d => d.name);
+
+            labels.enter()
+                .append("text")
+                .attr("class", "label")
+                .attr("dy", ".35em")
+                .style("text-anchor", "middle")
+                .merge(labels)
+                .attr("x", d => d.x)
+                .attr("y", d => d.y)
+                .text(d => `${d.name} (${d.count})`);
+
+            labels.exit().remove();
         }
-        
-        const data = await response.json();
-        
-        // Assuming 'data' has an array of offenses
-        const crimeData = data.results; // Adjust based on actual API structure
 
-        // Check the structure of the crimeData to confirm it contains 'offense' and 'count'
-        console.log(crimeData); // Use this to inspect the data format
-        createBarChart(crimeData);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-};
+        // Ensure the tooltip is in the DOM
+        const tooltip = d3.select("body").append("div")
+            .attr("id", "tooltip")
+            .style("position", "absolute")
+            .style("opacity", 0)
+            .style("background-color", "rgba(0,0,0,0.7)")
+            .style("color", "white")
+            .style("padding", "10px")
+            .style("border-radius", "5px");
 
-const createBarChart = (data) => {
-    const svg = d3.select('svg');
-    const margin = { top: 20, right: 30, bottom: 40, left: 40 };
-    const width = +svg.attr('width') - margin.left - margin.right;
-    const height = +svg.attr('height') - margin.top - margin.bottom;
+        // Optional tooltip for additional details on hover
+        svg.selectAll("circle")
+            .on("mouseover", function(event, d) {
+                tooltip.style("opacity", 1)
+                    .html(`
+                        <strong>Crime Category:</strong> ${d.name}<br>
+                        <strong>Crime counts:</strong> ${d.count}<br>
+                        <strong>Location Example:</strong> ${d.exampleLocation}<br>
+                        <strong>Outcome:</strong> ${d.exampleOutcome}
+                    `)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 30) + "px");
 
-    // Set up x and y scales
-    const x = d3.scaleBand()
-        .domain(data.map(d => d.offense)) // Replace 'offense' with the actual property name
-        .range([0, width])
-        .padding(0.1);
+                // Add hover effect to change circle style
+                d3.select(this)
+                    .style("fill", "#FF6347") // Change color on hover
+                    .style("cursor", "pointer");  // Show pointer cursor
+            })
+            .on("mousemove", function(event) {
+                tooltip.style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 30) + "px");
+            })
+            .on("mouseout", function() {
+                tooltip.style("opacity", 0);
 
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.count)]) // Replace 'count' with the actual property name
-        .nice()
-        .range([height, 0]);
-
-    const g = svg.append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    // Create bars
-    g.append('g')
-        .selectAll('.bar')
-        .data(data)
-        .enter().append('rect')
-        .attr('class', 'bar')
-        .attr('x', d => x(d.offense)) // Replace 'offense' with the actual property name
-        .attr('y', d => y(d.count)) // Replace 'count' with the actual property name
-        .attr('width', x.bandwidth())
-        .attr('height', d => height - y(d.count));
-
-    // Add x-axis
-    g.append('g')
-        .attr('class', 'axis x-axis')
-        .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(x));
-
-    // Add y-axis
-    g.append('g')
-        .attr('class', 'axis y-axis')
-        .call(d3.axisLeft(y));
-};
-
-// Start fetching data
-fetchData();
+                // Reset the circle style when the mouse is no longer hovering over it
+                d3.select(this)
+                    .style("fill", d => colorScale(d.name))  // Reset original color
+                    .style("cursor", "default");
+            });
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+    });

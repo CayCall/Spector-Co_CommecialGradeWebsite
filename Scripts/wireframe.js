@@ -1,62 +1,64 @@
-// Array of wireframe objects
-const wireframes = [
-    {
-        title: "Wireframe 1: Homepage Layout",
-        imgSrc: "../../Images/Wireframes/annotated - Home Page.png"
-    },
-    {
-        title: "Wireframe 2: About Page",
-        imgSrc: "../../Images/Wireframes/annotated - about page.png"
-    },
-    {
-        title: "Wireframe 3: Services Page",
-        imgSrc: "../../Images/Wireframes/annotated - services page.png"
-    },
-    {
-        title: "Wireframe 4: Design Page",
-        imgSrc: "../../Images/Wireframes/DesignPage- annotated.png"
-    },
-    {
-        title: "Wireframe 5: Contact Us Page",
-        imgSrc: "../../Images/Wireframes/contactusPage.png"
+document.addEventListener("DOMContentLoaded", () => {
+    // Define an array of wireframes with their respective titles and image sources
+    const wireframes = [
+        {
+            title: "Wireframe 1: Homepage Layout",
+            imgSrc: "../../Images/Wireframes/annotated - Home Page.png"
+        },
+        {
+            title: "Wireframe 2: About Page",
+            imgSrc: "../../Images/Wireframes/annotated - about page.png"
+        },
+        {
+            title: "Wireframe 3: Services Page",
+            imgSrc: "../../Images/Wireframes/annotated - services page.png"
+        },
+        {
+            title: "Wireframe 4: Design Page",
+            imgSrc: "../../Images/Wireframes/DesignPage- annotated.png"
+        },
+        {
+            title: "Wireframe 5: Contact Us Page",
+            imgSrc: "../../Images/Wireframes/contactusPage.png"
+        }
+    ];
+
+    let currentWireframeIndex = 0; // Start at the first wireframe
+
+    // Get references to the elements
+    const wireframeTitle = document.getElementById('wireframe-title');
+    console.log("Found", wireframeImage, wireframeTitle, prevButton, nextButton);
+    const wireframeImage = document.getElementById('current-wireframe');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+
+    // Function to update the wireframe content based on the current index
+    function updateWireframe() {
+        const currentWireframe = wireframes[currentWireframeIndex];
+        wireframeTitle.textContent = currentWireframe.title;
+        wireframeImage.src = currentWireframe.imgSrc;
+
+        // Update visibility of the Previous and Next buttons based on the current index
+        prevButton.style.display = currentWireframeIndex === 0 ? "none" : "block";
+        nextButton.style.display = currentWireframeIndex === wireframes.length - 1 ? "none" : "block";
     }
-];
 
-// Select necessary DOM elements
-const wireframeContainer = document.getElementById("wireframe-container");
-const wireframeTitle = document.getElementById("wireframe-title");
-const wireframeImages = document.querySelectorAll(".wireframe-image");
-const prevButton = document.getElementById("prev");
-const nextButton = document.getElementById("next");
-
-// Initialize current index to 0
-let currentIndex = 0;
-
-// Function to hide all images
-function hideAllImages() {
-    wireframeImages.forEach(image => {
-        image.style.display = 'none';
+    // Event listener for the "Previous" button
+    prevButton.addEventListener('click', () => {
+        if (currentWireframeIndex > 0) {
+            currentWireframeIndex--; // Move to the previous wireframe
+            updateWireframe();
+        }
     });
-}
 
-// Function to show the current image and update the title
-function showCurrentWireframe(index) {
-    hideAllImages();
-    wireframeImages[index].style.display = 'block';
-    wireframeTitle.textContent = wireframes[index].title; // Update title
-}
+    // Event listener for the "Next" button
+    nextButton.addEventListener('click', () => {
+        if (currentWireframeIndex < wireframes.length - 1) {
+            currentWireframeIndex++; // Move to the next wireframe
+            updateWireframe();
+        }
+    });
 
-// Add event listener for previous button
-prevButton.addEventListener("click", function() {
-    currentIndex = (currentIndex - 1 + wireframes.length) % wireframes.length; // Loop to last image if at the beginning
-    showCurrentWireframe(currentIndex);
+    // Initial call to update the wireframe content on page load
+    updateWireframe();
 });
-
-// Add event listener for next button
-nextButton.addEventListener("click", function() {
-    currentIndex = (currentIndex + 1) % wireframes.length; // Loop to first image if at the end
-    showCurrentWireframe(currentIndex);
-});
-
-// Show the first wireframe initially
-showCurrentWireframe(currentIndex);
