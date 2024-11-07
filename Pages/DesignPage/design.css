@@ -249,7 +249,7 @@ h3 {
     --teal: #008080;
     --robin-egg-blue: #39CECE;
 }
-.style-guide-header{
+.style-guide-header, #section{
     padding: 2rem;
     border-bottom: 1px solid var(--platinum);
 }
