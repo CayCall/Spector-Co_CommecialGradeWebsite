@@ -96,10 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentWireframeIndex = 0; // Start at the first wireframe
 
     // Get references to the elements
-    const wireframeTitle = document.getElementById('wireframe-title');
-    const wireframeImage = document.getElementById('current-wireframe');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
+    const wireframeTitle = document.getElementById('#wireframe-title');
+    const wireframeImage = document.getElementById('#current-wireframe');
+    const prevButton = document.getElementById('#prev');
+    const nextButton = document.getElementById('#next');
 
     // Function to update the wireframe content based on the current index
     function updateWireframe() {
