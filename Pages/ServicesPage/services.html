@@ -266,21 +266,29 @@
             <hr>
             <div id="crimes-homepage">
                 <h2>Understanding Criminal Justice</h2>
-            
+
                 <div>
-                    <p class="crimes-p" style="text-align: center;">At Spector & Co, we have a zero-tolerance policy for crime.</p>
+                    <p class="crimes-p" style="text-align: center;">At Spector & Co, we have a zero-tolerance policy for
+                        crime.</p>
                     <h2 class="title">Exploring Crime Rates Across Categories</h2>
                 </div>
-            
+
                 <!-- Crime Bubble Chart Visualization -->
                 <div id="crime-bubble-chart-container" style="text-align: center; padding: 20px;">
                     <svg id="crime-bubble-chart"></svg>
                 </div>
-            
+
                 <!-- Tooltip for showing more crime information on hover -->
-                <div id="tooltip" style="position: absolute; opacity: 0; pointer-events: none; background: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; max-width: 200px;">
+                <div id="tooltip"
+                    style="position: absolute; opacity: 0; pointer-events: none; background: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; max-width: 200px;">
                 </div>
             </div>
+
+            <section>
+                <input type="range" id="timeRange" min="2015" max="2023" value="2023">
+                <label for="timeRange">Year</label>
+
+            </section>
         </section>
 
 

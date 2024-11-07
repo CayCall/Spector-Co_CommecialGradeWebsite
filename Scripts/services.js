@@ -155,144 +155,107 @@ document.addEventListener('DOMContentLoaded', () => {
         limitLabel.textContent = `You have used the fetch ${useCount} out of ${useLimit} times.`;
     }
 });
+document.addEventListener('DOMContentLoaded', async () => {
+    const CIK = "0000320193"; // Example CIK for Apple Inc.
+    const apiUrl = `https://data.sec.gov/api/xbrl/companyfacts/CIK${CIK}.json`;
 
+    // Define a function to fetch data
+    async function fetchData() {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
 
-fetch('https://data.police.uk/api/crimes-street/all-crime?lat=51.5074&lng=-0.1278')
-    .then(response => response.json())
-    .then(data => {
-        // Counting crime categories with additional data attributes
-        const crimeCounts = {};
-        data.forEach(crime => {
-            const { category, location, outcome_status } = crime;
-            if (category in crimeCounts) {
-                crimeCounts[category].count++;
-            } else {
-                crimeCounts[category] = {
-                    count: 1,
-                    exampleLocation: location.street.name,
-                    exampleOutcome: outcome_status ? outcome_status.category : "Unknown"
-                };
-            }
-        });
+            // Extract financial data (e.g., Revenue, Net Income)
+            const revenues = data.us_gaap.Revenues?.facts.map(fact => ({
+                date: fact.period,
+                value: fact.value
+            }));
+            const netIncome = data.us_gaap.NetIncomeLoss?.facts.map(fact => ({
+                date: fact.period,
+                value: fact.value
+            }));
 
-        // Data preparation for visualization, sorted by top crimes
-        const crimeData = Object.keys(crimeCounts).map(category => ({
-            name: category,
-            count: crimeCounts[category].count,
-            exampleLocation: crimeCounts[category].exampleLocation,
-            exampleOutcome: crimeCounts[category].exampleOutcome
-        }));
-
-        // Top 10 categories by crime count
-        const topCrimeData = crimeData.sort((a, b) => b.count - a.count).slice(0, 10);
-
-        // Setup dimensions for the bubble chart
-        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-        const width = 1100 - margin.left - margin.right;
-        const height = 500 - margin.top - margin.bottom;
-
-        // Create the SVG container
-        const svg = d3.select("#crime-bubble-chart")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", `translate(${width / 2}, ${height / 2})`);
-
-        // Scales for bubble sizes
-        const radiusScale = d3.scaleSqrt()
-            .domain([0, d3.max(topCrimeData, d => d.count)])
-            .range([10, 50]);
-
-        // Color scale for specific categories
-        const colorScale = d3.scaleOrdinal()
-            .domain(topCrimeData.map(d => d.name))
-            .range([
-                "#4A90E2", "#50E3C2", "#F5A623", "#D0021B", "#7B92A1", 
-                "#B8E986", "#8B572A", "#9B9B9B", "#F8E71C", "#BD10E0"
-            ]);
-
-        // Force simulation to arrange bubbles with more space
-        const simulation = d3.forceSimulation(topCrimeData)
-            .force("charge", d3.forceManyBody().strength(-20))  // Increased strength for better spacing
-            .force("center", d3.forceCenter(0, 0))
-            .force("collision", d3.forceCollide(d => radiusScale(d.count) + 10))  // Adjust collision for more space
-            .on("tick", ticked);
-
-        function ticked() {
-            const circles = svg.selectAll("circle")
-                .data(topCrimeData, d => d.name);
-
-            circles.enter()
-                .append("circle")
-                .attr("r", d => radiusScale(d.count))
-                .attr("fill", d => colorScale(d.name)) // Apply color based on crime category
-                .attr("stroke", "#333")
-                .attr("stroke-width", 1)
-                .merge(circles)
-                .attr("cx", d => d.x)
-                .attr("cy", d => d.y);
-
-            circles.exit().remove();
-
-            // Add labels to each bubble
-            const labels = svg.selectAll(".label")
-                .data(topCrimeData, d => d.name);
-
-            labels.enter()
-                .append("text")
-                .attr("class", "label")
-                .attr("dy", ".35em")
-                .style("text-anchor", "middle")
-                .merge(labels)
-                .attr("x", d => d.x)
-                .attr("y", d => d.y)
-                .text(d => `${d.name} (${d.count})`);
-
-            labels.exit().remove();
+            return { revenues, netIncome };
+        } catch (error) {
+            console.error("Error fetching data:", error);
         }
+    }
 
-        // Ensure the tooltip is in the DOM
-        const tooltip = d3.select("body").append("div")
-            .attr("id", "tooltip")
-            .style("position", "absolute")
-            .style("opacity", 0)
-            .style("background-color", "rgba(0,0,0,0.7)")
-            .style("color", "white")
-            .style("padding", "10px")
-            .style("border-radius", "5px");
+    // Fetch data and proceed if successful
+    const { revenues } = await fetchData();
+    if (!revenues) return; // Stop if revenues are not available
 
-        // Optional tooltip for additional details on hover
-        svg.selectAll("circle")
-            .on("mouseover", function(event, d) {
-                tooltip.style("opacity", 1)
-                    .html(`
-                        <strong>Crime Category:</strong> ${d.name}<br>
-                        <strong>Crime counts:</strong> ${d.count}<br>
-                        <strong>Location Example:</strong> ${d.exampleLocation}<br>
-                        <strong>Outcome:</strong> ${d.exampleOutcome}
-                    `)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 30) + "px");
+    // Set up SVG canvas and margins
+    const margin = { top: 50, right: 100, bottom: 100, left: 100 };
+    const width = 1000 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
-                // Add hover effect to change circle style
-                d3.select(this)
-                    .style("fill", "#FF6347") // Change color on hover
-                    .style("cursor", "pointer");  // Show pointer cursor
-            })
-            .on("mousemove", function(event) {
-                tooltip.style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 30) + "px");
-            })
-            .on("mouseout", function() {
-                tooltip.style("opacity", 0);
+    const svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
-                // Reset the circle style when the mouse is no longer hovering over it
-                d3.select(this)
-                    .style("fill", d => colorScale(d.name))  // Reset original color
-                    .style("cursor", "default");
-            });
-    })
-    .catch(error => {
-        console.error("Error fetching data:", error);
-    });
+    // Scales for X (time) and Y (value)
+    const x = d3.scaleTime()
+        .domain(d3.extent(revenues, d => new Date(d.date)))
+        .range([0, width]);
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(revenues, d => d.value)])
+        .range([height, 0]);
+
+    // Define line generator function
+    const line = d3.line()
+        .x(d => x(new Date(d.date)))
+        .y(d => y(d.value));
+
+    // Create a path for the line chart
+    svg.append("path")
+        .datum(revenues)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 2)
+        .attr("d", line);
+
+    // Tooltip for displaying values on hover
+    const tooltip = d3.select("body").append("div")
+        .style("position", "absolute")
+        .style("padding", "8px")
+        .style("background", "white")
+        .style("border", "1px solid #ccc")
+        .style("display", "none");
+
+    // Plot data points (dots) and attach tooltip interactions
+    svg.selectAll(".dot")
+        .data(revenues)
+        .enter().append("circle")
+        .attr("class", "dot")
+        .attr("cx", d => x(new Date(d.date)))
+        .attr("cy", d => y(d.value))
+        .attr("r", 5)
+        .attr("fill", d => {
+            // Highlight peak and low points with specific colors
+            const peak = d3.max(revenues, d => d.value);
+            const low = d3.min(revenues, d => d.value);
+            if (d.value === peak) return "green";
+            if (d.value === low) return "red";
+            return "blue";
+        })
+        .on("mouseover", (event, d) => {
+            tooltip.style("display", "block")
+                .html(`Date: ${d.date}<br>Value: $${d.value}`);
+        })
+        .on("mousemove", event => {
+            tooltip.style("left", `${event.pageX + 5}px`)
+                .style("top", `${event.pageY - 28}px`);
+        })
+        .on("mouseout", () => tooltip.style("display", "none"));
+
+    // Adding Axes
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%Y-%m-%d")));
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+});
