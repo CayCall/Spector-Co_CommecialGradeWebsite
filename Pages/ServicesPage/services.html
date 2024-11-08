@@ -264,31 +264,33 @@
             </div>
 
             <hr>
-            <div id="crimes-homepage">
-                <h2>Understanding Criminal Justice</h2>
 
-                <div>
-                    <p class="crimes-p" style="text-align: center;">At Spector & Co, we have a zero-tolerance policy for
-                        crime.</p>
-                    <h2 class="title">Exploring Crime Rates Across Categories</h2>
-                </div>
-
-                <!-- Crime Bubble Chart Visualization -->
-                <div id="crime-bubble-chart-container" style="text-align: center; padding: 20px;">
-                    <svg id="crime-bubble-chart"></svg>
-                </div>
-
-                <!-- Tooltip for showing more crime information on hover -->
-                <div id="tooltip"
-                    style="position: absolute; opacity: 0; pointer-events: none; background: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; max-width: 200px;">
-                </div>
+            <div id="filter-section">
+                <label for="case-filter">Filter by Case Count:</label>
+                <select id="case-filter">
+                    <option value="all">All</option>
+                    <option value="low">0-50</option>
+                    <option value="medium">51-200</option>
+                    <option value="high">200+</option>
+                </select>
             </div>
 
-            <section>
-                <input type="range" id="timeRange" min="2015" max="2023" value="2023">
-                <label for="timeRange">Year</label>
+            <div id="search-section">
+                <label for="docket-search">Search by Docket ID:</label>
+                <input type="text" id="docket-search">
+            </div>
 
-            </section>
+            <div id="chart-type-section">
+                <label for="chart-type">Choose Chart Type:</label>
+                <select id="chart-type">
+                    <option value="bar">Bar Chart</option>
+                    <option value="line">Line Chart</option>
+                </select>
+            </div>
+
+            <div id="loading-message">Loading data...</div>
+
+            <div id="chart"></div>
         </section>
 
 

@@ -24,11 +24,11 @@ window.onload = function () {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const API_URL = 'https://www.courtlistener.com/api/rest/v3/opinions/?page=1';
-    let legalData = [];
+    const API_URL = 'https://www.courtlistener.com/api/rest/v3/dockets/?page=1';
+    let docketData = [];
 
-    async function fetchLegalOpinions() {
-        if (legalData.length > 0) return legalData; // Return cached data if it already exists
+    async function fetchDocketData() {
+        if (docketData.length > 0) return docketData; // Return cached data if it already exists
 
         try {
             const response = await fetch(API_URL);
@@ -40,99 +40,75 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Log the raw data for debugging
             console.log(data);
 
-            // Initialize the opinions count
-            let opinionsCount = 0;
-
-            // Fetch details from cluster URLs
-            const opinionsPromises = data.results.map(async opinion => {
-                opinionsCount++; // Increment the opinions count for each opinion
-                return await fetchOpinionDetails(opinion, opinionsCount); // Pass count to details fetching
+            // Fetch additional details from docket URLs (if applicable)
+            const docketDetailsPromises = data.results.map(async docket => {
+                return await fetchDocketDetails(docket); // Pass docket for details fetching
             });
 
-            legalData = await Promise.all(opinionsPromises);
+            docketData = await Promise.all(docketDetailsPromises);
 
-            return legalData;
+            return docketData;
         } catch (error) {
-            console.error('Error fetching legal opinions:', error);
+            console.error('Error fetching docket data:', error);
             return []; // Return an empty array in case of error
         }
     }
-    async function fetchOpinionDetails(opinion) {
 
-        // Fetch the case details from the cluster URL
+    async function fetchDocketDetails(docket) {
         try {
-            const clusterResponse = await fetch(opinion.cluster);
-            if (!clusterResponse.ok) {
-                throw new Error('Failed to fetch opinion details: ' + clusterResponse.statusText);
-            }
-            const clusterData = await clusterResponse.json();
-            // Extract necessary data from clusterData
-            const caseName = clusterData.case_name || 'Unknown Case';
-            const docketUrl = clusterData.docket || null;
-            let natureOfSuit = 'Unknown Nature of Suit';
-
-            // Fetch nature_of_suit from docket URL if it exists
-            if (docketUrl) {
-                natureOfSuit = await fetchNatureOfSuit(docketUrl);
-            }
-
-            return {
-                id: opinion.id,
-                Document: caseName, // Use case name from cluster data
-                opinionsCount: opinion.opinions_count || 1,
-                pageCount: opinion.page_count || 0,
-                dateCreated: opinion.date_created || new Date().toISOString().split('T')[0],
-                courtType: opinion.court || '100trialcourt',
-                clusterUrl: opinion.cluster || '#',
-                natureOfSuit: natureOfSuit // Add nature_of_suit to the returned object
-            };
-        } catch (error) {
-            console.error('Error fetching opinion details:', error);
-            return opinion; // Return original opinion in case of error
-        }
-    }
-
-    async function fetchNatureOfSuit(docketUrl) {
-        try {
-            const docketResponse = await fetch(docketUrl);
+            // Fetch detailed information from the docket URL
+            const docketResponse = await fetch(docket.url);  // Assuming docket URL is stored in docket.url
             if (!docketResponse.ok) {
                 throw new Error('Failed to fetch docket details: ' + docketResponse.statusText);
             }
-            const docketData = await docketResponse.json();
-            // Extract nature_of_suit from docket data
-            return docketData.nature_of_suit || 'Confidential Information'; // Default value if not found
+            const docketDetails = await docketResponse.json();
+
+            // Example of extracting relevant data from the docket details
+            const docketNumber = docketDetails.docket_number || 'N/A';
+            const caseTitle = docketDetails.case_title || 'Unknown Case';
+            const courtName = docketDetails.court_name || 'Unknown Court';
+            const filingDate = docketDetails.filing_date || 'Unknown Filing Date';
+
+            return {
+                id: docket.id,
+                docketNumber: docketNumber,
+                caseTitle: caseTitle,
+                courtName: courtName,
+                filingDate: filingDate,
+                docketUrl: docket.url,
+            };
         } catch (error) {
-            console.error('Error fetching nature_of_suit:', error);
-            return 'Error fetching nature of suit'; // Return an error message in case of failure
+            console.error('Error fetching docket details:', error);
+            return docket; // Return original docket if there’s an error
         }
     }
 
-    async function populatePageDropdown() {
-        const data = await fetchLegalOpinions();
-        const dropdown = document.getElementById("page-filter");
+    async function populateDocketDropdown() {
+        const data = await fetchDocketData();
+        const dropdown = document.getElementById("docket-filter");
 
-        const uniqueDocuments = new Set(data.map(d => d.Document));
+        const uniqueDockets = new Set(data.map(d => d.caseTitle));
 
-        uniqueDocuments.forEach(doc => {
+        uniqueDockets.forEach(docket => {
             const option = document.createElement("option");
-            option.value = doc;
-            option.textContent = doc;
+            option.value = docket;
+            option.textContent = docket;
             dropdown.appendChild(option);
         });
 
         // Add event listener for dropdown changes
         dropdown.addEventListener('change', () => {
-            highlightBubble(dropdown.value);
+            highlightDocketBubble(dropdown.value);
         });
     }
 
-    function highlightBubble(selectedPage) {
-        const bubbles = d3.selectAll(".bubble");
+    function highlightDocketBubble(selectedDocket) {
+        const bubbles = d3.selectAll(".docket-bubble");
         bubbles.style("opacity", 0.7); // Reset all bubbles to default opacity
 
-        if (selectedPage) {
+        if (selectedDocket) {
             bubbles.each(function (d) {
-                if (d.Document === selectedPage) {
+                if (d.caseTitle === selectedDocket) {
                     d3.select(this).style("opacity", 1) // Highlight the selected bubble
                         .style("stroke", "orange")
                         .style("stroke-width", 3);
@@ -144,14 +120,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    async function createBubbleChart() {
-        const data = await fetchLegalOpinions();
+    async function createDocketBubbleChart() {
+        const data = await fetchDocketData();
 
         const width = 1000;
         const height = 600;
         const margin = { top: 20, right: 20, bottom: 50, left: 50 };
 
-        const svg = d3.select("#chart")
+        const svg = d3.select("#docket-chart")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -162,14 +138,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             .attr("class", "tooltip")
             .style("opacity", 0);
 
-        // Scale for X-Axis (Opinions Count)
+        // Scale for X-Axis (Docket Numbers)
         const xScale = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.opinionsCount) + 1])
+            .domain([0, d3.max(data, d => d.docketNumber.length)])
             .range([0, width]);
 
-        // Scale for Y-Axis (Page Count)
+        // Scale for Y-Axis (Filing Date)
         const yScale = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.pageCount) + 1])
+            .domain([0, d3.max(data, d => new Date(d.filingDate).getFullYear())])
             .range([height, 0]);
 
         svg.append("g")
@@ -186,7 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             .attr("x", width / 2)
             .attr("y", height + margin.bottom - 10)
             .style("text-anchor", "middle")
-            .text("Opinions Count");
+            .text("Docket Numbers");
 
         svg.append("text")
             .attr("class", "axis-label")
@@ -194,21 +170,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             .attr("x", -height / 2)
             .attr("y", -margin.left + 15)
             .style("text-anchor", "middle")
-            .text("Page Count");
+            .text("Filing Date");
 
         const sizeScale = d3.scaleSqrt()
-            .domain([0, d3.max(data, d => d.opinionsCount)])
+            .domain([0, d3.max(data, d => d.docketNumber.length)])
             .range([5, 30]);
 
-        const bubbles = svg.selectAll(".bubble")
+        const bubbles = svg.selectAll(".docket-bubble")
             .data(data)
             .enter()
             .append("circle")
-            .attr("class", "bubble")
-            .attr("cx", d => xScale(d.opinionsCount))
-            .attr("cy", d => yScale(d.pageCount))
-            .attr("r", d => sizeScale(d.opinionsCount))
-            .style("fill", "steelblue")
+            .attr("class", "docket-bubble")
+            .attr("cx", d => xScale(d.docketNumber.length))
+            .attr("cy", d => yScale(new Date(d.filingDate).getFullYear()))
+            .attr("r", d => sizeScale(d.docketNumber.length))
+            .style("fill", "green")
             .style("opacity", 0.7)
             .style("stroke", "black")
             .style("stroke-width", 1);
@@ -218,13 +194,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 d3.select(this).style("stroke", "orange").style("stroke-width", 3);
                 tooltip.transition().duration(200).style("opacity", 0.9);
                 tooltip.html(`
-                    <strong>Opinion Id:</strong> #${d.id}<br>
-                    <strong>Number Of Opinions:</strong> ${d.opinionsCount}<br>
-                    <strong>Page Count:</strong> ${d.pageCount}<br>
-                    <strong>Date Created:</strong> ${d.dateCreated}<br>
-                    <strong>Document:</strong> ${d.Document}<br>
-                    <strong>Nature of Suit:</strong> ${d.natureOfSuit}<br>
-                    <strong>Opinion Link:</strong> <a href="${d.clusterUrl}" target="_blank" style="color: #008080; font-weight: bold;">View Opinion</a>
+                    <strong>Docket Id:</strong> #${d.id}<br>
+                    <strong>Case Title:</strong> ${d.caseTitle}<br>
+                    <strong>Filing Date:</strong> ${d.filingDate}<br>
+                    <strong>Docket Number:</strong> ${d.docketNumber}<br>
+                    <strong>Court Name:</strong> ${d.courtName}<br>
+                    <strong>Docket Link:</strong> <a href="${d.docketUrl}" target="_blank" style="color: #008080; font-weight: bold;">View Docket</a>
                 `)
                     .style("left", (event.pageX + 5) + "px")
                     .style("top", (event.pageY - 28) + "px");
@@ -234,7 +209,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 tooltip.transition().duration(500).style("opacity", 0);
             })
             .on("click", function (event, d) {
-                // Open modal with additional information
+                // Open modal with additional docket information
                 showModal(d);
             });
 
@@ -244,12 +219,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             modal.style("display", "block"); // Show the modal
     
             modal.select("#modal-details").html(`
-                <h2>Opinion Details</h2>
-                <p><strong>Opinion Id:</strong> #${data.id}</p>
-                <p><strong>Document:</strong> ${data.Document}</p>
-                <p><strong>Date Created:</strong> ${data.dateCreated}</p>
-                <p><strong>Nature of Suit:</strong> ${data.natureOfSuit}</p>
-                <p><strong>Opinion Link:</strong> <a href="${data.clusterUrl}" target="_blank" style="color: #008080; font-weight: bold;">View Opinion</a></p>
+                <h2>Docket Details</h2>
+                <p><strong>Docket Id:</strong> #${data.id}</p>
+                <p><strong>Case Title:</strong> ${data.caseTitle}</p>
+                <p><strong>Filing Date:</strong> ${data.filingDate}</p>
+                <p><strong>Docket Number:</strong> ${data.docketNumber}</p>
+                <p><strong>Court Name:</strong> ${data.courtName}</p>
+                <p><strong>Docket Link:</strong> <a href="${data.docketUrl}" target="_blank" style="color: #008080; font-weight: bold;">View Docket</a></p>
             `);
         }
     
@@ -260,36 +236,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     
         // Close modal when clicking outside of the modal content
         d3.select("#modal").on("click", function (event) {
-            if (event.target === this) { // Check if the target is the modal background
+            if (event.target === this) {
                 d3.select("#modal").style("display", "none");
             }
         });
     }
 
-    let clickCount = 0;
-    let chartCreated = false; // bool to ensure the user cannot spam and create multiple
-    
-    // Button click event to fetch legal opinions
-    document.getElementById('fetch-legal-opinions').addEventListener('click', async () => {
-        clickCount += 1;
-    
-        // Only execute if the chart has not been created
-        if (!chartCreated && clickCount === 1) {
-            const loadingMessage = document.getElementById('loading');
-            const loadButton = document.querySelector('.button-container');
-    
-            loadingMessage.style.display = 'block'; 
-            loadButton.style.display = 'none'; 
-    
-            //this wiil populate the dropdown menu for the bubble chart and also create the bubble chart
-            await populatePageDropdown();
-            await createBubbleChart();
-    
-            // Set chartCreated to true - prevents future chart creation/ duplicates of a chart
-            chartCreated = true;
-    
-            loadingMessage.style.display = 'none';
-        }
-    });
-
+    populateDocketDropdown();
+    createDocketBubbleChart();
 });

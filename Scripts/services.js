@@ -155,107 +155,101 @@ document.addEventListener('DOMContentLoaded', () => {
         limitLabel.textContent = `You have used the fetch ${useCount} out of ${useLimit} times.`;
     }
 });
-document.addEventListener('DOMContentLoaded', async () => {
-    const CIK = "0000320193"; // Example CIK for Apple Inc.
-    const apiUrl = `https://data.sec.gov/api/xbrl/companyfacts/CIK${CIK}.json`;
 
-    // Define a function to fetch data
-    async function fetchData() {
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
 
-            // Extract financial data (e.g., Revenue, Net Income)
-            const revenues = data.us_gaap.Revenues?.facts.map(fact => ({
-                date: fact.period,
-                value: fact.value
-            }));
-            const netIncome = data.us_gaap.NetIncomeLoss?.facts.map(fact => ({
-                date: fact.period,
-                value: fact.value
-            }));
+// Fetch data and create the visualization
+const fetchDataAndCreateVisualization = () => {
+    // Your API endpoint
+    const docketEndpoint = '//www.courtlistener.com/api/rest/v4/dockets/';
 
-            return { revenues, netIncome };
-        } catch (error) {
-            console.error("Error fetching data:", error);
+    // Fetching docket data with Authorization token
+    fetch(docketEndpoint, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'ea8f6170b3b99370b1a16b1009a9e0d221422953', // Add your Authorization token here
         }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error fetching docket data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data fetched successfully:', data);
+            // Proceed to create the visualization
+            createDocketVisualization(data);
+        })
+        .catch(error => {
+            console.error('Error fetching docket data:', error);
+        });
+};
+
+// Function to create docket visualization using D3.js
+const createDocketVisualization = (data) => {
+    // Ensure that data is an array and valid
+    if (!Array.isArray(data)) {
+        console.error('Invalid data format: Expected an array');
+        return;
     }
 
-    // Fetch data and proceed if successful
-    const { revenues } = await fetchData();
-    if (!revenues) return; // Stop if revenues are not available
+    // Select the container element
+    const svgContainer = d3.select('#docket');
 
-    // Set up SVG canvas and margins
-    const margin = { top: 50, right: 100, bottom: 100, left: 100 };
-    const width = 1000 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    // Set up the SVG canvas dimensions
+    const svg = svgContainer.append('svg')
+        .attr('width', 500)
+        .attr('height', 500);
 
-    const svg = d3.select("body").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
-
-    // Scales for X (time) and Y (value)
-    const x = d3.scaleTime()
-        .domain(d3.extent(revenues, d => new Date(d.date)))
-        .range([0, width]);
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(revenues, d => d.value)])
-        .range([height, 0]);
-
-    // Define line generator function
-    const line = d3.line()
-        .x(d => x(new Date(d.date)))
-        .y(d => y(d.value));
-
-    // Create a path for the line chart
-    svg.append("path")
-        .datum(revenues)
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 2)
-        .attr("d", line);
-
-    // Tooltip for displaying values on hover
-    const tooltip = d3.select("body").append("div")
-        .style("position", "absolute")
-        .style("padding", "8px")
-        .style("background", "white")
-        .style("border", "1px solid #ccc")
-        .style("display", "none");
-
-    // Plot data points (dots) and attach tooltip interactions
-    svg.selectAll(".dot")
-        .data(revenues)
-        .enter().append("circle")
-        .attr("class", "dot")
-        .attr("cx", d => x(new Date(d.date)))
-        .attr("cy", d => y(d.value))
-        .attr("r", 5)
-        .attr("fill", d => {
-            // Highlight peak and low points with specific colors
-            const peak = d3.max(revenues, d => d.value);
-            const low = d3.min(revenues, d => d.value);
-            if (d.value === peak) return "green";
-            if (d.value === low) return "red";
-            return "blue";
+    // Bind data to the rectangles (bars)
+    svg.selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('x', (d, i) => i * 30) // Set X position of the bars (spacing between them)
+        .attr('y', (d) => 500 - (d.value || 0)) // Ensure a valid Y position for each rectangle
+        .attr('width', 20) // Set fixed width of the rectangles
+        .attr('height', (d) => {
+            // Ensure the height is a valid number; fallback to 0 if not
+            const height = d.value || 0;
+            return isNaN(height) ? 0 : height; // Return 0 if height is NaN
         })
-        .on("mouseover", (event, d) => {
-            tooltip.style("display", "block")
-                .html(`Date: ${d.date}<br>Value: $${d.value}`);
+        .attr('fill', 'blue') // Set the color of the rectangles
+        .on('mouseover', function (event, d) {
+            // Tooltip on hover (optional)
+            d3.select(this).attr('fill', 'orange');
+            tooltip.transition().duration(200).style('opacity', 1);
+            tooltip.html(`Docket: ${d.docketId} - Value: ${d.value}`)
+                .style('left', `${event.pageX + 5}px`)
+                .style('top', `${event.pageY - 28}px`);
         })
-        .on("mousemove", event => {
-            tooltip.style("left", `${event.pageX + 5}px`)
-                .style("top", `${event.pageY - 28}px`);
-        })
-        .on("mouseout", () => tooltip.style("display", "none"));
+        .on('mouseout', function () {
+            // Tooltip removal
+            d3.select(this).attr('fill', 'blue');
+            tooltip.transition().duration(500).style('opacity', 0);
+        });
 
-    // Adding Axes
-    svg.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%Y-%m-%d")));
+    // Create a tooltip for interactivity
+    const tooltip = d3.select('body').append('div')
+        .attr('class', 'tooltip')
+        .style('opacity', 0)
+        .style('position', 'absolute')
+        .style('background-color', '#f9f9f9')
+        .style('padding', '5px')
+        .style('border', '1px solid #ddd')
+        .style('border-radius', '5px');
 
-    svg.append("g")
-        .call(d3.axisLeft(y));
-});
+    // Optional: Add axis, labels, or other chart elements
+    const xScale = d3.scaleLinear().domain([0, data.length]).range([0, 500]);
+    const yScale = d3.scaleLinear().domain([0, d3.max(data, d => d.value)]).range([500, 0]);
+
+    svg.append('g')
+        .attr('transform', 'translate(0,500)')
+        .call(d3.axisBottom(xScale));
+
+    svg.append('g')
+        .call(d3.axisLeft(yScale));
+};
+
+// Call the function to fetch data and create the visualization
+fetchDataAndCreateVisualization();
