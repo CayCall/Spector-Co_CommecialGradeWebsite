@@ -154,102 +154,140 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLimitLabel() {
         limitLabel.textContent = `You have used the fetch ${useCount} out of ${useLimit} times.`;
     }
+
+
+
+    // Docket visulisation
+
+
+    // Function to fetch data and create the docket visualization
+    const fetchDataAndCreateVisualisation = () => {
+        const docketEndpoint = 'https://www.courtlistener.com/api/rest/v4/dockets/';
+
+        fetch(docketEndpoint, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Token ea8f6170b3b99370b1a16b1009a9e0d221422953', // Authorization token
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error fetching docket data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Fetched Data:', data);
+                createDocketVisualisation(data.results); // Use `results` if data is wrapped in that
+            })
+            .catch(error => {
+                console.error('Error fetching docket data:', error);
+            });
+            
+    };
+
+
+    // Function to create docket visualization
+    const createDocketVisualisation = (data) => {
+        // Ensure data is an array
+        if (!Array.isArray(data)) {
+            console.error('Invalid data format: Expected an array');
+            return;
+        }
+
+        // Creates the table for docket information
+        const table = d3.select('#docketTable')
+            .append('table')
+            .attr('class', 'docket-table');
+
+        const tableHeader = table.append('thead').append('tr');
+        tableHeader.append('th').text('Case Name');
+        tableHeader.append('th').text('Docket Number');
+        tableHeader.append('th').text('Case Link');
+        tableHeader.append('th').text('Date Filed');
+        tableHeader.append('th').text('Cause');
+        tableHeader.append('th').text('Assigned Judge');
+        tableHeader.append('th').text('Date Last Filing');
+
+        const tableBody = table.append('tbody');
+
+        const renderTable = (data) => {
+            tableBody.selectAll('*').remove(); 
+
+            data.forEach(d => {
+                const row = tableBody.append('tr')
+                    .attr('data-url', `https://www.courtlistener.com/docket/${d.docket_number}`);  
+                row.append('td').text(d.case_name || 'N/A');
+                row.append('td').text(d.docket_number || 'N/A');
+                row.append('td').text(d.resource_uri|| 'N/A');
+                row.append('td').text(d.date_created || 'N/A');
+                row.append('td').text(d.cause || 'N/A');
+                row.append('td').text(d.assigned_to_str || 'N/A');
+                row.append('td').text(d.date_last_filing || 'N/A');
+
+                // Add click event to the row
+                row.on('click', function () {
+                    const url = this.getAttribute('data-url');  
+                    window.open(url, '_blank'); 
+                });
+
+                // Optional: Highlight row on hover
+                row.on('mouseover', function () {
+                    d3.select(this).style('background-color', '#e0e0e0'); 
+                }).on('mouseout', function () {
+                    d3.select(this).style('background-color', ''); 
+                });
+            });
+        };
+
+        // Initially render the table
+        renderTable(data);
+
+
+        // 3. Sorting functionality based on checkbox
+        const sortCheckbox = document.getElementById('sortCheckbox');
+        sortCheckbox.addEventListener('change', () => {
+            const isChecked = sortCheckbox.checked;
+            const sortedData = [...data];  // Clone data to avoid mutation
+
+            if (isChecked) {
+                sortedData.sort((a, b) => new Date(a.date_created) - new Date(b.date_created));  // Sort by Date Filed Ascending
+            } else {
+                sortedData.sort((a, b) => new Date(b.date_created) - new Date(a.date_created));  // Sort by Date Filed Descending
+            }
+
+            renderTable(sortedData);  // Re-render the table with sorted data
+        });
+    };
+    // Function to implement search functionality
+    const searchTable = () => {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();  // Get the input text and convert it to lowercase
+        const rows = document.querySelectorAll('#docketTable tbody tr');  // Select all table rows in the tbody
+
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');  // Get all cells in the row
+            let match = false;  // Initially set match flag to false
+
+            // Loop through each cell and check if any of them contain the search term
+            cells.forEach(cell => {
+                if (cell.textContent.toLowerCase().includes(searchTerm)) {
+                    match = true;  // If a match is found, set match flag to true
+                }
+            });
+
+            // If a match is found, show the row, otherwise hide it
+            if (match) {
+                row.style.display = '';  // Show row
+            } else {
+                row.style.display = 'none';  // Hide row
+            }
+        });
+    };
+
+    // Add event listener to search input to call searchTable whenever the user types
+    document.getElementById('searchInput').addEventListener('input', searchTable);
+    // Fetch data and create the visualization
+    fetchDataAndCreateVisualisation();
 });
 
 
-// Fetch data and create the visualization
-const fetchDataAndCreateVisualization = () => {
-    // Your API endpoint
-    const docketEndpoint = '//www.courtlistener.com/api/rest/v4/dockets/';
-
-    // Fetching docket data with Authorization token
-    fetch(docketEndpoint, {
-        method: 'GET',
-        headers: {
-            'Authorization': 'ea8f6170b3b99370b1a16b1009a9e0d221422953', // Add your Authorization token here
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error fetching docket data');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Data fetched successfully:', data);
-            // Proceed to create the visualization
-            createDocketVisualization(data);
-        })
-        .catch(error => {
-            console.error('Error fetching docket data:', error);
-        });
-};
-
-// Function to create docket visualization using D3.js
-const createDocketVisualization = (data) => {
-    // Ensure that data is an array and valid
-    if (!Array.isArray(data)) {
-        console.error('Invalid data format: Expected an array');
-        return;
-    }
-
-    // Select the container element
-    const svgContainer = d3.select('#docket');
-
-    // Set up the SVG canvas dimensions
-    const svg = svgContainer.append('svg')
-        .attr('width', 500)
-        .attr('height', 500);
-
-    // Bind data to the rectangles (bars)
-    svg.selectAll('rect')
-        .data(data)
-        .enter()
-        .append('rect')
-        .attr('x', (d, i) => i * 30) // Set X position of the bars (spacing between them)
-        .attr('y', (d) => 500 - (d.value || 0)) // Ensure a valid Y position for each rectangle
-        .attr('width', 20) // Set fixed width of the rectangles
-        .attr('height', (d) => {
-            // Ensure the height is a valid number; fallback to 0 if not
-            const height = d.value || 0;
-            return isNaN(height) ? 0 : height; // Return 0 if height is NaN
-        })
-        .attr('fill', 'blue') // Set the color of the rectangles
-        .on('mouseover', function (event, d) {
-            // Tooltip on hover (optional)
-            d3.select(this).attr('fill', 'orange');
-            tooltip.transition().duration(200).style('opacity', 1);
-            tooltip.html(`Docket: ${d.docketId} - Value: ${d.value}`)
-                .style('left', `${event.pageX + 5}px`)
-                .style('top', `${event.pageY - 28}px`);
-        })
-        .on('mouseout', function () {
-            // Tooltip removal
-            d3.select(this).attr('fill', 'blue');
-            tooltip.transition().duration(500).style('opacity', 0);
-        });
-
-    // Create a tooltip for interactivity
-    const tooltip = d3.select('body').append('div')
-        .attr('class', 'tooltip')
-        .style('opacity', 0)
-        .style('position', 'absolute')
-        .style('background-color', '#f9f9f9')
-        .style('padding', '5px')
-        .style('border', '1px solid #ddd')
-        .style('border-radius', '5px');
-
-    // Optional: Add axis, labels, or other chart elements
-    const xScale = d3.scaleLinear().domain([0, data.length]).range([0, 500]);
-    const yScale = d3.scaleLinear().domain([0, d3.max(data, d => d.value)]).range([500, 0]);
-
-    svg.append('g')
-        .attr('transform', 'translate(0,500)')
-        .call(d3.axisBottom(xScale));
-
-    svg.append('g')
-        .call(d3.axisLeft(yScale));
-};
-
-// Call the function to fetch data and create the visualization
-fetchDataAndCreateVisualization();

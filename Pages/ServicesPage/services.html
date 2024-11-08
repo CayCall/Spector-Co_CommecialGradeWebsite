@@ -208,7 +208,39 @@
             </div>
         </section>
         <hr>
+        <section>
+            <h2 class="section-title">Our Dockets</h2>
 
+
+            <div class="container">
+                <p> <strong> Please note: For confidentiality reasons, sensitive information about cases is not displayed here.</strong> 
+                    Explore the cases currently being handled by our firm. Stay informed about ongoing legal matters that
+                    highlight our expertise in various legal fields.</p>
+                <!-- Instructions for user interaction -->
+                <p id="interactionHint" class="hint">Click on any row to load details about the case on courtlistener. Use the
+                    checkbox to sort by Date Filed.</p>
+
+                <div class="sort-section">
+                    <input type="checkbox" id="sortCheckbox" />
+                    <label for="sortCheckbox">Sort by Date Filed (Ascending/Descending):</label>
+                </div>
+                <!-- Search bar for filtering data -->
+                <input type="text" id="searchInput" placeholder="Search case name..." />
+
+                <!-- Container for the table -->
+                <div id="docketTable"></div>
+                <div class="cta">
+                    <p>Interested in a case? <button class="button-variation-1" onclick="loadContactPage()">Contact
+                            us</button> for more details or to
+                        schedule a consultation.</p>
+                </div>
+            </div>
+
+            <!-- Optional CTA -->
+ 
+        </section>
+
+        <hr>
         <section class="stock-wrapper">
             <h2 class="section-title">We Inform On Stock Price Data</h2>
             <p> At Spector & Co, we understand that stock price data plays a critical role in informed decision-making
@@ -263,36 +295,8 @@
 
             </div>
 
-            <hr>
 
-            <div id="filter-section">
-                <label for="case-filter">Filter by Case Count:</label>
-                <select id="case-filter">
-                    <option value="all">All</option>
-                    <option value="low">0-50</option>
-                    <option value="medium">51-200</option>
-                    <option value="high">200+</option>
-                </select>
-            </div>
-
-            <div id="search-section">
-                <label for="docket-search">Search by Docket ID:</label>
-                <input type="text" id="docket-search">
-            </div>
-
-            <div id="chart-type-section">
-                <label for="chart-type">Choose Chart Type:</label>
-                <select id="chart-type">
-                    <option value="bar">Bar Chart</option>
-                    <option value="line">Line Chart</option>
-                </select>
-            </div>
-
-            <div id="loading-message">Loading data...</div>
-
-            <div id="chart"></div>
         </section>
-
 
     </main>
 

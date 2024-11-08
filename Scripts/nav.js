@@ -161,6 +161,9 @@ const loadAboutPage = () => {
 const loadServicesPage = () => {
     window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html";
 };
+const loadContactPage = () => {
+    window.location.href = "/Spector-Co_CommecialGradeWebsite/Pages/ContactPage/contact.html";
+};
 
 
 // for checking if the nav script is loading 
