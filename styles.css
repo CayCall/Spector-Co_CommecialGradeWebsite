@@ -313,7 +313,8 @@ header.shrink {
     border-radius: 5px;
     font-size: 18px;
     opacity: 0;
-    transition: opacity 1s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added transition for transform and box-shadow */
+    transition: opacity 1s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    /* Added transition for transform and box-shadow */
     pointer-events: none;
 }
 
@@ -323,9 +324,12 @@ header.shrink {
 }
 
 .backToTopBtn:hover {
-    background-color: #31b2b2; /* Slightly darker background color on hover */
-    transform: scale(1.1); /* Slightly scale up the button */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+    background-color: #31b2b2;
+    /* Slightly darker background color on hover */
+    transform: scale(1.1);
+    /* Slightly scale up the button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Add a shadow effect */
 }
 
 
@@ -335,7 +339,7 @@ header.shrink {
     color: #E5E5E5;
     font-size: 15px;
     position: absolute;
-    bottom:80px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
@@ -438,6 +442,46 @@ hr {
     margin: 30px 50px 0px 50px;
 }
 
+/*Info cards*/
+#content-section-grid {
+    padding: 80px 100px 100px 100px;
+}
+
+#content-section-grid h2 {
+    margin-bottom: 50px;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    text-align: center;
+}
+
+.content-container-item {
+    background-color: #002B5C;
+    color: #E5E5E5;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 12px 12px rgba(0, 0, 0, 0.1);
+}
+
+.content-container-item p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+
+.content-container-item p.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+.content-icons {
+    margin: 15px;
+    width: 65px;
+    animation: animateIcons 5s ease-in-out infinite;
+  }
 /*Footer styling used across all the pages*/
 footer {
     padding: 20px 50px;
@@ -453,7 +497,8 @@ footer {
     justify-content: space-between;
     width: 100%;
     max-width: 1500px;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
 }
 
 .footer-left {
@@ -461,8 +506,10 @@ footer {
     flex-direction: column;
     align-items: center;
     margin-right: 20px;
-    flex: 1; /* Allow it to grow */
-    min-width: 200px; /* Minimum width for the left section */
+    flex: 1;
+    /* Allow it to grow */
+    min-width: 200px;
+    /* Minimum width for the left section */
 }
 
 .footer-logo {
@@ -479,8 +526,10 @@ footer {
 
 .bottom-nav {
     text-align: center;
-    flex: 1; /* Allow it to grow */
-    margin: 20px 0; /* Add margin for spacing */
+    flex: 1;
+    /* Allow it to grow */
+    margin: 20px 0;
+    /* Add margin for spacing */
 }
 
 #bottom-nav-links {
@@ -490,13 +539,17 @@ footer {
 .bottom-nav ul {
     list-style: none;
     padding: 0;
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: center; /* Center the links */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    display: flex;
+    /* Use flexbox for horizontal layout */
+    justify-content: center;
+    /* Center the links */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
 }
 
 .bottom-nav ul li {
-    margin: 0 10px; /* Space between links */
+    margin: 0 10px;
+    /* Space between links */
 }
 
 .bottom-nav ul li a {
@@ -520,8 +573,10 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1; /* Allow it to grow */
-    min-width: 200px; /* Minimum width for the right section */
+    flex: 1;
+    /* Allow it to grow */
+    min-width: 200px;
+    /* Minimum width for the right section */
 }
 
 .footer-right h5 {
@@ -587,24 +642,32 @@ footer {
     #scroll-button {
         bottom: 100px;
     }
+
     .footer-content {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center align items */
+        flex-direction: column;
+        /* Stack elements vertically */
+        align-items: center;
+        /* Center align items */
     }
 
     .footer-left,
     .footer-right {
-        margin: 10px 0; /* Add margin for spacing */
-        min-width: 100%; /* Allow full width on smaller screens */
-        text-align: center; /* Center text */
+        margin: 10px 0;
+        /* Add margin for spacing */
+        min-width: 100%;
+        /* Allow full width on smaller screens */
+        text-align: center;
+        /* Center text */
     }
 
     .bottom-nav {
-        margin: 10px 0; /* Adjust margin for spacing */
+        margin: 10px 0;
+        /* Adjust margin for spacing */
     }
 
     .bottom-nav ul li {
-        margin: 5px 0; /* Vertical spacing for stacked links */
+        margin: 5px 0;
+        /* Vertical spacing for stacked links */
     }
 
 }

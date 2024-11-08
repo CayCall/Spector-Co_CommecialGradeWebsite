@@ -96,44 +96,9 @@
   font-size: 1.125em; 
   border-radius: 5px;  
 }
-#content-section-grid {
-  padding: 80px 100px 100px 100px; 
-}
-#content-section-grid h2{
-  margin-bottom: 50px;
-}
-.content-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-  text-align: center;
-}
-
-.content-container-item {
-  background-color: #002B5C;
-  color: #E5E5E5;
-  padding: 25px;
-  border-radius: 5px;
-  box-shadow: 12px 12px rgba(0, 0, 0, 0.1);
-}
-
-.content-container-item p {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-}
 
 
-.content-container-item p.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-.content-icons {
-  margin: 15px;
-  width: 65px;
-  animation: animateIcons 5s ease-in-out infinite;
-}
 
 @keyframes animateIcons {
   0% {

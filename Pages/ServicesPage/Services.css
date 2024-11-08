@@ -13,12 +13,6 @@
     padding: 0 20px;
 }
 
-.section-title {
-    text-align: center;
-    font-size: 36px;
-    color: #002B5C;
-    margin: 3 0px 0px 40px 0px;
-}
 
 
 .services-grid {
@@ -39,7 +33,6 @@
 
 .service-card h3 {
     margin: 1rem;
-    color: #002B5C;
 }
 
 
@@ -333,10 +326,9 @@ option {
 .section-title {
     font-size: 32px;
     /* Larger heading */
-    margin-bottom: 16px;
+    margin-bottom: 40px;
     /* Space below title */
-    color: #002B5C;
-    /* Navy Blue */
+    opacity: 0.85;
 }
 
 /* Container Layout */
