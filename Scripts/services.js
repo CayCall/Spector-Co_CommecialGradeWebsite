@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             resultDiv.innerHTML = '<p>Usage limit reached. Please refresh the page to reset.</p>';
-            fetchButton.disabled = true; // Disable the button if limit is reached
+            fetchButton.disabled = true; 
         }
     });
 
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    function updateLimitLabel() {
+  const updateLimitLabel = () => {
         limitLabel.textContent = `You have used the fetch ${useCount} out of ${useLimit} times.`;
     }
 
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Docket visulisation
 
 
-    // Function to fetch data and create the docket visualization
+    // Function to fetch data and create the docket visualisation
     const fetchDataAndCreateVisualisation = () => {
         const docketEndpoint = 'https://www.courtlistener.com/api/rest/v4/dockets/';
 
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             data.forEach(d => {
                 const row = tableBody.append('tr')
-                    .attr('data-url', `//www.courtlistener.com/api/rest/v4/dockets/${d.id}/`);  https://www.courtlistener.com/api/rest/v4/dockets/69354754/
+                    .attr('data-url', `//www.courtlistener.com/api/rest/v4/dockets/${d.id}/`);  //https://www.courtlistener.com/api/rest/v4/dockets/69354754/ - follow it so add id
                 row.append('td').text(d.case_name || 'N/A');
                 row.append('td').text(d.docket_number || 'N/A');
                 row.append('td').text(d.resource_uri|| 'N/A');
@@ -261,32 +261,31 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     // Function to implement search functionality
     const searchTable = () => {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();  // Get the input text and convert it to lowercase
-        const rows = document.querySelectorAll('#docketTable tbody tr');  // Select all table rows in the tbody
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();  
+        const rows = document.querySelectorAll('#docketTable tbody tr'); 
 
         rows.forEach(row => {
-            const cells = row.querySelectorAll('td');  // Get all cells in the row
-            let match = false;  // Initially set match flag to false
+            const cells = row.querySelectorAll('td');  
+            let match = false;  
 
-            // Loop through each cell and check if any of them contain the search term
+            
             cells.forEach(cell => {
                 if (cell.textContent.toLowerCase().includes(searchTerm)) {
-                    match = true;  // If a match is found, set match flag to true
+                    match = true;  
                 }
             });
 
             // If a match is found, show the row, otherwise hide it
             if (match) {
-                row.style.display = '';  // Show row
+                row.style.display = '';  
             } else {
-                row.style.display = 'none';  // Hide row
+                row.style.display = 'none'; 
             }
         });
     };
 
-    // Add event listener to search input to call searchTable whenever the user types
+    
     document.getElementById('searchInput').addEventListener('input', searchTable);
-    // Fetch data and create the visualization
     fetchDataAndCreateVisualisation();
 });
 

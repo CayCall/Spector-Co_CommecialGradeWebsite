@@ -16,13 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     checkVisibility();
 });
 
-window.onload = function () {
-    // Simulate data fetching
-    setTimeout(() => { // Hide loading message
-        document.getElementById('fetch-legal-opinions').style.display = 'block'; // Show button
-    }, 1000); // Simulated loading time
-}
-
 document.addEventListener("DOMContentLoaded", function () {
     const containers = document.querySelectorAll('.container');
 
@@ -49,13 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.querySelector(".modal");
     const fetchLegalOpinionsButton = document.getElementById("fetch-legal-opinions");
 
-    // Ensure modal and button are available before trying to manipulate them
-    if (modal && closeModal) {
-        // Close the modal when the close button is clicked
-        closeModal.onclick = () => {
-            modal.style.display = "none";
-        };
-    }
 
     // Simulate data fetching
     window.onload = function () {
@@ -73,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log(data);
             const results = data.results;
-            const width = 1800;
+            const width = 1150;
             const height = 800;
             const fixedRadius = 55;
 
@@ -131,6 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
             function ticked() {
                 bubble.attr("transform", d => `translate(${d.x},${d.y})`);
             }
+            closeModal.onclick = () => {
+                modal.style.display = "none";
+            };
         })
         .catch(error => console.error('Error fetching data:', error));
 });
