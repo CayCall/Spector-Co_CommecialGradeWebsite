@@ -33,17 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
         
-        // Update wireframe title and image
-        wireframeTitle.textContent = currentWireframe.title;
-        wireframeImage.src = currentWireframe.imgSrc;
+        if (wireframeTitle && wireframeImage && prevButton && nextButton) {
+            // Update wireframe title and image
+            wireframeTitle.textContent = currentWireframe.title;
+            wireframeImage.src = currentWireframe.imgSrc;
 
-        // Update visibility of Previous and Next buttons
-        prevButton.style.display = currentWireframeIndex === 0 ? "none" : "block";
-        nextButton.style.display = currentWireframeIndex === wireframes.length - 1 ? "none" : "block";
+            // Update visibility of Previous and Next buttons
+            prevButton.style.display = currentWireframeIndex === 0 ? "none" : "block";
+            nextButton.style.display = currentWireframeIndex === wireframes.length - 1 ? "none" : "block";
+        }
     }
 
     // Event listener for the "Previous" button
-    document.getElementById('prev').addEventListener('click', () => {
+    document.getElementById('prev')?.addEventListener('click', () => {
         if (currentWireframeIndex > 0) {
             currentWireframeIndex--; // Move to the previous wireframe
             updateWireframe();
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Event listener for the "Next" button
-    document.getElementById('next').addEventListener('click', () => {
+    document.getElementById('next')?.addEventListener('click', () => {
         if (currentWireframeIndex < wireframes.length - 1) {
             currentWireframeIndex++; // Move to the next wireframe
             updateWireframe();
