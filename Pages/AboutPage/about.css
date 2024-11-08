@@ -43,7 +43,7 @@
 }
 
 .legal-opinion-p {
-    margin: 20px 80px;
+    margin: 20px 150px;
     text-align: left;
     font-size: 18px;
     line-height: 1.6;
@@ -324,4 +324,78 @@
         font-size: 14px;
         /* Smaller input size */
     }
+}
+
+.bubble-container {
+    padding: 15px;
+}
+
+#modal-content {
+    width: 80%; /* Adjust modal width for smaller screens */
+    padding: 15px;
+}
+
+#modal-title {
+    font-size: 1.2em; /* Smaller font for mobile */
+}
+
+#modal-details {
+    font-size: 0.9em; /* Smaller font for mobile */
+}
+
+#bubble-chart-container {
+    padding: 0 10px; /* Add padding to prevent overflowing */
+    flex-direction: column;
+    align-items: center;
+}
+
+#bubble-chart {
+    width: 100%;
+    max-width: 400px; /* Limit chart size on smaller screens */
+    height: auto;
+}
+
+
+/* For very small screens */
+@media screen and (max-width: 480px) {
+#modal-content {
+    width: 50%;
+    padding: 10px;
+}
+
+#modal-title {
+    font-size: 1.1em;
+}
+
+#modal-details {
+    font-size: 0.85em;
+}
+
+#bubble-chart-container {
+    flex-direction: column;
+    padding: 0;
+}
+
+#bubble-chart {
+    max-width: 100%;
+    height: auto;
+}
+}
+
+/* For larger screens */
+@media screen and (min-width: 1024px) {
+#modal-content {
+    width: 60%; /* Increase modal width for large screens */
+}
+
+#bubble-chart-container {
+    padding: 0 30px;
+    justify-content: flex-start;
+}
+
+#bubble-chart {
+    width: 100%;
+    max-width: 800px; /* Adjust chart size for large screens */
+    height: 400px; /* Set a fixed height for the chart */
+}
 }

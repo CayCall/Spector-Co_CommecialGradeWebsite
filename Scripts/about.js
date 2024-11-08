@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     // Modal handling
     const closeModal = document.querySelector(".modal-close");
-    const modal = document.getElementById("modal");
+    const modal = document.querySelector(".modal");
     const fetchLegalOpinionsButton = document.getElementById("fetch-legal-opinions");
 
     // Ensure modal and button are available before trying to manipulate them
