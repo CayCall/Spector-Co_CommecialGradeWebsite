@@ -99,9 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     const detailsDiv = d3.select(".modal");
                     detailsDiv.html(`
                         <strong>Opinion Id:</strong> #${d.id}<br>
-                        <strong>About the opinion:</strong> ${d.plain_text || 'No description available'}<br>
                         <strong>Date of creation:</strong> ${d.date_created || 'No date available'}<br>
-                        <strong>Opinion Link:</strong> <a href="${d.cluster}" target="_blank" style="color: #008080; font-weight: bold;">View Details</a>
+                        <strong>Opinion Link:</strong> <a href="${d.cluster}" target="_blank" style="color: #008080; font-weight: bold;">View Details</a><br>
                     `);
                 });
 

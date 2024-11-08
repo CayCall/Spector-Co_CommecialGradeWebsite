@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             title: "Wireframe 4: Design Page",
-            imgSrc: "../../Images/Wireframes/DesignPage- annotated.png"
+            imgSrc: "../Images/Wireframes/DesignPage- annotated.png"
         },
         {
             title: "Wireframe 5: Contact Us Page",
