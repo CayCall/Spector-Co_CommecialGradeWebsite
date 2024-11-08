@@ -146,51 +146,13 @@ h3 {
 
 /*Wireframe styling*/
 /* Shared styling for all wireframe containers */
-#wireframe-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#current-wireframe {
-    max-width: 100%;
-    max-height: 600px;
-    margin: 20px 0;
-    border-radius: 8px;
+.wireframe{
+    width: 80%;
+    margin: 20px;
 }
 
 
-#wireframe-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-}
 
-/* Button styles */
-.wireframe-button {
-    padding: 10px 20px;
-    background-color: #002B5C;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 10px;
-}
-
-.wireframe-button:hover {
-    background-color: #39CECE;
-}
-
-.wireframe-button:focus {
-    outline: none;
-}
 
 /*Design decisons page*/
 #design-decisions {
