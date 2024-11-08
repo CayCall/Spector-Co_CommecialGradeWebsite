@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             data.forEach(d => {
                 const row = tableBody.append('tr')
-                    .attr('data-url', `https://www.courtlistener.com/docket/${d.docket_number}`);  
+                    .attr('data-url', `//www.courtlistener.com/api/rest/v4/dockets/${d.id}/`);  https://www.courtlistener.com/api/rest/v4/dockets/69354754/
                 row.append('td').text(d.case_name || 'N/A');
                 row.append('td').text(d.docket_number || 'N/A');
                 row.append('td').text(d.resource_uri|| 'N/A');

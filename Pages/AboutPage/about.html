@@ -131,10 +131,9 @@
                 </div>
             </div>
         </section>
-        <hr>
-        <section>
-
-            <div>
+        <hr class="divider">
+        <section >
+            <div class="visualisation-01">
                 <h2 class="legal-opinion-h2">Our Legal Opinions</h2>
                 <p class="legal-opinion-p">
                     At Spector and Co, we are dedicated to providing comprehensive insights into the justice system
@@ -147,9 +146,20 @@
                     our
                     clients and sensitive case details.
                 </p>
+            </div>
+         
 
-                <!-- New Fetch Button -->
-                <div class="chart-title">Legal cases with our opinions</div>
+            <!-- New Fetch Button -->
+            <div>
+                <h2>Legal Opinions Dashboard</h2>
+                <div class="button-container">
+                    <button id="fetch-legal-opinions">Fetch Legal Opinions</button>
+                    <div id="loading" style="display: none;">Loading...</div>
+                </div>
+                <label for="page-filter">Filter by Document:</label>
+                <select id="page-filter">
+                    <option value="">Select a Document</option>
+                </select>
                 <div class="button-container">
                     <button id="fetch-legal-opinions" style="display: none;">
                         Fetch Cases
@@ -173,30 +183,16 @@
                             </g>
                         </svg>
                     </button>
-                </div>
-                <!-- Loading Message -->
-                <div id="loading" style="display: none;">Loading, please wait... </div>
-                <!-- Page Filter Dropdown -->
-                <div class="page-filter-container">
-                    <label for="page-filter">Select Case:</label>
-                    <select id="page-filter">
-                        <option value="all">All Cases</option>
-                        <!-- Options will be populated dynamically -->
-                    </select>
-                </div>
+                    <div id="chart"></div>
 
-
-
-                <div id="chart"></div>
-
-                <!-- Modal for Detailed View -->
-                <div id="modal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <div id="modal-details"></div>
+                    <!-- Modal for detailed information -->
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div id="modal-details"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
     </main>

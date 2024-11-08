@@ -80,7 +80,7 @@
 }
 
 #app {
-    max-width: 650px;
+    max-width: 700px;
     margin: auto;
     padding: 20px;
     background: #E5E5E5;
@@ -98,18 +98,19 @@
     border: 1px solid #ccc;
     margin: 20px 0;
     border-radius: 5px;
-    /* Added rounded corners */
     overflow: hidden;
     /* To keep borders clean */
+    width: 100%;
+    /* Make the chart responsive */
+    height: auto;
+    /* Allow height to adjust automatically */
+    max-height: 400px;
+    display: inline-block;
+    /* Ensures the SVG doesn't break onto a new line */
+    /* Set a maximum height for the chart */
 }
 
-h1 {
-    text-align: center;
-    font-size: 2em;
-    /* Increased heading size for emphasis */
-    margin-bottom: 20px;
-    /* Added margin for spacing */
-}
+
 
 #fetch-button {
     margin-top: 25px;
@@ -330,9 +331,12 @@ option {
 
 /* Style for the checkbox label */
 .section-title {
-    font-size: 32px; /* Larger heading */
-    margin-bottom: 16px; /* Space below title */
-    color: #002B5C; /* Navy Blue */
+    font-size: 32px;
+    /* Larger heading */
+    margin-bottom: 16px;
+    /* Space below title */
+    color: #002B5C;
+    /* Navy Blue */
 }
 
 /* Container Layout */
@@ -345,9 +349,11 @@ option {
 /* Introductory Text */
 .container p {
     font-size: 16px;
-    color: #4A4A4A; /* Deep Gray */
+    color: #4A4A4A;
+    /* Deep Gray */
     line-height: 1.5;
-    margin-bottom: 20px; /* Space after paragraph */
+    margin-bottom: 20px;
+    /* Space after paragraph */
 }
 
 /* Instructions Text */
@@ -356,6 +362,7 @@ option {
     color: #666666;
     margin-bottom: 20px;
 }
+
 .hint {
     font-size: 16px;
     color: #4A4A4A;
@@ -400,19 +407,23 @@ option {
 /* Filter Section */
 .filter-section {
     display: flex;
-    gap: 20px; /* Space between elements */
-    margin-bottom: 20px; /* Space below filter section */
+    gap: 20px;
+    /* Space between elements */
+    margin-bottom: 20px;
+    /* Space below filter section */
 }
 
 /* Sorting and Search Inputs */
-.sort-section, #searchInput {
+.sort-section,
+#searchInput {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 #searchInput {
-    flex-grow: 1; /* Takes up remaining space */
+    flex-grow: 1;
+    /* Takes up remaining space */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #E5E5E5;
@@ -444,6 +455,11 @@ option {
     color: #4A4A4A;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+}
+
 /* Optional: Add padding for smaller screens */
 @media (max-width: 768px) {
     #hero-services h1 {
@@ -461,6 +477,38 @@ option {
         display: block;
     }
 
+    #chart {
+        max-height: 300px;
+        /* Reduce max height for smaller screens */
+        width: 100%;
+        /* Ensure the chart takes full width */
+    }
+
+    .bar {
+        width: 15px;
+        /* Adjust width for smaller screens */
+        /* Adjust height dynamically in JavaScript if needed */
+    }
+
+    .label {
+        font-size: 10px;
+        /* Reduce label font size for better fit */
+    }
+
+    .tooltip {
+        font-size: 10px;
+        /* Reduce tooltip font size */
+        padding: 6px;
+        /* Adjust padding for touch targets */
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+        /* Allow height to adjust automatically */
+    }
+
+
     .hidden-controls::-webkit-media-controls {
         display: none !important;
     }
@@ -469,12 +517,86 @@ option {
         pointer-events: none;
     }
 
-    svg {
-        width: 80%;
+
+    .container {
+        padding: 10px;
+        /* Reduce padding for smaller screens */
     }
 
-    table th,
-    table td {
+    input[type="text"] {
         padding: 8px;
+        /* Reduce padding for input */
     }
+
+    .sort-section {
+        display: flex;
+        flex-direction: column;
+        /* Stack sort options vertically */
+        align-items: flex-start;
+        /* Align items to the start */
+    }
+
+    .sort-section label {
+        margin-bottom: 5px;
+        /* Add margin below the label */
+    }
+
+    .docket-table th,
+    .docket-table td {
+        padding: 6px;
+        /* Reduce padding for smaller screens */
+    }
+
+    .docket-table {
+        font-size: 0.9em;
+        /* Slightly reduce font size */
+    }
+
+    .section-title {
+        font-size: 1.5em;
+        /* Reduce section title size */
+    }
+}
+
+@media (max-width: 480px) {
+    #chart {
+        max-height: 200px;
+        /* Further reduce max height for very small screens */
+    }
+
+    .section-title {
+        font-size: 1.2em;
+        /* Further reduce font size for very small screens */
+    }
+
+    .cta p {
+        font-size: 0.9em;
+        /* Reduce font size of call-to-action text */
+    }
+
+    .button-variation-1 {
+        width: 100%;
+        /* Make button full width */
+        padding: 10px;
+        /* Increase padding for better touch targets */
+    }
+
+    .docket-table th,
+    .docket-table td {
+        padding: 4px;
+        /* Further reduce padding for very small screens */
+    }
+
+    .docket-table {
+        font-size: 0.8em;
+        /* Further reduce font size */
+    }
+
+    .section-title {
+        font-size: 1.2em;
+        /* Further reduce section title size */
+    }
+
+
+
 }

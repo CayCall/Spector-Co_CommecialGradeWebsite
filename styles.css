@@ -453,6 +453,7 @@ footer {
     justify-content: space-between;
     width: 100%;
     max-width: 1500px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .footer-left {
@@ -460,6 +461,8 @@ footer {
     flex-direction: column;
     align-items: center;
     margin-right: 20px;
+    flex: 1; /* Allow it to grow */
+    min-width: 200px; /* Minimum width for the left section */
 }
 
 .footer-logo {
@@ -472,12 +475,12 @@ footer {
     font-size: 16px;
     color: #E5E5E5;
     margin-bottom: 20px;
-
 }
 
 .bottom-nav {
     text-align: center;
-    flex: 1;
+    flex: 1; /* Allow it to grow */
+    margin: 20px 0; /* Add margin for spacing */
 }
 
 #bottom-nav-links {
@@ -487,12 +490,13 @@ footer {
 .bottom-nav ul {
     list-style: none;
     padding: 0;
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the links */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .bottom-nav ul li {
-    display: inline;
-    margin-right: 20px;
-    position: relative;
+    margin: 0 10px; /* Space between links */
 }
 
 .bottom-nav ul li a {
@@ -505,7 +509,6 @@ footer {
 
 .bottom-nav ul li a:hover {
     color: #39cece;
-
     z-index: 1;
 }
 
@@ -517,7 +520,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    flex: 1; /* Allow it to grow */
+    min-width: 200px; /* Minimum width for the right section */
 }
 
 .footer-right h5 {
@@ -546,6 +550,7 @@ footer {
 
 /*media queries for smaller all the smaller devices*/
 @media (max-width: 768px) {
+
     .nav-bar ul li {
         display: block;
         text-align: center;
@@ -582,18 +587,24 @@ footer {
     #scroll-button {
         bottom: 100px;
     }
-
     .footer-content {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
     }
 
-    .footer-left {
-        margin-right: 0;
-    }
-
+    .footer-left,
     .footer-right {
-        margin-left: 0;
+        margin: 10px 0; /* Add margin for spacing */
+        min-width: 100%; /* Allow full width on smaller screens */
+        text-align: center; /* Center text */
+    }
+
+    .bottom-nav {
+        margin: 10px 0; /* Adjust margin for spacing */
+    }
+
+    .bottom-nav ul li {
+        margin: 5px 0; /* Vertical spacing for stacked links */
     }
 
 }

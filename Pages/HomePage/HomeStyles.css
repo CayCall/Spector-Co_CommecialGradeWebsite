@@ -86,16 +86,15 @@
   margin: 0;
 }
 .expertise-button-container {
-  margin-top: 30px; text-align: center;
+  margin-top: 25px; text-align: center;
 }
 #expertise {
-  margin: 8rem;
+  padding: 60px;
 }
 .expertise-paragraph{
   margin: 1em 5%; 
   font-size: 1.125em; 
   border-radius: 5px;  
-  padding: 10px; 
 }
 #content-section-grid {
   padding: 80px 100px 100px 100px; 
@@ -275,13 +274,15 @@ svg {
   /* Testimonials Section */
   #testimonials {
     margin: 20px; /* Reduce margin */
-    padding: 20px; /* Reduce padding */
+    padding: 50px; /* Reduce padding */
   }
 
   #testimonials h2 {
     font-size: 34px; 
   }
-
+  #testimonials p {
+    font-size: 13px; 
+  }
   /* Crime Bar Chart */
   #crime-bar-chart {
     width: 100%; /* Make chart full width */
@@ -296,8 +297,9 @@ svg {
   }
 
   .arrow {
-    font-size: 18px; /* Adjust font size */
-    padding: 10px; /* Adjust padding */
+    margin-top: 90px;
+    font-size: 10px; /* Adjust font size */
+    padding: 8px; /* Adjust padding */
   }
 
   /* Adjust Images */

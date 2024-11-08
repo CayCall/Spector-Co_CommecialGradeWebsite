@@ -209,35 +209,37 @@
         </section>
         <hr>
         <section>
-            <h2 class="section-title">Our Dockets</h2>
+            <div class="table-responsive">
+                <div class="container">
+                    <h2 class="section-title">Our Dockets</h2>
+                    <p> <strong> Please note: For confidentiality reasons, sensitive information about cases is not
+                            displayed here.</strong>
+                        Explore the cases currently being handled by our firm. Stay informed about ongoing legal matters
+                        that
+                        highlight our expertise in various legal fields.</p>
+                    <!-- Instructions for user interaction -->
+                    <p id="interactionHint" class="hint">Click on any row to load details about the case on
+                        Courtlistener. Use the
+                        checkbox to sort by Date Filed.</p>
 
+                    <div class="sort-section">
+                        <input type="checkbox" id="sortCheckbox" />
+                        <label for="sortCheckbox">Sort by Date Filed (Ascending/Descending):</label>
+                    </div>
+                    <!-- Search bar for filtering data -->
+                    <input type="text" id="searchInput" placeholder="Search case name..." />
+                    <div id="docketTable"></div>
+                    <div class="cta">
+                        <p>Interested in a case? <button class="button-variation-1" onclick="loadContactPage()">Contact
+                                us</button> for more details or to
+                            schedule a consultation.</p>
+                    </div>
 
-            <div class="container">
-                <p> <strong> Please note: For confidentiality reasons, sensitive information about cases is not displayed here.</strong> 
-                    Explore the cases currently being handled by our firm. Stay informed about ongoing legal matters that
-                    highlight our expertise in various legal fields.</p>
-                <!-- Instructions for user interaction -->
-                <p id="interactionHint" class="hint">Click on any row to load details about the case on courtlistener. Use the
-                    checkbox to sort by Date Filed.</p>
-
-                <div class="sort-section">
-                    <input type="checkbox" id="sortCheckbox" />
-                    <label for="sortCheckbox">Sort by Date Filed (Ascending/Descending):</label>
-                </div>
-                <!-- Search bar for filtering data -->
-                <input type="text" id="searchInput" placeholder="Search case name..." />
-
-                <!-- Container for the table -->
-                <div id="docketTable"></div>
-                <div class="cta">
-                    <p>Interested in a case? <button class="button-variation-1" onclick="loadContactPage()">Contact
-                            us</button> for more details or to
-                        schedule a consultation.</p>
                 </div>
             </div>
 
-            <!-- Optional CTA -->
- 
+
+
         </section>
 
         <hr>
@@ -290,7 +292,11 @@
                 </div>
                 <hr>
                 <div id="result"></div>
-                <svg id="chart" width="600" height="500"></svg> <!-- SVG for D3 Chart -->
+                <div id="app">
+                    <div id="chart-container" style="overflow-x: auto; white-space: nowrap; width: 100%;">
+                        <svg id="chart" width="1600" height="500"></svg> <!-- Set a larger width for the SVG -->
+                    </div>
+                </div>
                 <p id="limitLabel">You have used the fetch 0 out of 5 times.</p>
 
             </div>

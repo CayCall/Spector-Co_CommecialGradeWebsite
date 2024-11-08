@@ -30,6 +30,7 @@ h2 {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+
 }
 .form-image {
     flex: 1;
@@ -105,4 +106,22 @@ textarea {
     color: green;
     font-size: 16px;
     margin-top: 20px;
+}
+@media (max-width: 768px) {
+ 
+    .contact-info {
+        grid-template-columns: 1fr; 
+        margin: 50px; 
+    }
+
+    .contact-item {
+        padding: 15px; 
+    }
+
+    .contact-item h3 {
+        font-size: 1.25rem; 
+    }
+    .contact-us{
+        margin: 10px;
+    }
 }
