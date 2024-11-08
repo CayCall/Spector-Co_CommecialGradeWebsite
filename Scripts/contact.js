@@ -24,7 +24,7 @@ form.addEventListener('submit', (e) => {
 
     let isValid = true;
 
-    // Validate the users name
+    // users name
     if (nameInput.value.trim() === '') {
         nameError.textContent = 'Name is required.';
         isValid = false;
@@ -35,7 +35,7 @@ form.addEventListener('submit', (e) => {
         nameError.textContent = '';
     }
 
-    // Validate the userrs email
+    //  userrs email
     if (emailInput.value.trim() === '') {
         emailError.textContent = 'Email is required.';
         isValid = false;
@@ -46,7 +46,7 @@ form.addEventListener('submit', (e) => {
         emailError.textContent = '';
     }
 
-    // Validate the users number
+    // users number
     if (phoneInput.value.trim() === '') {
         phoneError.textContent = 'Phone number is required.';
         isValid = false;
@@ -57,7 +57,7 @@ form.addEventListener('submit', (e) => {
         phoneError.textContent = '';
     }
 
-    // Validate the users email
+    //  users email
     if (passwordInput.value.trim() === '') {
         passwordError.textContent = 'Password is required.';
         isValid = false;
@@ -93,7 +93,7 @@ form.addEventListener('submit', (e) => {
     let waitTime = 5; 
     const successMessage = document.getElementById('success-message'); 
     
-    // Function to update the success message element when the user types everything in correctly
+    // update the success message  when the user types everything in correctly
     function updateSuccessMessage() {
         if (waitTime > 0) {
             successMessage.textContent = 'Form submitted successfully!';
@@ -108,7 +108,7 @@ form.addEventListener('submit', (e) => {
             waitTime -= 1;
             updateSuccessMessage(); 
         } else {
-            clearInterval(intervalId); // Stop the interval when waitTime reaches 0
+            clearInterval(intervalId); 
         }
     }, 1000); // 1000 milliseconds = 1 second
     
