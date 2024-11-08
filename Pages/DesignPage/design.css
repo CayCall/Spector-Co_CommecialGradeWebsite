@@ -147,13 +147,10 @@ h3 {
 /*Wireframe styling*/
 /* Shared styling for all wireframe containers */
 .wireframe{
-    width: 80%;
+    width: 50%;
+    height: 40vh;
     margin: 20px;
 }
-
-
-
-
 /*Design decisons page*/
 #design-decisions {
     background-color: white;
@@ -274,6 +271,20 @@ h3 {
     border-radius: 3px;
 }
 
+figure {
+    text-align: center;
+    margin: 20px 0;
+}
+
+figcaption {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.bibliography {
+    margin-top: 40px;
+    font-style: italic;
+}
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
