@@ -31,10 +31,12 @@
 </head>
 
 <body>
-    <header>
+    <header aria-label="Primary header">
         <h1>Spector & Co</h1>
-        <nav class="nav-bar">
-            <button class="hamburger" id="hamburger-btn">&#9776;</button>
+        <nav class="nav-bar" aria-label="Main navigation">
+            <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu">
+                &#9776;
+            </button>
         </nav>
     </header>
     <div id="hero-splash-images">
@@ -49,193 +51,175 @@
     <section class="scroll-to">
 
     </section>
+
     <main>
-        <section class="about-section">
+        <section class="about-section" aria-labelledby="about-us-header">
             <h2 class="sub-heading" id="about-us-header">Who are we?</h2>
             <p>
                 At Spector & Co, we provide tailored legal solutions that simplify complexities and ensure your business
-                thrives.</p>
+                thrives.
+            </p>
         </section>
 
-        <div class="scroll-indicator">
+        <div class="scroll-indicator" aria-label="Scroll Indicator">
             <p class="scroll-prompt">Scroll down to learn more about our firm!</p>
-            <div class="scroll-arrow">&darr;</div>
+            <div class="scroll-arrow" aria-hidden="true">&darr;</div>
         </div>
 
-
         <section class="scroll-down-to">
-            <div class="section-divider"></div>
+            <div class="section-divider" role="separator"></div>
+
             <!-- Mission Section -->
-            <div class="container left-container">
+            <div class="container left-container" aria-labelledby="mission-heading">
                 <div>
-                    <h2>Our Mission</h2>
-                    <p>Empower businesses by providing top-tier legal consultancy
-                        services.</p>
-                    <span class="left-container-arrow"></span>
+                    <h2 id="mission-heading">Our Mission</h2>
+                    <p>Empower businesses by providing top-tier legal consultancy services.</p>
+                    <span class="left-container-arrow" aria-hidden="true"></span>
                 </div>
-                <img class="animate-left" src="../../Images/photography.jpg" alt="Our Mission Image">
+                <img class="animate-left" src="../../Images/photography.jpg"
+                    alt="Illustrative image representing our mission">
             </div>
-            <div class="section-divider"></div>
+
+            <div class="section-divider" role="separator"></div>
+
             <!-- History Section -->
-            <div class="container right-container">
+            <div class="container right-container" aria-labelledby="history-heading">
                 <div>
-                    <h2>Our History</h2>
-                    <p>Founded in 1979, Spector & Co was established to fill the gap in the legal consultancy
-                        market...</p>
+                    <h2 id="history-heading">Our History</h2>
+                    <p>Founded in 1979, Spector & Co was established to fill the gap in the legal consultancy market...
+                    </p>
                 </div>
-                <img class="animate-right" src="../../Images/wesley-tingey.jpg" alt="Our History Image">
+                <img class="animate-right" src="../../Images/wesley-tingey.jpg"
+                    alt="Historical image representing the founding of our company">
             </div>
-            <div class="section-divider"></div>
+
+            <div class="section-divider" role="separator"></div>
+
             <!-- Culture Section -->
-            <div class="container left-container">
+            <div class="container left-container" aria-labelledby="culture-heading">
                 <div>
-                    <h2>Firm Culture</h2>
+                    <h2 id="culture-heading">Firm Culture</h2>
                     <p>Fostering a collaborative and inclusive culture where every team member is valued.</p>
                 </div>
-                <img class="animate-left" src="../../Images/giammarco.jpg" alt="Firm Culture Image">
-            </div>
-            <div class="section-divider"></div>
-            <!-- Pro Bono Section -->
-            <div class="container right-container">
-                <div>
-                    <h2>Our Commitment to Excellence</h2>
-                    <p>At Spector & Co, we are dedicated to maintaining the highest standards of legal consultancy.</p>
-                </div>
-                <img class="animate-right" src="../../Images/stock-image-law.jpg" alt="Our History Image">
+                <img class="animate-left" src="../../Images/giammarco.jpg"
+                    alt="Image representing our collaborative culture">
             </div>
 
+            <div class="section-divider" role="separator"></div>
+
+            <!-- Pro Bono Section -->
+            <div class="container right-container" aria-labelledby="commitment-heading">
+                <div>
+                    <h2 id="commitment-heading">Our Commitment to Excellence</h2>
+                    <p>At Spector & Co, we are dedicated to maintaining the highest standards of legal consultancy.</p>
+                </div>
+                <img class="animate-right" src="../../Images/stock-image-law.jpg"
+                    alt="Image symbolizing our commitment to excellence">
+            </div>
         </section>
-        <hr>
-        <section id="our-values">
+
+        <hr role="separator">
+
+        <section id="our-values" aria-labelledby="our-values-heading">
             <div class="container-values">
-                <h2 class="sub-heading">Our Values</h2>
+                <h2 class="sub-heading" id="our-values-heading">Our Values</h2>
                 <p class="intro-text">
                     We believe in upholding the highest standards of integrity, professionalism, and innovation.
                 </p>
                 <div class="values-list">
-                    <div class="value-item" id="item-1">
-                        <h3>Integrity</h3>
-                        <p>Committed to maintaining transparency and honesty in all our business dealings. Trust
-                            is at the core of everything we do.</p>
+                    <div class="value-item" id="item-1" aria-labelledby="integrity-heading">
+                        <h3 id="integrity-heading">Integrity</h3>
+                        <p>Committed to maintaining transparency and honesty in all our business dealings. Trust is at
+                            the core of everything we do.</p>
                     </div>
-                    <div class="value-item" id="item-2">
-                        <h3>Innovation</h3>
+                    <div class="value-item" id="item-2" aria-labelledby="innovation-heading">
+                        <h3 id="innovation-heading">Innovation</h3>
                         <p>Embracing change and constantly evolving to meet the needs of our clients is what drives us
                             forward.</p>
                     </div>
-                    <div class="value-item" id="item-3">
-                        <h3>Excellence</h3>
+                    <div class="value-item" id="item-3" aria-labelledby="excellence-heading">
+                        <h3 id="excellence-heading">Excellence</h3>
                         <p>Striving to deliver high-quality results in everything we do, ensuring our clients' success
                             through dedication and expertise.</p>
                     </div>
                 </div>
             </div>
         </section>
-        <hr class="divider">
-        <section >
+
+        <hr class="divider" role="separator">
+
+        <section aria-labelledby="legal-opinions-heading">
             <div class="visualisation-01">
-                <h2 class="legal-opinion-h2">Our Legal Opinions</h2>
+                <h2 class="legal-opinion-h2" id="legal-opinions-heading">Our Legal Opinions</h2>
                 <p class="legal-opinion-p">
                     At Spector and Co, we are dedicated to providing comprehensive insights into the justice system
-                    through our standard court opinions. Our expertise empowers legal professionals, business
-                    owners,
-                    and individuals alike to navigate complex legal landscapes with confidence. We strive to clarify
-                    the
-                    intricacies of justice, enabling informed decision-making. <strong>Please note</strong>, due to
-                    confidentiality requirements, we provide only aggregated information, ensuring the privacy of
-                    our
-                    clients and sensitive case details.
+                    through our standard court opinions...
                 </p>
             </div>
-         
 
-            <!-- New Fetch Button -->
-            <div>
-                <h2>Legal Opinions Dashboard</h2>
-                <div class="button-container">
-                    <button id="fetch-legal-opinions">Fetch Legal Opinions</button>
-                    <div id="loading" style="display: none;">Loading...</div>
-                </div>
-                <label for="page-filter">Filter by Document:</label>
-                <select id="page-filter">
-                    <option value="">Select a Document</option>
-                </select>
-                <div class="button-container">
-                    <button id="fetch-legal-opinions" style="display: none;">
-                        Fetch Cases
-                        <svg fill="#000000" viewBox="0 0 24 24" id="update" data-name="Flat Line"
-                            xmlns="http://www.w3.org/2000/svg" class="icon flat-line">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <path id="primary" d="M4,12A8,8,0,0,1,18.93,8"
-                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                                </path>
-                                <path id="primary-2" data-name="primary" d="M20,12A8,8,0,0,1,5.07,16"
-                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                                </path>
-                                <polyline id="primary-3" data-name="primary" points="14 8 19 8 19 3"
-                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                                </polyline>
-                                <polyline id="primary-4" data-name="primary" points="10 16 5 16 5 21"
-                                    style="fill: none; stroke: #E5E5E5; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
-                                </polyline>
-                            </g>
-                        </svg>
-                    </button>
-                    <div id="chart"></div>
+            <div class="bubble-container" aria-label="Interactive opinion chart">
+                <p style="text-align: center; margin-top: 50px; font-weight: 600;">Click on an opinion ID bubble for
+                    opinion details</p>
 
-                    <!-- Modal for detailed information -->
-                    <div id="modal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div id="modal-details"></div>
-                        </div>
+                <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title"
+                    aria-describedby="modal-details">
+                    <div class="modal-content">
+                        <button class="modal-close" aria-label="Close" role="button">&times;</button>
+                        <h3 id="modal-title"></h3>
+                        <p id="modal-details"></p>
                     </div>
                 </div>
-        </section>
 
+                <div id="bubble-chart-container" aria-live="polite">
+                    <div id="bubble-chart"></div>
+                </div>
+            </div>
+        </section>
     </main>
+
     <button class="backToTopBtn" id="backToTopBtn" onclick="scrollToTop()"> ↑ </button>
-    <footer>
+    <footer aria-label="Website footer">
         <div class="footer-content">
-            <div class="footer-left">
-                <img src="../../Images/icon.png" alt="Company Logo" class="footer-logo">
+            <div class="footer-left" aria-label="Footer left section">
+                <img src="../../Images/icon.png" alt="Company Logo" class="footer-logo" aria-label="Company logo">
                 <p class="footer-description">Providing quality services since 1979.</p>
             </div>
-            <div class="bottom-nav">
-                <ul id="bottom-nav-links">
-                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/AboutPage/about.html">| About Us</a></li>
-                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html">| Services</a>
-                    </li>
-                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/ContactPage/contact.html">| Contact Us</a>
-                    </li>
-                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/DesignPage//">| Design</a></li>
+
+            <div class="bottom-nav" aria-label="Footer bottom navigation">
+                <ul id="bottom-nav-links" aria-label="Footer navigation links">
+                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/AboutPage/about.html"
+                            aria-label="Navigate to About Us page">| About Us</a></li>
+                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/ServicesPage/services.html"
+                            aria-label="Navigate to Services page">| Services</a></li>
+                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/ContactPage/contact.html"
+                            aria-label="Navigate to Contact Us page">| Contact Us</a></li>
+                    <li><a href="../Spector-Co_CommecialGradeWebsite/Pages/DesignPage/"
+                            aria-label="Navigate to Design page">| Design</a></li>
                 </ul>
             </div>
-            <div class="footer-right">
+
+            <div class="footer-right" aria-label="Footer right section">
                 <h5>&copy; 2024 Spector & Co | All rights reserved.</h5>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com">
+                <div class="social-icons" aria-label="Social media links">
+                    <a href="https://www.instagram.com" aria-label="Visit our Instagram page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795  0 1.44-.645 1.44-1.44-.001-.795-.645-1.44-1.44-1.44z">
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.44-.645 1.44-1.44-.001-.795-.645-1.44-1.44-1.44z">
                             </path>
                         </svg>
                     </a>
-                    <a href="https://www.facebook.com">
+                    <a href="https://www.facebook.com" aria-label="Visit our Facebook page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path
-                                d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z" />
-                            <!-- SVG path data -->
+                                d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1-1 1h-1v2h1c.553 0 1 .444 1 1v7h3v-7c0-.556.447-1 1-1h1v-2h-1c-.553 0-1-.443-1-1v-1c0-.553.447-1 1-1h1v-2h-2c-1.656 0-3 1.344-3 3v1z">
+                            </path>
                         </svg>
                     </a>
-
-                    <a href="https://www.linkedin.com/feed/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <a href="https://www.twitter.com" aria-label="Visit our Twitter page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path
-                                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                                d="M24 4.557c-.883.392-1.83.656-2.825.775 1.014-.608 1.794-1.569 2.163-2.724-.949.564-2.003.974-3.127 1.195-.896-.956-2.173-1.555-3.591-1.555-2.717 0-4.915 2.197-4.915 4.917 0 .386.045.763.127 1.125-4.084-.205-7.702-2.161-10.125-5.134-.422.723-.665 1.562-.665 2.457 0 1.693.861 3.186 2.17 4.065-.798-.025-1.55-.244-2.207-.609v.061c0 2.364 1.681 4.336 3.916 4.781-.409.111-.84.171-1.285.171-.315 0-.623-.03-.922-.086.623 1.946 2.431 3.365 4.572 3.405-1.674 1.309-3.781 2.089-6.072 2.089-.394 0-.779-.023-1.162-.067 2.166 1.39 4.735 2.2 7.504 2.2 9.005 0 13.92-7.457 13.92-13.926 0-.211-.005-.42-.014-.628.956-.689 1.786-1.56 2.444-2.548l-.047-.02z">
+                            </path>
                         </svg>
                     </a>
                 </div>
