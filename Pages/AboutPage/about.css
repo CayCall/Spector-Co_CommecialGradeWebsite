@@ -201,6 +201,7 @@
     color: #4A4A4A;
     line-height: 1.5;
 }
+
 #bubble-chart-container {
     display: flex;
     justify-content: center;
@@ -215,14 +216,14 @@
     width: 100%;
     height: 100%;
 }
+
 .modal {
-    display: none;
-    /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1000px;
+    width: 1000px; /* Width of the modal */
     padding: 20px;
     background-color: white;
     border: 1px solid #000000;
@@ -239,12 +240,13 @@
 
 .modal-close {
     position: absolute;
-    bottom: 5px;
+    bottom: 60px;
     right: 1px;
     cursor: pointer;
     font-size: 30px;
     transition: color 0.2s ease;
-
+  /* Add a background to see its location */
+    z-index: 10000;
 }
 
 .modal-close:hover {
@@ -256,9 +258,11 @@
     color: white;
     text-anchor: middle;
 }
-.bubble :hover{
+
+.bubble :hover {
     opacity: 0.8;
 }
+
 /* Media Queries */
 @media (max-width: 900px) {
     .container {
@@ -331,71 +335,79 @@
 }
 
 #modal-content {
-    width: 80%; /* Adjust modal width for smaller screens */
+    width: 80%;
+    /* Adjust modal width for smaller screens */
     padding: 15px;
 }
 
 #modal-title {
-    font-size: 1.2em; /* Smaller font for mobile */
+    font-size: 1.2em;
+    /* Smaller font for mobile */
 }
 
 #modal-details {
-    font-size: 0.9em; /* Smaller font for mobile */
+    font-size: 0.9em;
+    /* Smaller font for mobile */
 }
 
 #bubble-chart-container {
-    padding: 0 10px; /* Add padding to prevent overflowing */
+    padding: 0 10px;
+    /* Add padding to prevent overflowing */
     flex-direction: column;
     align-items: center;
 }
 
 #bubble-chart {
     width: 100%;
-    max-width: 400px; /* Limit chart size on smaller screens */
+    max-width: 400px;
+    /* Limit chart size on smaller screens */
     height: auto;
 }
 
 
 /* For very small screens */
 @media screen and (max-width: 480px) {
-#modal-content {
-    width: 50%;
-    padding: 10px;
-}
+    #modal-content {
+        width: 50%;
+        padding: 10px;
+    }
 
-#modal-title {
-    font-size: 1.1em;
-}
+    #modal-title {
+        font-size: 1.1em;
+    }
 
-#modal-details {
-    font-size: 0.85em;
-}
+    #modal-details {
+        font-size: 0.85em;
+    }
 
-#bubble-chart-container {
-    flex-direction: column;
-    padding: 0;
-}
+    #bubble-chart-container {
+        flex-direction: column;
+        padding: 0;
+    }
 
-#bubble-chart {
-    max-width: 100%;
-    height: auto;
-}
+    #bubble-chart {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 /* For larger screens */
 @media screen and (min-width: 1024px) {
-#modal-content {
-    width: 60%; /* Increase modal width for large screens */
-}
+    #modal-content {
+        width: 60%;
+        /* Increase modal width for large screens */
+    }
 
-#bubble-chart-container {
-    padding: 0 30px;
-    justify-content: flex-start;
-}
+    #bubble-chart-container {
+        padding: 0 30px;
+        justify-content: flex-start;
+    }
 
-#bubble-chart {
-    width: 100%;
-    max-width: 800px; /* Adjust chart size for large screens */
-    height: 400px; /* Set a fixed height for the chart */
-}
+    #bubble-chart {
+        width: 100%;
+        max-width: 800px;
+        /* Adjust chart size for large screens */
+        height: 400px;
+        /* Set a fixed height for the chart */
+    }
 }
